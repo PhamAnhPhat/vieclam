@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -60,11 +60,10 @@
                         Thành phố
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link 1</a></li>
-                        <li><a class="dropdown-item" href="#">Link 2</a></li>
-                        <li><a class="dropdown-item" href="#">Link 3</a></li>
-                        <li><a class="dropdown-item-text" href="#">Text Link</a></li>
-                        <li><span class="dropdown-item-text">Just Text</span></li>
+                        
+                        <c:forEach items="${cities}" var="city">
+                        <li><a class="dropdown-item" href="#">${city.nameCity}</a></li>
+                        </c:forEach>
                     </ul>
 
                 </div>

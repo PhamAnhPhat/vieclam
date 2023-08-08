@@ -19,6 +19,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 
 
+
 /**
  *
  * @author Admin
@@ -26,14 +27,16 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @Configuration
 @PropertySource("classpath:databases.properties")
 public class HibernateConfig {
+
     @Autowired
     private Environment env;
+
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean sessionFactory
                 = new LocalSessionFactoryBean();
         sessionFactory.setPackagesToScan(new String[]{
-            "com.mycompany.pojo"
+            "com.myconpany.pojo"
         });
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());

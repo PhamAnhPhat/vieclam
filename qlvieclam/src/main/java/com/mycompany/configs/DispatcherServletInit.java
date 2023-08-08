@@ -15,23 +15,24 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherServletInitializer{
 
-    @Override
+     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{
-            HibernateConfig.class
+        return new Class[] {
+            HibernateConfig.class,
+            
         };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-         return new Class[]{
-           WebAppContextConfig.class  
-         };
+        return new Class[] {
+            WebAppContextConfig.class
+        };
     }
 
     @Override
     protected String[] getServletMappings() {
-           return  new String[]{"/"};
+        return new String[] { "/" };
     }
 
    
