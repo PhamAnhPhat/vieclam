@@ -17,7 +17,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-    
+
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void(0)">Work</a>
@@ -42,8 +42,8 @@
                 </div>
             </div>
         </nav>
-
-             <ul class="nav nav-pills" style = "background-color : cornflowerblue " >
+        
+        <ul class="nav nav-pills" style = "background-color : cornflowerblue " >
             <li class="nav-item">
                 <div class="nav-link" style="background-color: greenyellow">
                     <img src="https://img.icons8.com/?size=512&id=h75QzKozczfv&format=png" style=" height :30px">
@@ -53,7 +53,7 @@
 
                 </div>
             </li>
-           <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <div class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img src="https://img.icons8.com/?size=1x&id=Fed3w16hj37u&format=png" style=" height :30px">
                     <a href="#" style="text-decoration: none  ; color: linen ; font-size: 20px ; font-weight: 700" >
@@ -68,8 +68,8 @@
 
                 </div>
             </li>
-            
-           <li class="nav-item dropdown" >
+
+            <li class="nav-item dropdown" >
                 <div class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <img src="https://img.icons8.com/?size=512&id=qSDZIF4neVDE&format=png" style=" height :30px">
                     <a href="#" style="text-decoration: none  ; color: linen ; font-size: 20px;font-weight: 700" >
@@ -104,11 +104,10 @@
                         Hình thức
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Link 1</a></li>
-                        <li><a class="dropdown-item" href="#">Link 2</a></li>
-                        <li><a class="dropdown-item" href="#">Link 3</a></li>
-                        <li><a class="dropdown-item-text" href="#">Text Link</a></li>
-                        <li><span class="dropdown-item-text">Just Text</span></li>
+                        <c:forEach items="${types}" var="t">
+                            <li><a class="dropdown-item" href="#">${t.nameType}</a></li>
+                            </c:forEach>
+
                     </ul>
 
                 </div>
@@ -120,7 +119,7 @@
                         Học vấn
                     </a>
                     <ul class="dropdown-menu">
-                         <c:forEach items="${edus}" var="e">
+                        <c:forEach items="${edus}" var="e">
                             <li><a class="dropdown-item" href="#">${e.typeEducation}</a></li>
                             </c:forEach>
                     </ul>
@@ -133,11 +132,42 @@
                 </form>
             </li>
         </ul>
-    
-        <div>
-              <c:forEach items="${jobs}" var="j">
-                            <li><a class="dropdown-item" href="#">${j.nameJob} - ${j.salary}</a></li>
-                            </c:forEach>
+        <h2 style="margin-left:400px;">DANH SÁCH VIỆC LÀM</h2>
+        <ul class="pagination" style="margin-left:400px;">
+            <c:forEach begin="1" end="${counts}" var="i">
+                <c:url value="/" var="pageUrl">
+                    <c:param name="page" value="${i}"></c:param>
+                </c:url>
+                <li class="page-item"><a class="page-link" href="${pageUrl}">${i}</a></li>
+            </c:forEach>
+            
+         
+        </ul>
+        <div class="container" style="margin-top:30px;width:800px;" >
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Công việc</th>
+                        <th>Mức lương</th>
+                        <th>Số lượng</th>
+                        <th>Tuổi</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${jobs}" var="j">
+                        <tr>
+                            <td>${j.id}</td>
+                            <td>${j.nameJob}</td>
+                            <td>${j.salary}</td>
+                            <td>${j.soLuongTuyenDung}</td>
+                            <td>${j.age}</td>
+                            <td>  <a href="#" class="btn btn-success">Xem công việc</a></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
 
         <!--<div class="container mt-3">

@@ -4,6 +4,7 @@
  */
 package com.mycompany.service.impl;
 
+import com.mycompany.pojo.Employer;
 import com.mycompany.pojo.Job;
 import com.mycompany.repository.JobRepository;
 import com.mycompany.service.JobService;
@@ -25,6 +26,17 @@ public class JobServiceImpl implements JobService{
     @Override
     public List<Job> getJob(Map<String, String> params) {
        return this.JobRepo.getJob(params);
+    }
+
+    @Override
+    public Long countJob() {
+     return this.JobRepo.countJob();
+    }
+
+    @Override
+    public boolean addJob(Job j) {
+      
+     return this.JobRepo.addJob(j);
     }
     
 }

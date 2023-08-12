@@ -4,9 +4,15 @@
  */
 package com.mycompany.configs;
 
+import com.mycompany.formatters.CityFormatter;
+import com.mycompany.formatters.DistrictFormatter;
+import com.mycompany.formatters.EducationFormatter;
+import com.mycompany.formatters.MajorFormatter;
+import com.mycompany.formatters.TypeJobFormatter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -32,6 +38,17 @@ public class WebAppContextConfig implements WebMvcConfigurer{
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
       configurer.enable();
     }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+    registry.addFormatter(new CityFormatter());
+    registry.addFormatter(new DistrictFormatter());
+    registry.addFormatter(new MajorFormatter());
+     registry.addFormatter(new EducationFormatter());
+      registry.addFormatter(new TypeJobFormatter());
+    }
+    
+    
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver(){
         InternalResourceViewResolver r = new InternalResourceViewResolver();

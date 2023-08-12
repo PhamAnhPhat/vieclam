@@ -4,7 +4,9 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,79 +42,82 @@
         </nav>
          <div class="container">
             <h2 style="margin-left: 500px;">FORM TẠO VIỆC LÀM</h2>
-            <form action="/action_page.php" style="width: 800px;margin-left: 200px;">
-                <div class="mb-3 mt-3">
+            <c:url value="/createJob" var="action"/>
+
+            <form:form action="${action}" method="post" modelAttribute="job" >
+                 <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Tên công việc</label>
-                    <input type="email" class="form-control" id="account" placeholder="Enter email" name="email">
-                </div>
-                <div class="mb-3">  
-                    <label for="pwd" class="form-label">Tên công ty</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label"></label>
-                    <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
-                </div>
+                    <form:input type="text" path="nameJob" class="form-control" 
+                                id="nameJob" placeholder="Tên công việc"/>
+                </div>  
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Mức lương</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
+                    <form:input type="text" path="salary" class="form-control" 
+                                id="salary" placeholder="Nhập mức lương"/>
+              
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Số lượng tuyển dụng</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
+                     <form:input type="text" path="SoLuongTuyenDung" class="form-control" 
+                                id="SoLuongTuyenDung" placeholder="Nhập số lượng tuyển dụng"/>
+                
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Tuổi</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
+                    <form:input type="text" path="Age" class="form-control" 
+                                id="Age" placeholder="Nhập độ tuổi cần tuyển"/>
+                </div>
+                  <div class="mb-3">
+                    <label for="pwd" class="form-label">Kinh nghiệm</label>
+                    <form:input type="text" path="KinhNghiem" class="form-control" 
+                                id="KinhNghiem" placeholder="Nhập độ số năm kinh nghiệm"/>
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Thành phố</label>
-                    <select class="form-select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                    <form:select class="form-select" id="city" name="city" path="cityID">
+                        <c:forEach items="${Cities}" var="ct">
+                            <option value="${ct.id}">${ct.nameCity}</option>
+                        </c:forEach>
+                    </form:select>
+                    
+            
                 </div>
                  <div class="mb-3">
                     <label for="pwd" class="form-label">Quận/huyện</label>
-                    <select class="form-select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                      <form:select class="form-select" id="district" name="district" path="districID">
+                        <c:forEach items="${quans}" var="q">
+                            <option value="${q.id}">${q.nameDistrict}</option>
+                        </c:forEach>
+                    </form:select>
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Nghề nghiệp tuyển dụng</label>
-                    <select class="form-select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                     <form:select class="form-select" id="district" name="district" path="majorID">
+                        <c:forEach items="${majors}" var="m">
+                            <option value="${m.id}">${m.nameMajor}</option>
+                        </c:forEach>
+                    </form:select>
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Trình độ học vấn</label>
-                    <select class="form-select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                     <form:select class="form-select" id="edu" name="edu" path="EducationID">
+                        <c:forEach items="${edus}" var="e">
+                            <option value="${e.id}">${e.typeEducation}</option>
+                        </c:forEach>
+                    </form:select>
                 </div>
                  <div class="mb-3">
                     <label for="pwd" class="form-label">Loại công việc</label>
-                    <select class="form-select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
+                     <form:select class="form-select" id="typejob" name="typejob" path="typeJobID">
+                        <c:forEach items="${types}" var="t">
+                            <option value="${t.id}">${t.nameType}</option>
+                        </c:forEach>
+                    </form:select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </form:form>
+
 
         </div>
     </body>

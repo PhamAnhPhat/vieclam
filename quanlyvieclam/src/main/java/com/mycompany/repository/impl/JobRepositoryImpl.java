@@ -4,6 +4,7 @@
  */
 package com.mycompany.repository.impl;
 
+import com.mycompany.pojo.Employer;
 import com.mycompany.pojo.Job;
 import com.mycompany.repository.JobRepository;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,10 +29,14 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
+@PropertySource("classpath:configs.properties")
 public class JobRepositoryImpl implements JobRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+
+    @Autowired
+    private Environment env;
 
     @Override
     public List<Job> getJob(Map<String, String> params) {
@@ -46,8 +53,39 @@ public class JobRepositoryImpl implements JobRepository {
             }
             q.where(predicates.toArray(Predicate[]::new));
         }
-         Query query = session.createQuery(q);
-          return query.getResultList();
+        Query query = session.createQuery(q);
+
+        if (params != null) {
+            String page = params.get("page");
+            if (page != null && !page.isEmpty()) {
+                int p = Integer.parseInt(page);
+                int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));
+
+                query.setMaxResults(pageSize);
+                query.setFirstResult((p - 1) * pageSize);
+            }
+        }
+        return query.getResultList();
+    }
+
+    @Override
+    public Long countJob() {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query q = session.createQuery("SELECT Count(*) FROM Job");
+        return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public boolean addJob(Job j) {
+
+        Session s = this.factory.getObject().getCurrentSession();
+        if (j.getEmployerID() == null) {
+            int em = 1;
+            Employer e = new Employer(em);
+            j.setEmployerID(e);
+            s.save(j);
+        }
+        return true;
     }
 
 }

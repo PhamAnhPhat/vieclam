@@ -14,4 +14,6 @@ import java.util.Map;
  */
 public interface JobRepository {
     List<Job> getJob(Map<String,String> params);
+    Long countJob();
+    boolean addJob(Job j);
 }

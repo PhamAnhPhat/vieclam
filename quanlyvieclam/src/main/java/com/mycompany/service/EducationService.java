@@ -4,7 +4,7 @@
  */
 package com.mycompany.service;
 
-import com.mycompany.pojo.Job;
+import com.mycompany.pojo.Education;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +12,6 @@ import java.util.Map;
  *
  * @author Admin
  */
-public interface JobService {
-    List<Job> getJob(Map<String,String> params);
-     Long countJob();
-     boolean addJob(Job j);
+public interface EducationService {
+    List<Education> getEdu(Map<String,String> params);
 }
