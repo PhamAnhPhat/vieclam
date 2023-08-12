@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -15,6 +16,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
+
+
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="javascript:void(0)">Work</a>
@@ -24,43 +27,52 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Trang chủ</a>
+                            <a class="nav-link" href="<c:url value="/" />">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="javascript:void(0)">Hồ sơ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Đăng ký</a>
+                            <a class="nav-link" href="<c:url value="/SignUp" />">Đăng ký</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0)">Đăng nhập</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<c:url value="/login" />">Đăng nhập</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" style="width:500px;">
-            <form action="/action_page.php">
-                <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Tài khoản</label>
-                    <input type="email" class="form-control" id="account" placeholder="Enter email" name="email">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-                </div>
-                <div class="mb-3">
-                    <label for="pwd" class="form-label">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
-                </div>
-                <div class="form-floating mb-3 mt-3">
-                   
-                    <label for="file">Ảnh sản phẩm</label>
-                </div>
+        <c:url value="/SignUp" var="action" />
+        <form:form method="post" action="${action}" modelAttribute="user" enctype="multipart/form-data">
+            <div class="container-fluid" style="width:500px;">
+              
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Tài khoản</label>
+                        <form:input type="text" path="username" class="form-control" 
+                                    id="username" placeholder="Nhập tài khoản"/>
+                    </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Mật khẩu</label>
+                        <form:input type="password" path="password" class="form-control" 
+                                    id="password" placeholder="Nhập tài khoản"/>
+                    </div>
 
-        </div> 
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Vị trí đăng ký</label>
+                        <form:select class="form-select" id="roleID" name="roleID" path="roleID">
+                            <c:forEach items="${roless}" var="r">
+                                <option value="${r.id}">${r.nameRole}</option>
+                            </c:forEach>
+                        </form:select>
+                    </div>
+
+                  
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+               
+            </div> 
+        </form:form>
+
     </body>
 </html>

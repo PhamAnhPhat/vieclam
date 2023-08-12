@@ -48,6 +48,7 @@ public class createJobController {
         model.addAttribute("majors", this.MajorService.getMajor(null));
         model.addAttribute("edus", this.EduService.getEdu(null));
         model.addAttribute("types", this.TypeService.getTypeJob(null));
+        
 
         return "createJob";
     }

@@ -4,6 +4,7 @@ com\mycompany\repository\DistrictRepository.class
 com\mycompany\controllers\loginController.class
 com\mycompany\repository\JobRepository.class
 com\mycompany\service\impl\EducationServiceImpl.class
+com\mycompany\service\UserService.class
 com\mycompany\pojo\City_.class
 com\mycompany\controllers\AdminController.class
 com\mycompany\controllers\IndexController.class
@@ -16,13 +17,17 @@ com\mycompany\repository\impl\JobRepositoryImpl.class
 com\mycompany\repository\TypeJobRepository.class
 com\mycompany\controllers\SignUpController.class
 com\mycompany\pojo\User.class
+com\mycompany\repository\impl\UserRepositoryImpl.class
 com\mycompany\service\impl\TypeJobServiceImpl.class
 com\mycompany\service\impl\CityServiceImpl.class
+com\mycompany\repository\RoleRepository.class
 com\mycompany\service\MajorService.class
 com\mycompany\pojo\Application.class
+com\mycompany\service\RoleService.class
 com\mycompany\formatters\TypeJobFormatter.class
 com\mycompany\repository\EducationRepository.class
 com\mycompany\service\CityService.class
+com\mycompany\formatters\RoleFormatter.class
 com\mycompany\pojo\Employerreview_.class
 com\mycompany\pojo\Employer_.class
 com\mycompany\controllers\employerController.class
@@ -31,6 +36,7 @@ com\mycompany\repository\impl\EducationRepositoryImpl.class
 com\mycompany\configs\WebAppContextConfig.class
 com\mycompany\pojo\Employer.class
 com\mycompany\pojo\Typejob_.class
+com\mycompany\repository\UserRepository.class
 com\mycompany\repository\impl\MajorRepositoryImpl.class
 com\mycompany\controllers\createJobController.class
 com\mycompany\service\DistrictService.class
@@ -53,9 +59,12 @@ com\mycompany\formatters\MajorFormatter.class
 com\mycompany\pojo\District.class
 com\mycompany\pojo\Major.class
 com\mycompany\pojo\Typejob.class
+com\mycompany\service\impl\RoleServiceImpl.class
+com\mycompany\service\impl\UserServiceImpl.class
 com\mycompany\pojo\City.class
 com\mycompany\service\JobService.class
 com\mycompany\formatters\EducationFormatter.class
+com\mycompany\repository\impl\RoleRepositoryImpl.class
 com\mycompany\pojo\Education_.class
 com\mycompany\repository\MajorRepository.class
 com\mycompany\configs\DispatcherServletInit.class
