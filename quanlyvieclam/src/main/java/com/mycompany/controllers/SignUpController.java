@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @author Admin
  */
 @Controller
-
 public class SignUpController {
 
     @Autowired

@@ -12,4 +12,5 @@ import com.mycompany.pojo.User;
  */
 public interface UserRepository {
     boolean addUser(User u);
+
 }

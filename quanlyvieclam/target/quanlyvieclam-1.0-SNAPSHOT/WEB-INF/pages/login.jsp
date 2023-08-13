@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,7 +22,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-               <div class="collapse navbar-collapse" id="mynavbar">
+                <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/" />">Trang chủ</a>
@@ -32,15 +33,17 @@
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/SignUp" />">Đăng ký</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/login" />">Đăng nhập</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" style="width:500px;">
-            <form action="/action_page.php">
+
+        <form:form >
+            <div class="container-fluid" style="width:500px;">
+
                 <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Tài khoản</label>
                     <input type="email" class="form-control" id="account" placeholder="Enter email" name="email">
@@ -49,10 +52,12 @@
                     <label for="pwd" class="form-label">Mật khẩu</label>
                     <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
                 </div>
-               
+
 
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+
+            </div>
+        </form:form>
+
     </body>
 </html>

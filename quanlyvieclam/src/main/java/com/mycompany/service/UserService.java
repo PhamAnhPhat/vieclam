@@ -5,11 +5,13 @@
 package com.mycompany.service;
 
 import com.mycompany.pojo.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Admin
  */
-public interface UserService {
+public interface UserService{
     boolean addUser(User u);
+  
 }

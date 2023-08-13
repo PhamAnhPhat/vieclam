@@ -44,7 +44,7 @@
             <h2 style="margin-left: 500px;">FORM TẠO VIỆC LÀM</h2>
             <c:url value="/createJob" var="action"/>
 
-            <form:form action="${action}" method="post" modelAttribute="job" >
+            <form:form action="${action}" method="post" modelAttribute="job">
                  <div class="mb-3 mt-3">
                     <label for="email" class="form-label">Tên công việc</label>
                     <form:input type="text" path="nameJob" class="form-control" 

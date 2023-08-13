@@ -15,8 +15,8 @@ import org.springframework.format.Formatter;
  */
 public class RoleFormatter implements Formatter<Role>{
      @Override
-    public String print(Role t, Locale locale) {
-      return String.valueOf(t.getId());
+    public String print(Role r, Locale locale) {
+      return String.valueOf(r.getId());
     }
 
     @Override

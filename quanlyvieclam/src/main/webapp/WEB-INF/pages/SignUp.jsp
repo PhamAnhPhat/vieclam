@@ -42,37 +42,44 @@
                 </div>
             </div>
         </nav>
-        <c:url value="/SignUp" var="action" />
-        <form:form method="post" action="${action}" modelAttribute="user" enctype="multipart/form-data">
-            <div class="container-fluid" style="width:500px;">
-              
-                    <div class="mb-3 mt-3">
-                        <label for="email" class="form-label">Tài khoản</label>
-                        <form:input type="text" path="username" class="form-control" 
-                                    id="username" placeholder="Nhập tài khoản"/>
-                    </div>
+        <div class="container">
+            <h2 style="margin-left: 500px;">ĐĂNG KÝ TÀI KHOẢN</h2>
+            <c:url value="/SignUp" var="action"/>
+            <form:form action="${action}" method="post" modelAttribute="user"  enctype="multipart/form-data">
+                <form:errors path="*" element="div" cssClass="alert alert-danger" />
+                <form:hidden path="id" />
+                <form:hidden path="avatar" />
+                <div class="mb-3 mt-3">
+                    <label for="username" class="form-label">Tài khoản</label>
+                    <form:input type="text" path="username" class="form-control" 
+                                id="username" placeholder="Nhập tài khoản"/>
+                </div>  
+                <div class="mb-3 mt-3">
+                    <label for="password" class="form-label">Nhập mật khẩu</label>
+                    <form:input type="pwd" path="password" class="form-control" 
+                                id="password" placeholder="Nhập mật khẩu"/>
+                </div>  
 
-                    <div class="mb-3">
-                        <label for="pwd" class="form-label">Mật khẩu</label>
-                        <form:input type="password" path="password" class="form-control" 
-                                    id="password" placeholder="Nhập tài khoản"/>
-                    </div>
+                <div class="mb-3">
+                    <label for="roleID" class="form-label">Vị trí</label>
+                    <form:select class="form-select" id="roleID" name="roleID" path="roleID">
+                        <c:forEach items="${roless}" var="r">
+                            <option value="${r.id}">${r.nameRole}</option>
+                        </c:forEach>
+                    </form:select>
+                </div>
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">Avatar</label>
+                    <form:input type="file" class="form-control" 
+                                path="file" id="file"  />
+                </div>
 
-                    <div class="mb-3">
-                        <label for="pwd" class="form-label">Vị trí đăng ký</label>
-                        <form:select class="form-select" id="roleID" name="roleID" path="roleID">
-                            <c:forEach items="${roless}" var="r">
-                                <option value="${r.id}">${r.nameRole}</option>
-                            </c:forEach>
-                        </form:select>
-                    </div>
 
-                  
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form:form>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-               
-            </div> 
-        </form:form>
+
+        </div>
 
     </body>
 </html>
