@@ -15,6 +15,7 @@ public interface UserRepository {
     boolean addUser(User u);
 
     User findUserByUsername(String username);
+    User login(String username,String pwd);
 
     
 }

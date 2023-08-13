@@ -40,20 +40,24 @@
                 </div>
             </div>
         </nav>
-
-        <form:form >
+        <c:url value="/login" var="action"/>
+        <form:form action="${action}" method="post" modelAttribute="user"  enctype="multipart/form-data">
             <div class="container-fluid" style="width:500px;">
 
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Tài khoản</label>
-                    <input type="email" class="form-control" id="account" placeholder="Enter email" name="email">
+                    <label for="username" class="form-label">Tài khoản</label>
+                    <input type="text" class="form-control" id="username" path="username" placeholder="Nhập tài khoản" name="username">
                 </div>
                 <div class="mb-3">
-                    <label for="pwd" class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" path="password" id="password" placeholder="Nhập tài khoản" name="password">
                 </div>
 
-
+                <c:if test="${not empty message}">
+                    <div class="alert alert-danger">
+                        ${message}
+                    </div>
+                </c:if>
                 <button type="submit" class="btn btn-primary">Submit</button>
 
             </div>

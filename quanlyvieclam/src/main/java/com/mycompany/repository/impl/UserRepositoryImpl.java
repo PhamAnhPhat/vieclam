@@ -72,4 +72,16 @@ public class UserRepositoryImpl implements UserRepository {
         else if (results.size() == 1) return (User) results.get(0);
         throw new NonUniqueResultException();
     }
+
+    @Override
+    public User login(String username, String pwd) {
+       Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM User WHERE username=:un and password=:pwd");
+        q.setParameter("un",username);
+        q.setParameter("pwd", pwd);
+        List results=q.getResultList();
+         if (results.isEmpty()) return null;
+        else if (results.size() == 1) return (User) results.get(0);
+        throw new NonUniqueResultException();
+    }
 }

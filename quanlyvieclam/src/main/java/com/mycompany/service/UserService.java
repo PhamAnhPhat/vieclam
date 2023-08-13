@@ -14,4 +14,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService{
     boolean addUser(User u);
     User findUserByUsername(String username);
+    User login(String username,String pwd);
 }
