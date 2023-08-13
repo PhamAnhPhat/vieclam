@@ -41,7 +41,7 @@
             </div>
         </nav>
         <c:url value="/login" var="action"/>
-        <form:form action="${action}" method="post" modelAttribute="user"  enctype="multipart/form-data">
+        <form action="${action}" method="post" >
             <div class="container-fluid" style="width:500px;">
 
                 <div class="mb-3 mt-3">
@@ -58,10 +58,12 @@
                         ${message}
                     </div>
                 </c:if>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3">
+                    <input type="submit" value="Đăng nhập" class="btn btn-danger" />
+                </div>
 
             </div>
-        </form:form>
+        </form>
 
     </body>
 </html>

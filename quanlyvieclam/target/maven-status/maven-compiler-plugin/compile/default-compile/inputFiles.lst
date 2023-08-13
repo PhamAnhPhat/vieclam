@@ -15,6 +15,7 @@ D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\controllers\Applicatio
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\CityService.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\configs\HibernateConfig.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\controllers\loginController.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\configs\SpringSecurityConfig.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\impl\EducationServiceImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\MajorService.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\formatters\TypeJobFormatter.java
@@ -22,8 +23,10 @@ D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\Job.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\City.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\Employerreview.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\CityRepository.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\impl\UserAuthorServiceImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\Application.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\RoleService.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\UserAuthorRepositoryImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\formatters\CityFormatter.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\formatters\MajorFormatter.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\MajorRepositoryImpl.java
@@ -39,6 +42,7 @@ D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\impl\UserServi
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\RoleRepository.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\controllers\SignUpController.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\JobRepositoryImpl.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\UserAuthorService.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\RoleRepositoryImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\UserRepositoryImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\configs\WebAppContextConfig.java
@@ -49,8 +53,10 @@ D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\User.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\EducationRepository.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\JobRepository.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\service\impl\TypeJobServiceImpl.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\configs\SecurityWebApplicationInitializer.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\Employer.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\CityRepositoryImpl.java
+D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\UserAuthorRepository.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\pojo\District.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\impl\DistrictRepositoryImpl.java
 D:\Java\vieclam\quanlyvieclam\src\main\java\com\mycompany\repository\TypeJobRepository.java

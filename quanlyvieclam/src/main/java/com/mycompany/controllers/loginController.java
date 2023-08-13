@@ -24,22 +24,10 @@ public class loginController {
     private UserService userService;
       
      @GetMapping("/login")
-   public String login(Model model){
-        model.addAttribute("user", new User());
+   public String login(){
        return "login";
    }
-   @PostMapping("/login")
-   public String LogIn(@ModelAttribute(value = "user")User u, RedirectAttributes redirect){
-       if(userService.login(u.getUsername(), u.getPassword())==null)
-       {
-            redirect.addFlashAttribute("message", "Sai mật khẩu/tài khoản");
-            return "redirect:/login";
-       }
-       else{
-            return "redirect:/";
-       }
-      
-   }
+  
    
   
 }

@@ -10,8 +10,10 @@ com\mycompany\controllers\AdminController.class
 com\mycompany\controllers\IndexController.class
 com\mycompany\pojo\Role.class
 com\mycompany\repository\impl\DistrictRepositoryImpl.class
+com\mycompany\repository\UserAuthorRepository.class
 com\mycompany\controllers\ApplicationJobController.class
 com\mycompany\configs\HibernateConfig.class
+com\mycompany\configs\SpringSecurityConfig.class
 com\mycompany\pojo\District_.class
 com\mycompany\repository\impl\JobRepositoryImpl.class
 com\mycompany\repository\TypeJobRepository.class
@@ -23,6 +25,7 @@ com\mycompany\service\impl\CityServiceImpl.class
 com\mycompany\repository\RoleRepository.class
 com\mycompany\service\MajorService.class
 com\mycompany\pojo\Application.class
+com\mycompany\service\impl\UserAuthorServiceImpl.class
 com\mycompany\service\RoleService.class
 com\mycompany\formatters\TypeJobFormatter.class
 com\mycompany\repository\EducationRepository.class
@@ -40,6 +43,7 @@ com\mycompany\repository\UserRepository.class
 com\mycompany\repository\impl\MajorRepositoryImpl.class
 com\mycompany\controllers\createJobController.class
 com\mycompany\service\DistrictService.class
+com\mycompany\configs\SecurityWebApplicationInitializer.class
 com\mycompany\pojo\User_.class
 com\mycompany\repository\impl\CityRepositoryImpl.class
 com\mycompany\pojo\Application_.class
@@ -50,12 +54,12 @@ com\mycompany\pojo\Job.class
 com\mycompany\service\impl\DistrictServiceImpl.class
 com\mycompany\pojo\Employerreview.class
 com\mycompany\pojo\Role_.class
-.netbeans_automatic_build
 com\mycompany\repository\CityRepository.class
 com\mycompany\formatters\DistrictFormatter.class
 com\mycompany\pojo\Education.class
 com\mycompany\service\EducationService.class
 com\mycompany\repository\impl\TypeJobRepositoryImpl.class
+com\mycompany\service\UserAuthorService.class
 com\mycompany\formatters\MajorFormatter.class
 com\mycompany\pojo\District.class
 com\mycompany\pojo\Major.class
@@ -66,6 +70,7 @@ com\mycompany\pojo\City.class
 com\mycompany\service\JobService.class
 com\mycompany\formatters\EducationFormatter.class
 com\mycompany\repository\impl\RoleRepositoryImpl.class
+com\mycompany\repository\impl\UserAuthorRepositoryImpl.class
 com\mycompany\pojo\Education_.class
 com\mycompany\repository\MajorRepository.class
 com\mycompany\configs\DispatcherServletInit.class
