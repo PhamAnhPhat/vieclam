@@ -73,7 +73,11 @@
                     <form:input type="file" class="form-control" 
                                 path="file" id="file"  />
                 </div>
-
+                <c:if test="${not empty message}">
+                    <div class="alert alert-danger">
+                        ${message}
+                    </div>
+                </c:if>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form:form>

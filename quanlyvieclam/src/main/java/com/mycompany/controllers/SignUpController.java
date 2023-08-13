@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -37,13 +38,16 @@ public class SignUpController {
 
     @PostMapping("/SignUp")
     @Transactional
-    public String addUser(@ModelAttribute(value = "user") User u) {
-        if(userService.findUserByUsername(u.getUsername())==null){
-             userService.addUser(u);
+    public String addUser(@ModelAttribute(value = "user") User u, RedirectAttributes redirect) {
+        if (userService.findUserByUsername(u.getUsername()) == null) {
+            this.userService.addUser(u);
             return "login";
         }
-        else{
-            return"SignUp";
+
+        if (userService.findUserByUsername(u.getUsername()) != null) {
+            redirect.addFlashAttribute("message", "Tài khoản đã tồn tại");
+            return "redirect:/SignUp";
         }
+        return "login";
     }
 }

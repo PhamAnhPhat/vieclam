@@ -50,6 +50,7 @@ com\mycompany\pojo\Job.class
 com\mycompany\service\impl\DistrictServiceImpl.class
 com\mycompany\pojo\Employerreview.class
 com\mycompany\pojo\Role_.class
+.netbeans_automatic_build
 com\mycompany\repository\CityRepository.class
 com\mycompany\formatters\DistrictFormatter.class
 com\mycompany\pojo\Education.class

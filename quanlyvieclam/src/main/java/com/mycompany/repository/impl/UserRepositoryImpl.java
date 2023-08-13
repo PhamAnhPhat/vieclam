@@ -11,10 +11,12 @@ import com.mycompany.pojo.Role;
 import com.mycompany.pojo.User;
 import com.mycompany.repository.UserRepository;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -62,13 +64,12 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUserByUsername(String username) {
-        TypedQuery<User> query = entity.createNamedQuery("User.findByUsername", User.class);
-        query.setParameter("username", username);
-        if (query !=null) {
-            return query.getSingleResult();
-        } else {
-            return null;
-        }
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM User WHERE username=:un");
+        q.setParameter("un", username);
+        List results = q.getResultList();
+        if (results.isEmpty()) return null;
+        else if (results.size() == 1) return (User) results.get(0);
+        throw new NonUniqueResultException();
     }
-
 }

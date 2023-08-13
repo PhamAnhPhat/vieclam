@@ -11,7 +11,10 @@ import com.mycompany.pojo.User;
  * @author Admin
  */
 public interface UserRepository {
-    boolean addUser(User u);
-    public User findUserByUsername(String username);
 
+    boolean addUser(User u);
+
+    User findUserByUsername(String username);
+
+    
 }
