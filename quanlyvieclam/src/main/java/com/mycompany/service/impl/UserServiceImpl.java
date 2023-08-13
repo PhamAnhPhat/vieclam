@@ -53,5 +53,10 @@ public class UserServiceImpl implements UserService {
         return this.UserRepo.addUser(u);
     }
 
+    @Override
+    public User findUserByUsername(String username) {
+       return this.UserRepo.findUserByUsername(username);
+    }
+
 
 }

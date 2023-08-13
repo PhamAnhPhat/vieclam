@@ -14,7 +14,10 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +42,17 @@ public class UserRepositoryImpl implements UserRepository {
     @Autowired
     private Environment env;
 
+    @PersistenceContext
+    private EntityManager entity;
+
     @Override
     public boolean addUser(User u) {
         Session s = this.factory.getObject().getCurrentSession();
-        
-       try {
-            if (u.getId()== null) {
+
+        try {
+            if (u.getId() == null) {
                 s.save(u);
-            } 
+            }
             return true;
         } catch (HibernateException ex) {
             ex.printStackTrace();
@@ -54,5 +60,15 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
+    public User findUserByUsername(String username) {
+        TypedQuery<User> query = entity.createNamedQuery("User.findByUsername", User.class);
+        query.setParameter("username", username);
+        if (query !=null) {
+            return query.getSingleResult();
+        } else {
+            return null;
+        }
+    }
 
 }

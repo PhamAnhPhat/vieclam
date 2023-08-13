@@ -36,11 +36,14 @@ public class SignUpController {
     }
 
     @PostMapping("/SignUp")
+    @Transactional
     public String addUser(@ModelAttribute(value = "user") User u) {
-        if (userService.addUser(u) == true) {
+        if(userService.findUserByUsername(u.getUsername())==null){
+             userService.addUser(u);
             return "login";
-        } else {
-            return "SignUp";
+        }
+        else{
+            return"SignUp";
         }
     }
 }
