@@ -23,11 +23,11 @@ com\qlvl\service\impl\MajorServiceImpl.class
 com\qlvl\service\DistrictService.class
 com\qlvl\service\TypeJobService.class
 com\qlvl\pojo\Employer.class
-com\qlvl\controllers\createJob.class
 com\qlvl\pojo\District.class
 com\qlvl\configs\WebAppContextConfig.class
 com\qlvl\pojo\Application.class
 com\qlvl\pojo\Typejob_.class
+com\qlvl\controllers\JobDetailController.class
 com\qlvl\repository\impl\TypeJobRepositoryImpl.class
 com\qlvl\pojo\Application_.class
 com\qlvl\service\impl\EducationServiceImpl.class
@@ -61,5 +61,6 @@ com\qlvl\repository\impl\DistrictRepositoryImpl.class
 com\qlvl\service\impl\TypeJobServiceImpl.class
 com\qlvl\service\MajorService.class
 com\qlvl\pojo\User_.class
+com\qlvl\controllers\createJobController.class
 com\qlvl\pojo\Employer_.class
 com\qlvl\pojo\Major.class

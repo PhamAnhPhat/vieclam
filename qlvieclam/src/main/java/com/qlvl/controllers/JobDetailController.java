@@ -11,27 +11,26 @@ import com.qlvl.service.EducationService;
 import com.qlvl.service.JobService;
 import com.qlvl.service.MajorService;
 import com.qlvl.service.TypeJobService;
-import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  * @author Admin
  */
 @Controller
-public class createJob {
-    
-    @Autowired
+public class JobDetailController {
+       @Autowired
     private JobService jobSer;
-     @Autowired
+    @Autowired
     private DistrictService DistrictService;
 
     @Autowired
@@ -47,10 +46,9 @@ public class createJob {
     @Autowired
     private Environment env;
     
-    
-     @GetMapping("/createJob")
-     @Transactional
-    public String createJob(Model model, @RequestParam Map<String, String> params) {
+    @GetMapping("/JobDetail")
+    @Transactional
+    public String JobDetail(Model model){
          model.addAttribute("CITY", this.CityService.getCity(null));
 
         model.addAttribute("DISTRICT", this.DistrictService.getDistrict(null));
@@ -59,15 +57,21 @@ public class createJob {
 
         model.addAttribute("EDUCATION", this.EduService.getEdu(null));
         model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
-        model.addAttribute("job",new Job());
-        return "createJob";
+        model.addAttribute("job", new Job());
+        return "JobDetail";
+    }
+
+
+    @PostMapping("/JobDetail")
+    public String add(@ModelAttribute(value = "JobDetails")@Valid Job j, BindingResult rs){
+        if(!rs.hasErrors()){
+            if(jobSer.addJob(j)==true)
+                return"redirect:/";
+        }
+        return "JobDetail";
     }
     
-    @PostMapping("/createJob")
-    public String add(@ModelAttribute(value = "job")Job j){
-        if(jobSer.addJob(j)==true)
-            return"redirect:/";
-        else
-            return "createJob";
-    }
+    
+    
+    
 }
