@@ -6,6 +6,8 @@ package com.qlvl.repository.impl;
 
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
+import java.util.List;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +28,28 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getUserByUserName(String username) {
-      Session s =this.factory.getObject().getCurrentSession();
-      Query q =s.createQuery("FROM User WHERE username:un");
-      q.setParameter("un", username);
-      return (User) q.getSingleResult();
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM User WHERE username:un");
+        q.setParameter("un", username);
+        return (User) q.getSingleResult();
+    }
+
+    @Override
+    public User addUser(User u) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(u);
+        return u;
+    }
+
+    @Override
+    public User findUserByUserName(String username) {
+      Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM User WHERE username=:un");
+        q.setParameter("un", username);
+        List results = q.getResultList();
+        if (results.isEmpty()) return null;
+        else if (results.size() == 1) return (User) results.get(0);
+        throw new NonUniqueResultException();    
     }
 
 }

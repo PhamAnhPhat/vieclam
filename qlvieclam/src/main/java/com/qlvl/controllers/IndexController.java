@@ -11,9 +11,11 @@ import com.qlvl.service.JobService;
 import com.qlvl.service.MajorService;
 import com.qlvl.service.TypeJobService;
 import java.util.Map;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -33,6 +35,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     @Autowired
+    private LocalSessionFactoryBean factory;
+    @Autowired
     private JobService jobService;
     @Autowired
     private DistrictService DistrictService;
@@ -49,12 +53,23 @@ public class IndexController {
 
     @Autowired
     private Environment env;
-    
 
     @RequestMapping("/")
     @Transactional
     public String Index(Model model, @RequestParam Map<String, String> params) {
+        Session s = factory.getObject().getCurrentSession();
 
+        model.addAttribute("CITY", this.CityService.getCity(null));
+
+        model.addAttribute("DISTRICT", this.DistrictService.getDistrict(null));
+
+        model.addAttribute("MAJOR", this.MajorService.getMajor(null));
+
+        model.addAttribute("EDUCATION", this.EduService.getEdu(null));
+
+        model.addAttribute("jobs", this.jobService.getJob(null));
+
+        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
         model.addAttribute("JOB", this.jobService.getJob(params));
         int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));
         long count = this.jobService.countJob();
@@ -62,5 +77,4 @@ public class IndexController {
         return "index";
     }
 
-   
 }
