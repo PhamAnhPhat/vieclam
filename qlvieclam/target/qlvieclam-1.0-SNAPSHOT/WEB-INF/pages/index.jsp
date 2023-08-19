@@ -122,7 +122,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
+                <th></th>
                 <th>Công việc</th>
                 <th>Mức lương</th>
                 <th>Số lượng</th>
@@ -133,14 +133,14 @@
         <tbody>
             <c:forEach items="${JOB}" var="j">
                 <tr>
-                    <td>${j.id}</td>
+                    <td><img src="${j.avatarJob}" width="120"/></td>
                     <td>${j.nameJob}</td>
                     <td>${j.salary}</td>
                     <td>${j.soLuongTuyenDung}</td>
                     <td>${j.age}</td>
                     <td>
                         <c:url value="/api/createJob/${j.id}" var="deleteApi" />
-                        <a href="<c:url value="/createJob/${j.id}"/>" class="btn btn-success">Xem công việc</a>
+                        <a href="<c:url value="/JobDetail/${j.id}"/>" class="btn btn-success">Xem công việc</a>
                         <button class="btn btn-danger" onclick="delJob('${deleteApi}',${j.id})">Xoá</button>
                     </td>
 

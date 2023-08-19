@@ -8,13 +8,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<h2 class="text-center text-info    "">CHI TIẾT VIỆC LÀM</h2>
+<h2 class="text-center text-info ">CHI TIẾT VIỆC LÀM</h2>
 
 <c:url value="/createJob" var="action" />
 <form:form action="${action}"  method="post" modelAttribute="job" enctype="multipart/form-data">
     <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
     <form:hidden path="avatarJob"/>
+    
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Tên công việc</label>
         <form:input type="text" path="nameJob" class="form-control" 

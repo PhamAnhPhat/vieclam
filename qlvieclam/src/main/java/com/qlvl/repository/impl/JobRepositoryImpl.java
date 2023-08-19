@@ -85,7 +85,7 @@ public class JobRepositoryImpl implements JobRepository {
 
         Session s = this.factory.getObject().getCurrentSession();
         try {
-            if (j.getEmployerID() == null) {
+            if (j.getEmployerID()== null) {
                 int em = 1;
                 Employer e = new Employer(em);
 

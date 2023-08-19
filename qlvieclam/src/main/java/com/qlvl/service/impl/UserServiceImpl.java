@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Admin
  */
-@Service("userDetailService")
+@Service("userDetailsService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("msg");
         }
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(u.getRoleID().toString()));
+        authorities.add(new SimpleGrantedAuthority(u.getUserRole()));
 
         return new org.springframework.security.core.userdetails.User(
                 u.getUsername(), u.getPassword(), authorities);

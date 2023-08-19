@@ -10,15 +10,19 @@
 
 <h2 class="text-center text-info ">FORM CHI TIẾT VIỆC LÀM</h2>
 
-<c:url value="/JobDetail" var="action" />
-<form:form action="${action}"  method="post" modelAttribute="JobDetails" enctype="multipart/form-data">
-    <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+<c:url value="/JobDetail/" var="action" />
+<form:form action="${action}"  method="post" modelAttribute="JD" enctype="multipart/form-data">
+
+     <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+    <form:hidden path="id" />
+     <label for="email" class="form-label">Hình ảnh minh hoạ</label>
+    <div><img  src="${JD.avatarJob}" width="120"/></div>
     <div class="mb-3 mt-3">
-        <label for="email" class="form-label">Tên công việc</label>
+      <label for="email" class="form-label">Tên công việc</label>
         <form:input type="text" path="nameJob" class="form-control" 
                     id="nameJob" placeholder="Tên công việc"/>
     </div>  
-     <form:errors path="nameJob" element="div"  cssClass="text-danger" />
+    <form:errors path="nameJob" element="div"  cssClass="text-danger" />
     <div class="mb-3">
         <label for="pwd" class="form-label">Mức lương</label>
         <form:input type="text" path="salary" class="form-control" 
@@ -45,7 +49,15 @@
         <label for="pwd" class="form-label">Thành phố</label>
         <form:select class="form-select" id="city" name="city" path="cityID">
             <c:forEach items="${CITY}" var="ct">
-                <option value="${ct.id}">${ct.nameCity}</option>
+                <c:choose>
+                    <c:when test="${ct.id==JD.cityID.id}">
+                        <option value="${ct.id}" selected>${ct.nameCity}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${ct.id}" >${ct.nameCity}</option>
+                    </c:otherwise>
+                </c:choose>
+
             </c:forEach>
         </form:select>
 
@@ -55,7 +67,15 @@
         <label for="pwd" class="form-label">Quận/huyện</label>
         <form:select class="form-select" id="district" name="district" path="districID">
             <c:forEach items="${DISTRICT}" var="q">
-                <option value="${q.id}">${q.nameDistrict}</option>
+                <c:choose>
+                    <c:when test="${q.id==JD.districID.id}">
+                        <option value="${q.id}" selected>${q.nameDistrict}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${q.id}">${q.nameDistrict}</option>
+                    </c:otherwise>
+                </c:choose>
+
             </c:forEach>
         </form:select>
     </div>
@@ -63,15 +83,31 @@
         <label for="pwd" class="form-label">Nghề nghiệp tuyển dụng</label>
         <form:select class="form-select" id="district" name="district" path="majorID">
             <c:forEach items="${MAJOR}" var="m">
-                <option value="${m.id}">${m.nameMajor}</option>
+                <c:choose>
+                    <c:when test="${m.id==JD.majorID.id}">
+                        <option value="${m.id}" selected>${m.nameMajor}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${m.id}">${m.nameMajor}</option>
+                    </c:otherwise>
+                </c:choose>
+
             </c:forEach>
         </form:select>
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Trình độ học vấn</label>
-        <form:select class="form-select" id="edu" name="edu" path="EducationID">
-            <c:forEach items="${EDUCATION}" var="e">
-                <option value="${e.id}">${e.typeEducation}</option>
+        <form:select class="form-select" id="edu" name="edu" path="educationID">
+            <c:forEach items="${EDUCATION}" var="e">      
+                <c:choose>
+                    <c:when test="${e.id==JD.educationID.id}">
+                        <option value="${e.id}" selected>${e.typeEducation}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${e.id}">${e.typeEducation}</option>
+                    </c:otherwise>
+                </c:choose>
+
             </c:forEach>
         </form:select>
     </div>
@@ -79,19 +115,24 @@
         <label for="pwd" class="form-label">Loại công việc</label>
         <form:select class="form-select" id="typejob" name="typejob" path="typeJobID">
             <c:forEach items="${TYPEJOB}" var="t">
-                <option value="${t.id}">${t.nameType}</option>
+                <c:choose>
+                    <c:when test="${t.id==JD.typeJobID.id}">
+                        <option value="${t.id}" selected>${t.nameType}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${t.id}">${t.nameType}</option>
+                    </c:otherwise>
+                </c:choose>
+
+
+
+
             </c:forEach>
         </form:select>
     </div>
-      <div class="mb-3">
-        <label for="file" class="form-label">Ảnh minh hoạ</label>
-         <form:input type="file" path="file" class="form-control" 
-                    id="file" />
-    </div>
-    
-    
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+   
+ <a href="<c:url value="/Application/${job.id}"/>" class="btn btn-primary">Ứng tuyển</a>
+   
 </form:form>
 
 
