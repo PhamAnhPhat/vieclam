@@ -17,4 +17,5 @@ public interface EmployerService {
      boolean checkEmployer(Employer e);
      Employer getEmployerByID(int id);
      boolean addEmployer(Employer e);
+      boolean AcceptEmployer(Employer e);
 }

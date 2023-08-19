@@ -15,43 +15,44 @@
 
      <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
+    <div>${JD.id}</div>
      <label for="email" class="form-label">Hình ảnh minh hoạ</label>
     <div><img  src="${JD.avatarJob}" width="120"/></div>
     <div class="mb-3 mt-3">
       <label for="email" class="form-label">Tên công việc</label>
         <form:input type="text" path="nameJob" class="form-control" 
-                    id="nameJob" placeholder="Tên công việc"/>
+                    id="nameJob" disabled="true" placeholder="Tên công việc" />
     </div>  
     <form:errors path="nameJob" element="div"  cssClass="text-danger" />
     <div class="mb-3">
         <label for="pwd" class="form-label">Mức lương</label>
         <form:input type="text" path="salary" class="form-control" 
-                    id="salary" placeholder="Nhập mức lương"/>
+                    id="salary" disabled="true" placeholder="Nhập mức lương"/>
 
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Số lượng tuyển dụng</label>
         <form:input type="text" path="SoLuongTuyenDung" class="form-control" 
-                    id="SoLuongTuyenDung" placeholder="Nhập số lượng tuyển dụng"/>
+                    id="SoLuongTuyenDung" disabled="true" placeholder="Nhập số lượng tuyển dụng"/>
 
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Tuổi</label>
         <form:input type="text" path="Age" class="form-control" 
-                    id="Age" placeholder="Nhập độ tuổi cần tuyển"/>
+                    id="Age" disabled="true" placeholder="Nhập độ tuổi cần tuyển"/>
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Kinh nghiệm</label>
         <form:input type="text" path="KinhNghiem" class="form-control" 
-                    id="KinhNghiem" placeholder="Nhập độ số năm kinh nghiệm"/>
+                    id="KinhNghiem" disabled="true" placeholder="Nhập độ số năm kinh nghiệm"/>
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Thành phố</label>
-        <form:select class="form-select" id="city" name="city" path="cityID">
+        <form:select class="form-select" id="city" name="city" disabled="true" path="cityID">
             <c:forEach items="${CITY}" var="ct">
                 <c:choose>
                     <c:when test="${ct.id==JD.cityID.id}">
-                        <option value="${ct.id}" selected>${ct.nameCity}</option>
+                        <option value="${ct.id}" selected >${ct.nameCity}</option>
                     </c:when>
                     <c:otherwise>
                         <option value="${ct.id}" >${ct.nameCity}</option>
@@ -65,7 +66,7 @@
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Quận/huyện</label>
-        <form:select class="form-select" id="district" name="district" path="districID">
+        <form:select class="form-select" id="district" name="district" disabled="true" path="districID">
             <c:forEach items="${DISTRICT}" var="q">
                 <c:choose>
                     <c:when test="${q.id==JD.districID.id}">
@@ -81,7 +82,7 @@
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Nghề nghiệp tuyển dụng</label>
-        <form:select class="form-select" id="district" name="district" path="majorID">
+        <form:select class="form-select" id="district" name="district" disabled="true" path="majorID">
             <c:forEach items="${MAJOR}" var="m">
                 <c:choose>
                     <c:when test="${m.id==JD.majorID.id}">
@@ -97,7 +98,7 @@
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Trình độ học vấn</label>
-        <form:select class="form-select" id="edu" name="edu" path="educationID">
+        <form:select class="form-select" id="edu" name="edu" disabled="true" path="educationID">
             <c:forEach items="${EDUCATION}" var="e">      
                 <c:choose>
                     <c:when test="${e.id==JD.educationID.id}">
@@ -113,7 +114,7 @@
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Loại công việc</label>
-        <form:select class="form-select" id="typejob" name="typejob" path="typeJobID">
+        <form:select class="form-select" id="typejob" name="typejob" disabled="true" path="typeJobID">
             <c:forEach items="${TYPEJOB}" var="t">
                 <c:choose>
                     <c:when test="${t.id==JD.typeJobID.id}">

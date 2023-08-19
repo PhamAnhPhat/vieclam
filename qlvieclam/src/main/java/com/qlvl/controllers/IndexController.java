@@ -57,7 +57,6 @@ public class IndexController {
     @RequestMapping("/")
     @Transactional
     public String Index(Model model, @RequestParam Map<String, String> params) {
-        Session s = factory.getObject().getCurrentSession();
 
         model.addAttribute("CITY", this.CityService.getCity(null));
 
@@ -71,6 +70,7 @@ public class IndexController {
 
         model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
         model.addAttribute("JOB", this.jobService.getJob(params));
+        
         int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));
         long count = this.jobService.countJob();
         model.addAttribute("COUNT", Math.ceil(count * 1.0 / pageSize));

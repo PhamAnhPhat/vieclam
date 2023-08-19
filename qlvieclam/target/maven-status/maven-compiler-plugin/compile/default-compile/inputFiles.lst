@@ -50,6 +50,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\TilesConfigs.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\District.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\UserServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\RoleService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\CheckEmployerController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\DistrictFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\DistrictRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MajorServiceImpl.java

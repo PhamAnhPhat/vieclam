@@ -38,8 +38,7 @@ public class JobDetailController {
     private JobService jobSer;
     @Autowired
     private DistrictService DistrictService;
- @Autowired
-    private ApplicationService AppliSer;
+
     @Autowired
     private MajorService MajorService;
     @Autowired
@@ -50,8 +49,7 @@ public class JobDetailController {
     @Autowired
     private EducationService EduService;
 
-    @Autowired
-    private Environment env;
+ 
 
     @GetMapping("/JobDetail")
     @Transactional

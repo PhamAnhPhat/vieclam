@@ -9,3 +9,4 @@ function delJob(path,id){
             alert("ERROR");
     })
 }
+

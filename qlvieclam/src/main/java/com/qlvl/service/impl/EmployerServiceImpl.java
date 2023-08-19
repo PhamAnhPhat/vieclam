@@ -66,4 +66,13 @@ public class EmployerServiceImpl implements EmployerService {
         return this.EmployRepo.addEmployer(e);
     }
 
+    @Override
+    public boolean AcceptEmployer(Employer e) {
+        if(e.getId()!=null)
+        {
+            e.setIsApproved(Boolean.TRUE);
+        }
+       return this.EmployRepo.AcceptEmployer(e);
+    }
+
 }

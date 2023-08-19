@@ -30,7 +30,7 @@ public class EmployerRepositoryImpl implements EmployerRepository{
     @Override
     public List<Employer> getEmp(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
-        Query query = session.createQuery("FROM Employer where isApproved=0");
+        Query query = session.createQuery("FROM Employer where isApproved=FALSE");
         return query.getResultList();
     }
 
@@ -57,6 +57,9 @@ public class EmployerRepositoryImpl implements EmployerRepository{
           try {
             if (e.getId() == null) {
                 s.save(e);
+            }else {
+
+                s.update(e);
             }
             return true;
         } catch (HibernateException ex) {
@@ -64,4 +67,14 @@ public class EmployerRepositoryImpl implements EmployerRepository{
             return false;
         }
     }
+
+    @Override
+    public boolean AcceptEmployer(Employer e) {
+         Session s = this.factory.getObject().getCurrentSession();
+         
+         s.update(e);
+        return false;
+    }
+
+   
 }

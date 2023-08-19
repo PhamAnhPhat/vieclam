@@ -84,14 +84,15 @@ public class JobRepositoryImpl implements JobRepository {
     public boolean addJob(Job j) {
 
         Session s = this.factory.getObject().getCurrentSession();
+        int em = 1;
+        Employer e = new Employer(em);
+        j.setEmployerID(e);
         try {
-            if (j.getEmployerID()== null) {
-                int em = 1;
-                Employer e = new Employer(em);
+            if (j.getId()== null) {
 
-                j.setEmployerID(e);
                 s.save(j);
             } else {
+
                 s.update(j);
             }
             return true;
@@ -111,11 +112,10 @@ public class JobRepositoryImpl implements JobRepository {
     public boolean deleteJob(int id) {
         Session session = this.factory.getObject().getCurrentSession();
         Job j = this.getJobById(id);
-        try{
+        try {
             session.delete(j);
             return true;
-        }
-        catch(HibernateException ex){
+        } catch (HibernateException ex) {
             ex.printStackTrace();
             return false;
         }
