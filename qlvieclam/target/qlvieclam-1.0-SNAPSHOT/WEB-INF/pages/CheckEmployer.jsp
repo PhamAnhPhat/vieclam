@@ -9,43 +9,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <h2 style="margin-left:300px;">KIỂM TRA THÔNG TIN NHÀ TUYỂN DỤNG</h2>
-    <c:url value="/CheckEmployer" var="actions" />
-    <form:form action="${actions}" modelAttribute="EMPLOYER" method="post"> 
+    <c:url value="/CheckEmployer" var="action" />
+    <form:form action="${action}" modelAttribute="EMPLOYER" method="post" enctype="multipart/form-data"> 
         <form:hidden path="id" />
         <form:errors path="*" element="div"  cssClass="alert alert-danger" />
         <form:hidden path="avatar"/>
         <div class="mb-3 mt-3">
             <label for="id" class="form-label">ID nhà tuyển dụng</label>
             <form:input type="text" path="id" class="form-control" 
-                        id="id" disabled="true"  />
+                        id="id"  />
         </div>
         <div class="mb-3 mt-3">
             <label for="nameEmployer" class="form-label">Tên nhà tuyển dụng</label>
             <form:input type="text" path="nameEmployer" class="form-control" 
-                        id="nameEmployer" disabled="true"  />
+                        id="nameEmployer"  />
         </div>
         
          <div class="mb-3 mt-3">
             <label for="nameCompany" class="form-label">Tên công ty</label>
             <form:input type="text" path="nameCompany" class="form-control" 
-                        id="nameCompany" disabled="true"  />
+                        id="nameCompany" />
         </div>
         
         <div class="mb-3 mt-3">
             <label for="addressComapny" class="form-label">Địa chỉ công ty</label>
             <form:input type="text" path="addressComapny" class="form-control" 
-                        id="addressComapny" disabled="true"  />
+                        id="addressComapny"  />
         </div>
         
          <div class="mb-3 mt-3">
             <label for="soDienThoai" class="form-label">Số điện thoại công ty</label>
             <form:input type="text" path="soDienThoai" class="form-control" 
-                        id="soDienThoai" disabled="true"  />
+                        id="soDienThoai"  />
         </div>
           <div class="mb-3">
         <label for="file" class="form-label">Ảnh minh hoạ</label>
         <form:input type="file" path="file" class="form-control" 
-                    id="file"  disabled="false"/>
+                    id="file"  />
     </div>
         <button type="submit" class="btn btn-success">
           Xác nhận
