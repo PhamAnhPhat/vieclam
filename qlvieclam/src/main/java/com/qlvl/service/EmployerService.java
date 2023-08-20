@@ -13,9 +13,13 @@ import java.util.Map;
  * @author ACER
  */
 public interface EmployerService {
+
     List<Employer> getEmp(Map<String, String> params);
-     boolean checkEmployer(Employer e);
-     Employer getEmployerByID(int id);
-     boolean addEmployer(Employer e);
-      boolean AcceptEmployer(Employer e);
+
+    boolean checkEmployer(Employer e);
+
+    Employer getEmployerByID(int id);
+
+    boolean addOrUpdateEmployer(Employer e);
+
 }

@@ -2,11 +2,12 @@ package com.qlvl.pojo;
 
 import com.qlvl.pojo.Job;
 import com.qlvl.pojo.User;
+import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-08-19T15:52:31")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-08-20T11:24:13")
 @StaticMetamodel(Application.class)
 public class Application_ { 
 
@@ -23,5 +24,6 @@ public class Application_ {
     public static volatile SingularAttribute<Application, Integer> id;
     public static volatile SingularAttribute<Application, String> ten;
     public static volatile SingularAttribute<Application, String> email;
+    public static volatile SingularAttribute<Application, Date> createDate;
 
 }

@@ -16,6 +16,6 @@ public interface EmployerRepository {
     List<Employer> getEmp(Map<String, String> params);
      boolean checkEmployer(Employer e);
      Employer getEmployerByID(int id);
-     boolean addEmployer(Employer e);
-     boolean AcceptEmployer(Employer e);
+     boolean addOrUpdateEmployer(Employer e);
+    
 }

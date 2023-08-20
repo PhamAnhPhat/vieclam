@@ -36,7 +36,7 @@ public class EmployerController {
     @PostMapping("/Employer")
     public String addEmployer(@ModelAttribute(value = "emp") @Valid Employer e, BindingResult rs){
          if (!rs.hasErrors()) {
-            if (EmplSer.addEmployer(e) == true) {
+            if (EmplSer.addOrUpdateEmployer(e) == true) {
                 return "redirect:/";
             }
         }

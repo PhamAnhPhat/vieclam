@@ -46,33 +46,28 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
     @Override
-    public boolean addEmployer(Employer e) {
-        if (e.getUserID() == null) {
+    public boolean addOrUpdateEmployer(Employer e) {
+         if (e.getUserID() == null) {
             int userID = 1;
             User u = new User(userID);
             e.setUserID(u);
         }
-        e.setIsApproved(Boolean.FALSE);
-        if (!e.getFile().isEmpty()) {
+        if(e.getId()!=null){
+            e.setIsApproved(Boolean.TRUE);
+        }
+        else{
+            e.setIsApproved(Boolean.FALSE);
+        }
+             
+        if(!e.getFile().isEmpty()){
             try {
-                Map ress = this.cloudinary.uploader().upload(e.getFile().getBytes(),
-                        ObjectUtils.asMap("resource_type", "auto"));
-                e.setAvatar(ress.get("secure_url").toString());
-
+                Map res =this.cloudinary.uploader().upload(e.getFile().getBytes(), ObjectUtils.asMap("resource_type","auto"));
+               e.setAvatar(res.get("secure_url").toString());
             } catch (IOException ex) {
                 Logger.getLogger(EmployerServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return this.EmployRepo.addEmployer(e);
-    }
-
-    @Override
-    public boolean AcceptEmployer(Employer e) {
-        if(e.getId()!=null)
-        {
-            e.setIsApproved(Boolean.TRUE);
-        }
-       return this.EmployRepo.AcceptEmployer(e);
+        return this.EmployRepo.addOrUpdateEmployer(e);
     }
 
 }

@@ -5,6 +5,7 @@
 package com.qlvl.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,7 +43,8 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "Application.findByTrinhDoHocVan", query = "SELECT a FROM Application a WHERE a.trinhDoHocVan = :trinhDoHocVan"),
     @NamedQuery(name = "Application.findByAddressUser", query = "SELECT a FROM Application a WHERE a.addressUser = :addressUser"),
     @NamedQuery(name = "Application.findByNamKinhNghiem", query = "SELECT a FROM Application a WHERE a.namKinhNghiem = :namKinhNghiem"),
-    @NamedQuery(name = "Application.findByTuoi", query = "SELECT a FROM Application a WHERE a.tuoi = :tuoi")})
+    @NamedQuery(name = "Application.findByTuoi", query = "SELECT a FROM Application a WHERE a.tuoi = :tuoi"),
+    @NamedQuery(name = "Application.findByCreateDate", query = "SELECT a FROM Application a WHERE a.createDate = :createDate")})
 public class Application implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -78,13 +82,16 @@ public class Application implements Serializable {
     private Integer namKinhNghiem;
     @Column(name = "Tuoi")
     private Integer tuoi;
+    @Column(name = "createDate")
+    @Temporal(TemporalType.DATE)
+    private Date createDate;
     @JoinColumn(name = "jobID", referencedColumnName = "id")
     @ManyToOne
     private Job jobID;
     @JoinColumn(name = "userID", referencedColumnName = "id")
     @ManyToOne
     private User userID;
-
+    
     @Transient
     private MultipartFile file;
 
@@ -183,6 +190,14 @@ public class Application implements Serializable {
         this.tuoi = tuoi;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     public Job getJobID() {
         return jobID;
     }
@@ -237,10 +252,5 @@ public class Application implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-
-    /**
-     * @return the fileForCV
-     */
-  
-
+    
 }

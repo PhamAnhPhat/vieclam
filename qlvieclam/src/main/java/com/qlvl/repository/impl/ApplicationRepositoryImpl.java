@@ -6,6 +6,7 @@ package com.qlvl.repository.impl;
 
 import com.qlvl.pojo.Application;
 import com.qlvl.repository.ApplicationRepository;
+import java.util.Date;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,11 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
     @Override
     public boolean addApp(Application app) {
          Session s = this.factory.getObject().getCurrentSession();
+         Date date = new Date();
+         app.setCreateDate(date);
          try{
          if(app.getId()==null){
+             
              s.save(app);
              return true;
          }

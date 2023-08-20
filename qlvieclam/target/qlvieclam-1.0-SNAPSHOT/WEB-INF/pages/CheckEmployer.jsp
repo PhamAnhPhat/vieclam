@@ -9,9 +9,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <h2 style="margin-left:300px;">KIỂM TRA THÔNG TIN NHÀ TUYỂN DỤNG</h2>
-    <c:url value="/CheckEmployer" var="action" />
-    <form:form action="${action}"  method="post" modelAttribute="EMPLOYER" enctype="multipart/form-data">
-        <div>${EMPLOYER.id}</div>
+    <c:url value="/CheckEmployer" var="actions" />
+    <form:form action="${actions}" modelAttribute="EMPLOYER" method="post"> 
+        <form:hidden path="id" />
+        <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+        <form:hidden path="avatar"/>
         <div class="mb-3 mt-3">
             <label for="id" class="form-label">ID nhà tuyển dụng</label>
             <form:input type="text" path="id" class="form-control" 
@@ -40,7 +42,11 @@
             <form:input type="text" path="soDienThoai" class="form-control" 
                         id="soDienThoai" disabled="true"  />
         </div>
-          
+          <div class="mb-3">
+        <label for="file" class="form-label">Ảnh minh hoạ</label>
+        <form:input type="file" path="file" class="form-control" 
+                    id="file"  disabled="false"/>
+    </div>
         <button type="submit" class="btn btn-success">
           Xác nhận
            </button>

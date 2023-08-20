@@ -91,7 +91,7 @@
 
         </div>
     </li>
-    <li style="margin:auto ; width: 550px">
+    <li style="margin:auto ; width: 500px">
         <c:url value="/" var="action" />
         <form class="d-flex" action="${action}">
             <input class="form-control me-auto" type="text" placeholder="Nhập tên công ty cần tìm .....">

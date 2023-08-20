@@ -80,7 +80,7 @@
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Nghề nghiệp tuyển dụng</label>
-        <form:select class="form-select" id="district" name="district" path="majorID">
+        <form:select class="form-select" id="majorID" name="majorID" path="majorID">
             <c:forEach items="${MAJOR}" var="m">
                 <c:choose>
                     <c:when test="${m.id==job.majorID.id}">

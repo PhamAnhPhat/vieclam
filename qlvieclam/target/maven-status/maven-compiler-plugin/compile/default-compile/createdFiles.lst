@@ -1,9 +1,11 @@
+com\qlvl\repository\impl\ThongKeRepositoryImpl.class
 com\qlvl\service\impl\RoleServiceImpl.class
 com\qlvl\pojo\Job_.class
 com\qlvl\repository\impl\EducationRepositoryImpl.class
 com\qlvl\repository\EmployerRepository.class
 com\qlvl\formatters\DistrictFormatter.class
 com\qlvl\pojo\Education_.class
+com\qlvl\service\impl\ThongKeServiceImpl.class
 com\qlvl\pojo\Role_.class
 com\qlvl\repository\TypeJobRepository.class
 com\qlvl\formatters\MajorFormatter.class
@@ -16,6 +18,8 @@ com\qlvl\formatters\EducationFormatter.class
 com\qlvl\configs\DispatcherServletInit.class
 com\qlvl\repository\UserRepository.class
 com\qlvl\configs\HibernateConfig.class
+com\qlvl\controllers\ThongKeController.class
+com\qlvl\controllers\EmployerController.class
 com\qlvl\pojo\District_.class
 com\qlvl\pojo\Typejob.class
 com\qlvl\repository\CityRepository.class
@@ -23,11 +27,14 @@ com\qlvl\formatters\TypeJobFormatter.class
 com\qlvl\controllers\IndexController.class
 com\qlvl\service\impl\DistrictServiceImpl.class
 com\qlvl\service\impl\MajorServiceImpl.class
+com\qlvl\controllers\AdminController.class
 com\qlvl\service\DistrictService.class
 com\qlvl\service\TypeJobService.class
 com\qlvl\configs\SecurityWebApplicationInitializer.class
 com\qlvl\pojo\Employer.class
+com\qlvl\service\ThongKeService.class
 com\qlvl\pojo\District.class
+com\qlvl\repository\ThongKeRepository.class
 com\qlvl\configs\WebAppContextConfig.class
 com\qlvl\pojo\Application.class
 com\qlvl\pojo\Typejob_.class
@@ -67,6 +74,7 @@ com\qlvl\service\EmployerService.class
 com\qlvl\service\RoleService.class
 com\qlvl\pojo\Employerreview_.class
 com\qlvl\repository\EducationRepository.class
+com\qlvl\controllers\CheckEmployerController.class
 com\qlvl\repository\DistrictRepository.class
 com\qlvl\service\CityService.class
 com\qlvl\controllers\ApplicationController.class

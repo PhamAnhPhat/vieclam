@@ -16,6 +16,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\DistrictServiceImp
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\MajorService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\MajorRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\DistrictRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ThongKeController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\EmployerService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Job.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\EducationServiceImpl.java
@@ -28,6 +29,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\TypeJobRepository.ja
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\JobDetailController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Employer.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\WebAppContextConfig.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ThongKeService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Education.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\IndexController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\JobService.java
@@ -57,6 +59,8 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MajorServiceImpl.j
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\User.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\DistrictService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\TypeJobFormatter.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\ThongKeRepositoryImpl.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\ThongKeRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ApplicationService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\UserService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\MajorFormatter.java
@@ -69,4 +73,5 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\EmployerServiceImp
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\JobRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Application.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\TypeJobServiceImpl.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\ThongKeServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\SpringSecurityConfig.java

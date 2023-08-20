@@ -5,6 +5,7 @@
 package com.qlvl.pojo;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +16,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +37,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "User.findByAvatar", query = "SELECT u FROM User u WHERE u.avatar = :avatar"),
     @NamedQuery(name = "User.findByUserRole", query = "SELECT u FROM User u WHERE u.userRole = :userRole")})
 public class User implements Serializable {
+
+    @OneToMany(mappedBy = "userID")
+    private Set<Application> applicationSet;
+    @OneToMany(mappedBy = "userID")
+    private Set<Employer> employerSet;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -135,6 +143,24 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.qlvl.pojo.User[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    public Set<Application> getApplicationSet() {
+        return applicationSet;
+    }
+
+    public void setApplicationSet(Set<Application> applicationSet) {
+        this.applicationSet = applicationSet;
+    }
+
+    @XmlTransient
+    public Set<Employer> getEmployerSet() {
+        return employerSet;
+    }
+
+    public void setEmployerSet(Set<Employer> employerSet) {
+        this.employerSet = employerSet;
     }
     
 }

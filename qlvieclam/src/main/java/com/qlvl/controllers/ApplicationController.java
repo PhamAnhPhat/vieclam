@@ -6,7 +6,9 @@ package com.qlvl.controllers;
 
 import com.qlvl.pojo.Application;
 import com.qlvl.service.ApplicationService;
+import com.qlvl.service.EducationService;
 import com.qlvl.service.JobService;
+import com.qlvl.service.MajorService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -30,6 +32,10 @@ public class ApplicationController {
     private ApplicationService AppliSer;
     @Autowired
     private JobService JobSer;
+    @Autowired
+    private MajorService MajorSer;
+    @Autowired
+    private EducationService EduService;
  
 
 
@@ -37,6 +43,8 @@ public class ApplicationController {
     @Transactional
     public String Application(Model model) {
         model.addAttribute("app", new Application());
+        model.addAttribute("MAJOR",this.MajorSer.getMajor(null));
+         model.addAttribute("EDUCATION", this.EduService.getEdu(null));
         return "Application";
     }
 

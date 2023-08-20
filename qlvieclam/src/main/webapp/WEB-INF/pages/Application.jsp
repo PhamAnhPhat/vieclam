@@ -44,14 +44,19 @@
     
       <div  class="mb-3 mt-3">
         <label for="ngheNghiep" class="form-label">Chuyên ngành hiện tại</label>      
-        <form:input type="text" path="ngheNghiep" class="form-control" 
-                    id="ngheNghiep" placeholder="Nhập chuyên ngành "/>
+        <form:select class="form-select" id="ngheNghiep" name="ngheNghiep" path="ngheNghiep">
+            <c:forEach items="${MAJOR}" var="m">
+                <option value="${m.nameMajor}" >${m.nameMajor}</option>
+            </c:forEach>
+        </form:select>
     </div>
-    
-      <div  class="mb-3 mt-3">
-        <label for="trinhDoHocVan" class="form-label">Trình độ học vấn</label>      
-        <form:input type="text" path="trinhDoHocVan" class="form-control" 
-                    id="trinhDoHocVan" placeholder="Nhập trình độ học vấn "/>
+        <div  class="mb-3 mt-3">
+        <label for="trinhDoHocVan" class="form-label">Chuyên ngành hiện tại</label>      
+        <form:select class="form-select" id="trinhDoHocVan" name="trinhDoHocVan" path="trinhDoHocVan">
+            <c:forEach items="${EDUCATION}" var="m">
+                <option value="${m.typeEducation}" >${m.typeEducation}</option>
+            </c:forEach>
+        </form:select>
     </div>
     
       <div  class="mb-3 mt-3">

@@ -84,15 +84,21 @@ public class JobRepositoryImpl implements JobRepository {
     public boolean addJob(Job j) {
 
         Session s = this.factory.getObject().getCurrentSession();
-        int em = 1;
-        Employer e = new Employer(em);
-        j.setEmployerID(e);
-        try {
-            if (j.getId()== null) {
 
+        try {
+            if (j.getId() == null) {
+                int em = 1;
+                Date date = new Date();
+                Employer e = new Employer(em);
+                j.setCreatedDate(date);
+                j.setEmployerID(e);
                 s.save(j);
             } else {
-
+                int em = 1;
+                Date date = new Date();
+                Employer e = new Employer(em);
+                j.setCreatedDate(date);
+                j.setEmployerID(e);
                 s.update(j);
             }
             return true;

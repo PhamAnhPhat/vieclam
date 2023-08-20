@@ -47,8 +47,7 @@ public class createJobController {
     @Autowired
     private EducationService EduService;
 
-    @Autowired
-    private Environment env;
+   
 
     @GetMapping("/createJob")
     @Transactional
@@ -72,7 +71,6 @@ public class createJobController {
                 return "redirect:/";
             }
         }
-
         return "createJob";
     }
 

@@ -23,37 +23,29 @@ import org.springframework.web.bind.annotation.PostMapping;
  */
 @Controller
 public class CheckEmployerController {
-    
+
     @Autowired
     private EmployerService EmpSer;
-    
+
     @GetMapping("/CheckEmployer")
-    @Transactional
-    public String CheckEmp(Model model){
+    public String CheckEmp(Model model) {
         model.addAttribute("EMPLOYER", new Employer());
-        return"CheckEmployer";
+        return "CheckEmployer";
     }
-    
-    
-    
+
+    @GetMapping("/CheckEmployer/{id}")
+    public String UpdateView(Model model, @PathVariable(value = "id") int id) {
+        model.addAttribute("EMPLOYER", this.EmpSer.getEmployerByID(id));
+        return "CheckEmployer";
+    }
+
     @PostMapping("/CheckEmployer")
-    public String Accept(@ModelAttribute(value = "EMPLOYER") @Valid Employer e, BindingResult rs){
-        if (!rs.hasErrors()) {
-            if (EmpSer.addEmployer(e) == true) {
-                return "Admin";
+    public String add(@ModelAttribute(value = "EMPLOYER") @Valid Employer e, BindingResult rs) {
+      if (!rs.hasErrors()) {
+            if (EmpSer.addOrUpdateEmployer(e) == true) {
+                return "redirect:/Admin";
             }
         }
-       
-        return"CheckEmployer";
+        return "redirect:/CheckEmployer";
     }
-    
-    
-    
-    @GetMapping("/CheckEmployer/{id}")
-    public String EmployerByID(Model model, @PathVariable(value = "id") int id){
-      
-        model.addAttribute("EMPLOYER",this.EmpSer.getEmployerByID(id));
-        return"CheckEmployer";
-    }
-  
 }

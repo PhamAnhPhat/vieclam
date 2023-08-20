@@ -13,13 +13,14 @@
 <c:url value="/JobDetail/" var="action" />
 <form:form action="${action}"  method="post" modelAttribute="JD" enctype="multipart/form-data">
 
-     <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+    <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
+    <form:hidden path="avatarJob"/>
     <div>${JD.id}</div>
-     <label for="email" class="form-label">Hình ảnh minh hoạ</label>
+    <label for="email" class="form-label">Hình ảnh minh hoạ</label>
     <div><img  src="${JD.avatarJob}" width="120"/></div>
     <div class="mb-3 mt-3">
-      <label for="email" class="form-label">Tên công việc</label>
+        <label for="email" class="form-label">Tên công việc</label>
         <form:input type="text" path="nameJob" class="form-control" 
                     id="nameJob" disabled="true" placeholder="Tên công việc" />
     </div>  
@@ -131,9 +132,9 @@
             </c:forEach>
         </form:select>
     </div>
-   
- <a href="<c:url value="/Application/${job.id}"/>" class="btn btn-primary">Ứng tuyển</a>
-   
+
+    <a href="<c:url value="/Application/${job.id}"/>" class="btn btn-primary">Ứng tuyển</a>
+
 </form:form>
 
 
