@@ -12,7 +12,7 @@
     <li class="nav-item">
         <div class="nav-link" style="background-color: greenyellow">
             <img src="https://img.icons8.com/?size=512&id=h75QzKozczfv&format=png" style=" height :30px">
-            <a style = " color: darkmagenta ; font-size: 20px ; font-weight: 900" >
+            <a style = " color: darkmagenta ; font-size: 20px ; font-weight: 900" href="/">
                 Lọc
             </a>
 
@@ -27,8 +27,11 @@
             <ul class="dropdown-menu">
 
                 <c:forEach items="${CITY}" var="city">
-                    <li><a class="dropdown-item" href="#">${city.nameCity}</a></li>
-                    </c:forEach>
+
+                    <li>   
+                        <a class="dropdown-item" href="${searchCITY}">${city.nameCity}</a>
+                    </li>
+                </c:forEach>
             </ul>
 
         </div>
@@ -42,7 +45,10 @@
             </a>
             <ul class="dropdown-menu">
                 <c:forEach items="${DISTRICT}" var="x">
-                    <li><a class="dropdown-item" href="#">${x.nameDistrict}</a></li>
+                    <c:url value="/" var="searchDistrict">
+                        <c:param name="districtId" value="${x.id}"></c:param>
+                    </c:url>
+                    <li><a class="dropdown-item" href="${searchDistrict}">${x.nameDistrict}</a></li>
                     </c:forEach>
             </ul>
 
@@ -56,7 +62,10 @@
             </a>
             <ul class="dropdown-menu">
                 <c:forEach items="${MAJOR}" var="m">
-                    <li><a class="dropdown-item" href="#">${m.nameMajor}</a></li>
+                    <c:url value="/" var="searchMajor">
+                        <c:param name="majorId" value="${m.id}"></c:param>
+                    </c:url>
+                    <li><a class="dropdown-item" href="${searchMajor}">${m.nameMajor}</a></li>
                     </c:forEach>
             </ul>
 
@@ -70,7 +79,10 @@
             </a>
             <ul class="dropdown-menu">
                 <c:forEach items="${TYPEJOB}" var="t">
-                    <li><a class="dropdown-item" href="#">${t.nameType}</a></li>
+                    <c:url value="/" var="searchTypeJob">
+                        <c:param name="typeJobId" value="${t.id}"></c:param>
+                    </c:url>
+                    <li><a class="dropdown-item" href="${searchTypeJob}">${t.nameType}</a></li>
                     </c:forEach>
 
             </ul>
@@ -85,7 +97,10 @@
             </a>
             <ul class="dropdown-menu">
                 <c:forEach items="${EDUCATION}" var="e">
-                    <li><a class="dropdown-item" href="#">${e.typeEducation}</a></li>
+                    <c:url value="/" var="searchEdu">
+                        <c:param name="EduId" value="${e.id}"></c:param>
+                    </c:url>
+                    <li><a class="dropdown-item" href="${searchEdu}">${e.typeEducation}</a></li>
                     </c:forEach>
             </ul>
 
@@ -94,7 +109,7 @@
     <li style="margin:auto ; width: 500px">
         <c:url value="/" var="action" />
         <form class="d-flex" action="${action}">
-            <input class="form-control me-auto" type="text" placeholder="Nhập tên công ty cần tìm .....">
+            <input class="form-control me-auto" type="text" name="kw" placeholder="Nhập tên công ty cần tìm .....">
             <button class="btn btn-primary" type="submit">Tìm</button>
         </form>
 
@@ -118,7 +133,7 @@
             </c:forEach>
     </ul> 
 </c:if>
-<div class="container" style="margin-top:30px;width:800px;" >
+<div class="container" style="margin-top:30px;width:900px;" >
     <table class="table table-hover">
         <thead>
             <tr>
@@ -127,17 +142,19 @@
                 <th>Mức lương</th>
                 <th>Số lượng</th>
                 <th>Tuổi</th>
+                <td>Ngày đăng</td>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <c:forEach items="${JOB}" var="j">
                 <tr>
-                    <td><img src="${j.avatarJob}" width="120"/></td>
+                    <td><img src="${j.avatarJob}" width="120" height="90"/></td>
                     <td>${j.nameJob}</td>
                     <td>${j.salary}</td>
                     <td>${j.soLuongTuyenDung}</td>
                     <td>${j.age}</td>
+                    <td>${j.createdDate}</td>
                     <td>
                         <c:url value="/api/createJob/${j.id}" var="deleteApi" />
                         <a href="<c:url value="/JobDetail/${j.id}"/>" class="btn btn-success">Xem công việc</a>

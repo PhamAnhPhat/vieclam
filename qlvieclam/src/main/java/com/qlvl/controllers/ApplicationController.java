@@ -43,8 +43,8 @@ public class ApplicationController {
     @Transactional
     public String Application(Model model) {
         model.addAttribute("app", new Application());
-        model.addAttribute("MAJOR",this.MajorSer.getMajor(null));
-         model.addAttribute("EDUCATION", this.EduService.getEdu(null));
+        model.addAttribute("MAJOR",this.MajorSer.getMajor());
+         model.addAttribute("EDUCATION", this.EduService.getEdu());
         return "Application";
     }
 

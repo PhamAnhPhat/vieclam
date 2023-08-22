@@ -55,10 +55,32 @@ public class JobRepositoryImpl implements JobRepository {
             List<Predicate> predicates = new ArrayList<>();
             String kw = params.get("kw");
             if (kw != null && !kw.isEmpty()) {
-                predicates.add(b.like(root.get("namejob"), String.format("%%%s%%", kw)));
+                predicates.add(b.like(root.get("nameJob"), String.format("%%%s%%", kw)));
             }
+            String cityId = params.get("cityId");
+            if (cityId != null && !cityId.isEmpty()) {
+                predicates.add(b.equal(root.get("cityID"), Integer.parseInt(cityId)));
+            }
+            String districtId = params.get("districtId");
+            if (districtId != null && !districtId.isEmpty()) {
+                predicates.add(b.equal(root.get("districID"), Integer.parseInt(districtId)));
+            }
+             String majorId = params.get("majorId");
+            if (majorId != null && !majorId.isEmpty()) {
+                predicates.add(b.equal(root.get("majorID"), Integer.parseInt(majorId)));
+            }
+             String typeJobId = params.get("typeJobId");
+            if (typeJobId != null && !typeJobId.isEmpty()) {
+                predicates.add(b.equal(root.get("typeJobID"), Integer.parseInt(typeJobId)));
+            }
+             String EduId = params.get("EduId");
+            if (EduId != null && !EduId.isEmpty()) {
+                predicates.add(b.equal(root.get("educationID"), Integer.parseInt(EduId)));
+            }
+            
             q.where(predicates.toArray(Predicate[]::new));
         }
+        q.orderBy(b.desc(root.get("createdDate")));
         Query query = session.createQuery(q);
         if (params != null) {
             String page = params.get("page");

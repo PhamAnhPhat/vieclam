@@ -29,7 +29,7 @@ public class CityRepositoryImpl implements CityRepository{
     private LocalSessionFactoryBean factory;
     
     @Override
-    public List<City> getCity(Map<String, String> params) {
+    public List<City> getCity() {
         Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("FROM City");
         return query.getResultList();

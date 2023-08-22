@@ -58,17 +58,17 @@ public class IndexController {
     @Transactional
     public String Index(Model model, @RequestParam Map<String, String> params) {
 
-        model.addAttribute("CITY", this.CityService.getCity(null));
+        model.addAttribute("CITY", this.CityService.getCity());
 
-        model.addAttribute("DISTRICT", this.DistrictService.getDistrict(null));
+        model.addAttribute("DISTRICT", this.DistrictService.getDistrict());
 
-        model.addAttribute("MAJOR", this.MajorService.getMajor(null));
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
 
-        model.addAttribute("EDUCATION", this.EduService.getEdu(null));
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
 
         model.addAttribute("jobs", this.jobService.getJob(null));
 
-        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
+        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob());
         model.addAttribute("JOB", this.jobService.getJob(params));
         
         int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));

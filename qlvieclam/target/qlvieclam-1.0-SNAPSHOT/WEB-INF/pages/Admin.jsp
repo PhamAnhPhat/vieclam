@@ -31,7 +31,7 @@
                     <td>${e.soDienThoai}</td>
                     <td>
                          
-                        <a href="<c:url value="/CheckEmployer/${e.id}"/>" class="btn btn-success">Xem công việc</a>
+                        <a href="<c:url value="/CheckEmployer/${e.id}"/>" class="btn btn-success">Xem thông tin</a>
                     </td>
                 </tr>
             </c:forEach>

@@ -54,28 +54,28 @@ public class JobDetailController {
     @GetMapping("/JobDetail")
     @Transactional
     public String JobDetail(Model model, @RequestParam Map<String, String> params) {
-        model.addAttribute("CITY", this.CityService.getCity(null));
+        model.addAttribute("CITY", this.CityService.getCity());
 
-        model.addAttribute("DISTRICT", this.DistrictService.getDistrict(null));
+        model.addAttribute("DISTRICT", this.DistrictService.getDistrict());
 
-        model.addAttribute("MAJOR", this.MajorService.getMajor(null));
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
 
-        model.addAttribute("EDUCATION", this.EduService.getEdu(null));
-        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
+        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob());
         model.addAttribute("JD", new Job());
         return "JobDetail";
     }
 
     @GetMapping("/JobDetail/{id}")
     public String UpdateView(Model model, @PathVariable(value = "id") int id) {
-        model.addAttribute("CITY", this.CityService.getCity(null));
+        model.addAttribute("CITY", this.CityService.getCity());
 
-        model.addAttribute("DISTRICT", this.DistrictService.getDistrict(null));
+        model.addAttribute("DISTRICT", this.DistrictService.getDistrict());
 
-        model.addAttribute("MAJOR", this.MajorService.getMajor(null));
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
 
-        model.addAttribute("EDUCATION", this.EduService.getEdu(null));
-        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob(null));
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
+        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob());
         model.addAttribute("JD", this.jobSer.getJobById(id));
         return "JobDetail";
     }
