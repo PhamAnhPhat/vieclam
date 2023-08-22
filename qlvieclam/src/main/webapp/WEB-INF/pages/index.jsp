@@ -119,7 +119,7 @@
 
 
 <h2 style="margin-left:400px;">DANH SÁCH VIỆC LÀM</h2>
-<a class="btn btn-info " href="<c:url value="/createJob" />"> Thêm Job</a>
+<a class="btn btn-info " style="margin-left: 400px;" href="<c:url value="/createJob" />"> Thêm Job</a>
 
 <c:if test="${COUNT > 1}">
     <ul class="pagination mt-1" style="margin-left:400px;">

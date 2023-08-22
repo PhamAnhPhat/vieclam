@@ -55,7 +55,6 @@ public class IndexController {
     private Environment env;
 
     @RequestMapping("/")
-    @Transactional
     public String Index(Model model, @RequestParam Map<String, String> params) {
 
         model.addAttribute("CITY", this.CityService.getCity());

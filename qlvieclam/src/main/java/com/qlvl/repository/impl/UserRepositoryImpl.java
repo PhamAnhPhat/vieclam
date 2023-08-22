@@ -8,8 +8,9 @@ import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
 import java.util.List;
 import javax.persistence.NonUniqueResultException;
-import javax.persistence.Query;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getUserByUserName(String username) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM User WHERE username:un");
+        Query q = s.createQuery("FROM User WHERE username=:un");
         q.setParameter("un", username);
         return (User) q.getSingleResult();
     }

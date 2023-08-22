@@ -5,14 +5,20 @@
 package com.qlvl.repository.impl;
 
 import com.qlvl.pojo.Application;
+import com.qlvl.pojo.User;
 import com.qlvl.repository.ApplicationRepository;
+import com.qlvl.repository.UserRepository;
 import java.util.Date;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -27,26 +33,31 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
     @Autowired
     private LocalSessionFactoryBean factory;
 
+    @Autowired
+    private UserRepository UserRepo;
+
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addApp(Application app) {
-         Session s = this.factory.getObject().getCurrentSession();
-         Date date = new Date();
-         app.setCreateDate(date);
-         try{
-         if(app.getId()==null){
-             
-             s.save(app);
-             return true;
-         }
-         else
-             return false;
-         
-         }
-         catch(HibernateException ex){
-              ex.printStackTrace();
+        Session s = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        app.setUserID(u);
+        Date date = new Date();
+        app.setCreateDate(date);
+        try {
+            if (app.getId() == null) {
+
+                s.save(app);
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
             return false;
-         }
-         
+        }
 
     }
 
