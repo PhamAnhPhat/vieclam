@@ -54,6 +54,7 @@ public class ApplicationController {
             if (AppliSer.addApp(a) == true) {
                 return "redirect:/";
             }
+         
         }
         return "Application";
     }

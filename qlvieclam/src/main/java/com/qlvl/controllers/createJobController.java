@@ -11,6 +11,7 @@ import com.qlvl.service.EducationService;
 import com.qlvl.service.JobService;
 import com.qlvl.service.MajorService;
 import com.qlvl.service.TypeJobService;
+import static java.lang.System.console;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,7 @@ public class createJobController {
     public String add(@ModelAttribute(value = "job") @Valid Job j, BindingResult rs) {
         if (!rs.hasErrors()) {
             if (jobSer.addJob(j) == true) {
+              
                 return "redirect:/";
             }
         }

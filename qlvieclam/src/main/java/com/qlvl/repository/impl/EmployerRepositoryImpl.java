@@ -10,9 +10,10 @@ import com.qlvl.repository.EmployerRepository;
 import com.qlvl.repository.UserRepository;
 import java.util.List;
 import java.util.Map;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -20,6 +21,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -66,6 +68,9 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        e.setUserID(u);
         try {
             if (e.getId() == null) {
 
@@ -82,12 +87,13 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     }
 
     @Override
-    public Employer getEmployerByUserId(int id) {
+    public Employer getEmployerByUserId(int userId) {
         Session s = this.factory.getObject().getCurrentSession();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User u = this.UserRepo.getUserByUserName(authentication.getName());
-         id = u.getId();
-         return s.get(Employer.class, id);
+        Employer e = s.createQuery("FROM Employer WHERE userID.id=:userId", Employer.class)
+                .setParameter("userId", userId)
+                .uniqueResult();
+        return e;
+
     }
 
 }

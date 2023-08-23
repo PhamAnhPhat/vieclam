@@ -22,19 +22,23 @@
                     <a class="nav-link" href="javascript:void(0)">Hồ sơ</a>
                 </li>
 
-               
+
                 <se:authorize access="hasRole('ROLE_ADMIN')">
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/Admin" />">Admin</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/ThongKe" />">Thống kê</a>
+                    </li>
+
                     </li>
                 </se:authorize>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/ThongKe" />">Thống kê</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
-                </li>
-                 <c:choose>
+                </li> 
+
+
+                <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.name !=null}">
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/" />">${pageContext.request.userPrincipal.name}</a>

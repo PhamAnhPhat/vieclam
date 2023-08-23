@@ -30,6 +30,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -48,7 +49,7 @@ public class JobRepositoryImpl implements JobRepository {
 
     @Autowired
     private EmployerRepository EmplRepo;
-     @Autowired
+    @Autowired
     private UserRepository UserRepo;
     @Autowired
     private Cloudinary cloudinary;
@@ -112,25 +113,19 @@ public class JobRepositoryImpl implements JobRepository {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addJob(Job j) {
-
         Session s = this.factory.getObject().getCurrentSession();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
+        j.setEmployerID(e);
+        Date date = new Date();
+                j.setCreatedDate(date);
         try {
             if (j.getId() == null) {
-
-                Date date = new Date();
-                j.setCreatedDate(date);
-                j.setEmployerID(e);
                 s.save(j);
             } else {
-//                int em = 1;
-                Date date = new Date();
-//                Employer ee = new Employer(em);
-                j.setCreatedDate(date);
-               j.setEmployerID(e);
                 s.update(j);
             }
             return true;

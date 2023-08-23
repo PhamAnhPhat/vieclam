@@ -6,7 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 
 <ul class="nav nav-pills" style = "background-color : cornflowerblue " >
     <li class="nav-item">
@@ -119,7 +119,10 @@
 
 
 <h2 style="margin-left:400px;">DANH SÁCH VIỆC LÀM</h2>
-<a class="btn btn-info " style="margin-left: 400px;" href="<c:url value="/createJob" />"> Thêm Job</a>
+<se:authorize access="hasRole('ROLE_EMP')">
+    <a class="btn btn-info " style="margin-left: 400px;" href="<c:url value="/createJob" />"> Thêm Job</a>
+</se:authorize>
+
 
 <c:if test="${COUNT > 1}">
     <ul class="pagination mt-1" style="margin-left:400px;">
