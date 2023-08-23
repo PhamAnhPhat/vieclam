@@ -10,6 +10,7 @@ import com.qlvl.repository.EmployerRepository;
 import com.qlvl.repository.UserRepository;
 import java.util.List;
 import java.util.Map;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -60,6 +61,16 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     }
 
     @Override
+    public Employer getEmployerByUserId(int userId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Employer e = s.createQuery("FROM Employer WHERE userID.id=:userId", Employer.class)
+                .setParameter("userId", userId)
+                .uniqueResult();
+        return e;
+
+    }
+
+    @Override
     public Employer getEmployerByID(int id) {
         Session s = this.factory.getObject().getCurrentSession();
         return s.get(Employer.class, id);
@@ -72,7 +83,7 @@ public class EmployerRepositoryImpl implements EmployerRepository {
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         e.setUserID(u);
         try {
-            if (e.getId() == null) {
+            if (e.getId() == null ) {
 
                 s.save(e);
             } else {
@@ -87,13 +98,15 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     }
 
     @Override
-    public Employer getEmployerByUserId(int userId) {
+    public Employer FindEmployerByUserID(int id) {
         Session s = this.factory.getObject().getCurrentSession();
-        Employer e = s.createQuery("FROM Employer WHERE userID.id=:userId", Employer.class)
-                .setParameter("userId", userId)
-                .uniqueResult();
-        return e;
-
+        Query q = s.createQuery("FROM Employer WHERE userID.id=:userId",Employer.class);
+        q.setParameter("userId", id);
+        List results = q.getResultList();
+        if (results.isEmpty()) return null;
+        else if (results.size() == 1) return (Employer) results.get(0);
+        throw new NonUniqueResultException();
+    
     }
 
 }

@@ -43,7 +43,11 @@
             <form:input type="file" path="file" class="form-control" 
                         id="file"/>
         </div>
-
+        <c:if test="${not empty message}">
+            <div class="alert alert-danger">
+                ${message}
+            </div>
+        </c:if>
         <button type="submit" class="btn btn-primary">Đăng ký</button>
     </form:form>
 

@@ -7,13 +7,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <h2 class="text-center text-info ">FORM CHI TIẾT VIỆC LÀM</h2>
 
 <c:url value="/JobDetail/" var="action" />
 <form:form action="${action}"  method="post" modelAttribute="JD" enctype="multipart/form-data">
-
-    <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+    <div class="container">
+   <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
     <form:hidden path="avatarJob"/>
     <div>${JD.id}</div>
@@ -133,8 +133,19 @@
         </form:select>
     </div>
 
-    <a href="<c:url value="/Application/${job.id}"/>" class="btn btn-primary">Ứng tuyển</a>
 
+    <c:choose>
+        <c:when test="${pageContext.request.userPrincipal.name ==null}">
+            <a href="<c:url value="/login"/>" style="margin-left:300px;" class="btn btn-primary">Đăng nhập</a>
+        </c:when>
+        <c:otherwise>
+              <a href="<c:url value="/Application/${JD.id}"/>"style="margin-left:500px; "  class="btn btn-primary">Ứng tuyển</a>
+        </c:otherwise>
+    </c:choose>
+              <a href="<c:url value="/"/>"  class="btn btn-primary">Trở về</a>
+
+    </div>
+    
 </form:form>
 
 

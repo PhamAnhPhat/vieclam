@@ -13,5 +13,6 @@ import com.qlvl.pojo.Application;
  * @author Admin
  */
 public interface ApplicationRepository {
+    Application getAppById(int id);
      boolean addApp(Application app);
 }

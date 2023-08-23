@@ -36,15 +36,18 @@ public class ApplicationController {
     private MajorService MajorSer;
     @Autowired
     private EducationService EduService;
- 
-
+    @Autowired
+    private JobService jobSer;
+    
+    @Autowired
+    private ApplicationService AppSer;
 
     @GetMapping("/Application")
     @Transactional
     public String Application(Model model) {
         model.addAttribute("app", new Application());
-        model.addAttribute("MAJOR",this.MajorSer.getMajor());
-         model.addAttribute("EDUCATION", this.EduService.getEdu());
+        model.addAttribute("MAJOR", this.MajorSer.getMajor());
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
         return "Application";
     }
 
@@ -54,8 +57,17 @@ public class ApplicationController {
             if (AppliSer.addApp(a) == true) {
                 return "redirect:/";
             }
-         
+
         }
+        return "Application";
+    }
+
+    @GetMapping("/Application/{id}")
+    public String UpdateView(Model model,@PathVariable(value = "id") int id) {
+        model.addAttribute("JOB", this.jobSer.getJobById(id));
+         model.addAttribute("MAJOR", this.MajorSer.getMajor());
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
+        model.addAttribute("app", new Application());
         return "Application";
     }
 

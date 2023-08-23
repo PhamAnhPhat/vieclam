@@ -18,5 +18,6 @@ public interface EmployerRepository {
      Employer getEmployerByID(int id);
      boolean addOrUpdateEmployer(Employer e);
      Employer getEmployerByUserId(int id);
-    
+     Employer FindEmployerByUserID(int id);
+  
 }

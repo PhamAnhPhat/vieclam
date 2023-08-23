@@ -76,4 +76,9 @@ public class EmployerServiceImpl implements EmployerService {
      return this.EmployRepo.getEmployerByUserId(id);
     }
 
+    @Override
+    public Employer FindEmployerByUserID(int id) {
+    return this.EmployRepo.FindEmployerByUserID(id);
+    }
+
 }

@@ -53,6 +53,12 @@ public class UserRepositoryImpl implements UserRepository {
         throw new NonUniqueResultException();    
     }
 
+    @Override
+    public User getUserById(int id) {
+       Session s = this.factory.getObject().getCurrentSession();
+         return s.get(User.class, id);
+    }
+
    
 
 }

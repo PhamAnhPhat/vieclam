@@ -61,4 +61,10 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
 
     }
 
+    @Override
+    public Application getAppById(int id) {
+       Session s = this.factory.getObject().getCurrentSession();
+       return s.get(Application.class, id);
+    }
+
 }

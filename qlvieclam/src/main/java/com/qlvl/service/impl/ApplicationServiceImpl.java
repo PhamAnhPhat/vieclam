@@ -32,14 +32,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public boolean addApp(Application app) {
-      
-
-        if(app.getJobID()==null){
-            int jobID= 1;
-            Job j = new Job(jobID);
-            app.setJobID(j);
-        }
-        
+    
         if (!app.getFile().isEmpty()) {
             try {
                 Map ress= this.cloudinary.uploader().upload(app.getFile().getBytes(),
@@ -51,6 +44,11 @@ public class ApplicationServiceImpl implements ApplicationService {
             }
         }
         return this.AppRepo.addApp(app);
+    }
+
+    @Override
+    public Application getAppById(int id) {
+     return this.AppRepo.getAppById(id);
     }
 
 }

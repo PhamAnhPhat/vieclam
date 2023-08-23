@@ -8,22 +8,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:url value="/Application" var="action" />
-<form:form action="${action}"  method="post" modelAttribute="app" enctype="multipart/form-data">
-
+<div class="container">
+  <form:form action="${action}"  method="post" modelAttribute="app" enctype="multipart/form-data">
+<form:hidden path="id" />
+${app.jobID.id}
+<div class="mb-3">
+        <label for="file" class="form-label">${JOB.id}</label>
+        <form:input type="text" path="jobID" class="form-control" 
+                    id="id" />
+    </div>
 
     <div class="mb-3">
         <label for="file" class="form-label">Nộp File CV</label>
         <form:input type="file" path="file" class="form-control" 
                     id="file" />
     </div>
-    
-    <div class="mb-3 mt-3">
-        <label for="tuoi" class="form-label">Họ</label>      
-        <form:input type="text" path="ho" class="form-control" 
-                    id="ho" placeholder="Nhập họ"/>
-    </div>
-
-    <div class="mb-3 mt-3">
+     <div class="mb-3 mt-3">
         <label for="ho" class="form-label">Tên</label>      
         <form:input type="text" path="ten" class="form-control" 
                     id="ten" placeholder="Nhập tên"/>
@@ -76,5 +76,7 @@
         <form:input type="text" path="tuoi" class="form-control" 
                     id="tuoi" placeholder="Nhập tuổi"/>
     </div>
+   
         <button type="submit" class="btn btn-primary">Nộp</button>
-</form:form>
+</form:form>  
+</div>

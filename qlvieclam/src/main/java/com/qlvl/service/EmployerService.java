@@ -21,6 +21,8 @@ public interface EmployerService {
     Employer getEmployerByID(int id);
 
     boolean addOrUpdateEmployer(Employer e);
-     Employer getEmployerByUserId(int id);
 
+    Employer getEmployerByUserId(int id);
+
+    Employer FindEmployerByUserID(int id);
 }
