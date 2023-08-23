@@ -8,7 +8,10 @@ import com.cloudinary.Cloudinary;
 import com.qlvl.pojo.City;
 import com.qlvl.pojo.Employer;
 import com.qlvl.pojo.Job;
+import com.qlvl.pojo.User;
+import com.qlvl.repository.EmployerRepository;
 import com.qlvl.repository.JobRepository;
+import com.qlvl.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +27,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +46,10 @@ public class JobRepositoryImpl implements JobRepository {
     @Autowired
     private Environment env;
 
+    @Autowired
+    private EmployerRepository EmplRepo;
+     @Autowired
+    private UserRepository UserRepo;
     @Autowired
     private Cloudinary cloudinary;
 
@@ -65,19 +74,19 @@ public class JobRepositoryImpl implements JobRepository {
             if (districtId != null && !districtId.isEmpty()) {
                 predicates.add(b.equal(root.get("districID"), Integer.parseInt(districtId)));
             }
-             String majorId = params.get("majorId");
+            String majorId = params.get("majorId");
             if (majorId != null && !majorId.isEmpty()) {
                 predicates.add(b.equal(root.get("majorID"), Integer.parseInt(majorId)));
             }
-             String typeJobId = params.get("typeJobId");
+            String typeJobId = params.get("typeJobId");
             if (typeJobId != null && !typeJobId.isEmpty()) {
                 predicates.add(b.equal(root.get("typeJobID"), Integer.parseInt(typeJobId)));
             }
-             String EduId = params.get("EduId");
+            String EduId = params.get("EduId");
             if (EduId != null && !EduId.isEmpty()) {
                 predicates.add(b.equal(root.get("educationID"), Integer.parseInt(EduId)));
             }
-            
+
             q.where(predicates.toArray(Predicate[]::new));
         }
         q.orderBy(b.desc(root.get("createdDate")));
@@ -106,21 +115,22 @@ public class JobRepositoryImpl implements JobRepository {
     public boolean addJob(Job j) {
 
         Session s = this.factory.getObject().getCurrentSession();
-
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
         try {
             if (j.getId() == null) {
-                int em = 1;
+
                 Date date = new Date();
-                Employer e = new Employer(em);
                 j.setCreatedDate(date);
                 j.setEmployerID(e);
                 s.save(j);
             } else {
-                int em = 1;
+//                int em = 1;
                 Date date = new Date();
-                Employer e = new Employer(em);
+//                Employer ee = new Employer(em);
                 j.setCreatedDate(date);
-                j.setEmployerID(e);
+               j.setEmployerID(e);
                 s.update(j);
             }
             return true;

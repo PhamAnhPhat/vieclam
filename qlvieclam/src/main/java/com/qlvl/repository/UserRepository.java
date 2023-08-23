@@ -13,5 +13,6 @@ import com.qlvl.pojo.User;
 public interface UserRepository {
     User getUserByUserName(String username);
     User addUser(User u);
+  
     User findUserByUserName(String username);
 }

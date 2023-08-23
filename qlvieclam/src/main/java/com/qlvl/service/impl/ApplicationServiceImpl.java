@@ -32,12 +32,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public boolean addApp(Application app) {
-       // thêm tay userID và jobid trước
-//        if(app.getUserID()==null){
-//            int userID= 1;
-//            User u=new User(userID);
-//            app.setUserID(u);
-//        }
+      
+
         if(app.getJobID()==null){
             int jobID= 1;
             Job j = new Job(jobID);

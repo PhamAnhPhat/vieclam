@@ -5,7 +5,9 @@
 package com.qlvl.repository.impl;
 
 import com.qlvl.pojo.Employer;
+import com.qlvl.pojo.User;
 import com.qlvl.repository.EmployerRepository;
+import com.qlvl.repository.UserRepository;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
@@ -15,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,19 +30,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @PropertySource("classpath:configs.properties")
 public class EmployerRepositoryImpl implements EmployerRepository {
-    
+
     @Autowired
     private LocalSessionFactoryBean factory;
     @Autowired
     private Environment env;
-    
+    @Autowired
+    private UserRepository UserRepo;
+
     @Override
     public List<Employer> getEmp(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("FROM Employer where isApproved=FALSE");
         return query.getResultList();
     }
-    
+
     @Override
     public boolean checkEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
@@ -50,29 +56,38 @@ public class EmployerRepositoryImpl implements EmployerRepository {
         }
         return false;
     }
-    
+
     @Override
     public Employer getEmployerByID(int id) {
         Session s = this.factory.getObject().getCurrentSession();
         return s.get(Employer.class, id);
     }
-    
+
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
-       try{
+        try {
             if (e.getId() == null) {
-               
-            s.save(e);
-        } else {
-              
-            s.update(e);
-        }
+
+                s.save(e);
+            } else {
+
+                s.update(e);
+            }
             return true;
-       }catch(HibernateException ex){
-           ex.printStackTrace();
-           return false;
-       }
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
-    
+
+    @Override
+    public Employer getEmployerByUserId(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+         id = u.getId();
+         return s.get(Employer.class, id);
+    }
+
 }

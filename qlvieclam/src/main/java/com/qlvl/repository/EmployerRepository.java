@@ -17,5 +17,6 @@ public interface EmployerRepository {
      boolean checkEmployer(Employer e);
      Employer getEmployerByID(int id);
      boolean addOrUpdateEmployer(Employer e);
+     Employer getEmployerByUserId(int id);
     
 }
