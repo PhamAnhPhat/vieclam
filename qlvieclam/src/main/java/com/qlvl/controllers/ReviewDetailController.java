@@ -5,10 +5,13 @@
 package com.qlvl.controllers;
 
 import com.qlvl.pojo.Employer;
+import com.qlvl.pojo.Employerreview;
 import com.qlvl.service.EmployerService;
+import com.qlvl.service.ReviewService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,21 +28,32 @@ public class ReviewDetailController {
 
     @Autowired
     private EmployerService EmpSer;
+    
+    @Autowired
+    private ReviewService ReviewSer;
 
     @GetMapping("/ReviewDetail")
+    @Transactional
     public String ReviewDetail(Model model) {
         return "ReviewDetail";
     }
 
     @GetMapping("/ReviewDetail/{id}")
+    @Transactional
     public String UpdateView(Model model, @PathVariable(value = "id") int id) {
-        model.addAttribute("EMPLOYER", this.EmpSer.getEmployerByID(id));
+        model.addAttribute("EMPLOYER",this.EmpSer.getEmployerByID(id));
+        model.addAttribute("REVIEW", new Employerreview());
         return "ReviewDetail";
     }
     @PostMapping("/ReviewDetail")
-    public String addReview(@ModelAttribute(value = "EMPLOYER") @Valid Employer e, BindingResult rs) {
-      
-        return "redirect:/CheckEmployer";
+    public String addReview(@ModelAttribute(value = "REVIEW") @Valid Employerreview er, BindingResult rs) {
+       if (!rs.hasErrors()) {
+            if (ReviewSer.addReview(er) == true) {
+              
+                return "redirect:/";
+            }
+        }
+        return "redirect:/ReviewDetail";
     }
    
 }

@@ -21,6 +21,8 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\EmployerService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Job.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\EducationServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\EducationService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\ReviewRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ReviewDetailController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\UserController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\City.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApplicationController.java
@@ -42,6 +44,8 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\HibernateConfig.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\ApplicationRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\EducationFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\CityService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ReviewService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\ReviewRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\RoleRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\ApplicationServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\CityServiceImpl.java
@@ -56,6 +60,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\RoleService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\CheckEmployerController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\DistrictFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\DistrictRepositoryImpl.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\ReviewServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MajorServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\User.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\DistrictService.java
