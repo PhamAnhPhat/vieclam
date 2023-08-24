@@ -55,8 +55,7 @@ public class EmployerRepositoryImpl implements EmployerRepository {
 
         if (e.getId() != null) {
             Boolean x = true;
-            User u = this.UserRepo.getUserById(e.getUserID().getId());
-            u.setUserRole("ROLE_EMP");
+
             e.setIsApproved(x);
 
             s.update(e);
@@ -84,12 +83,12 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
-        User u = this.UserRepo.getUserById(e.getUserID().getId());
-        e.setUserID(u);
-       
+
         try {
             if (e.getId() == null) {
-
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                User u = this.UserRepo.getUserByUserName(authentication.getName());
+                e.setUserID(u);
                 s.save(e);
             } else {
 
@@ -119,10 +118,9 @@ public class EmployerRepositoryImpl implements EmployerRepository {
 
     @Override
     public List<Employer> getAllEmpl() {
-     Session session = this.factory.getObject().getCurrentSession();
+        Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("FROM Employer");
         return query.getResultList();
     }
 
-   
 }

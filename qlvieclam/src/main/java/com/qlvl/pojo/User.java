@@ -18,9 +18,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -33,15 +35,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
     @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
     @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+    @NamedQuery(name = "User.findByHo", query = "SELECT u FROM User u WHERE u.ho = :ho"),
+    @NamedQuery(name = "User.findByTen", query = "SELECT u FROM User u WHERE u.ten = :ten"),
     @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
     @NamedQuery(name = "User.findByAvatar", query = "SELECT u FROM User u WHERE u.avatar = :avatar"),
+    @NamedQuery(name = "User.findByNganhNghe", query = "SELECT u FROM User u WHERE u.nganhNghe = :nganhNghe"),
     @NamedQuery(name = "User.findByUserRole", query = "SELECT u FROM User u WHERE u.userRole = :userRole")})
 public class User implements Serializable {
-
-    @OneToMany(mappedBy = "userID")
-    private Set<Application> applicationSet;
-    @OneToMany(mappedBy = "userID")
-    private Set<Employer> employerSet;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,17 +53,35 @@ public class User implements Serializable {
     @Column(name = "username")
     private String username;
     @Size(max = 50)
+    @Column(name = "ho")
+    private String ho;
+    @Size(max = 50)
+    @Column(name = "ten")
+    private String ten;
+    @Size(max = 300)
     @Column(name = "password")
     private String password;
     @Size(max = 200)
     @Column(name = "avatar")
     private String avatar;
+    @Size(max = 50)
+    @Column(name = "NganhNghe")
+    private String nganhNghe;
     @Size(max = 20)
     @Column(name = "user_role")
     private String userRole;
+    @OneToMany(mappedBy = "userID")
+    private Set<Application> applicationSet;
+    @OneToMany(mappedBy = "userID")
+    private Set<Employer> employerSet;
+    @OneToMany(mappedBy = "userID")
+    private Set<Employerreview> employerreviewSet;
     @JoinColumn(name = "roleID", referencedColumnName = "id")
     @ManyToOne
     private Role roleID;
+
+    @Transient
+    private MultipartFile file;
 
     public User() {
     }
@@ -88,6 +106,22 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public String getHo() {
+        return ho;
+    }
+
+    public void setHo(String ho) {
+        this.ho = ho;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -104,12 +138,47 @@ public class User implements Serializable {
         this.avatar = avatar;
     }
 
+    public String getNganhNghe() {
+        return nganhNghe;
+    }
+
+    public void setNganhNghe(String nganhNghe) {
+        this.nganhNghe = nganhNghe;
+    }
+
     public String getUserRole() {
         return userRole;
     }
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    @XmlTransient
+    public Set<Application> getApplicationSet() {
+        return applicationSet;
+    }
+
+    public void setApplicationSet(Set<Application> applicationSet) {
+        this.applicationSet = applicationSet;
+    }
+
+    @XmlTransient
+    public Set<Employer> getEmployerSet() {
+        return employerSet;
+    }
+
+    public void setEmployerSet(Set<Employer> employerSet) {
+        this.employerSet = employerSet;
+    }
+
+    @XmlTransient
+    public Set<Employerreview> getEmployerreviewSet() {
+        return employerreviewSet;
+    }
+
+    public void setEmployerreviewSet(Set<Employerreview> employerreviewSet) {
+        this.employerreviewSet = employerreviewSet;
     }
 
     public Role getRoleID() {
@@ -145,22 +214,18 @@ public class User implements Serializable {
         return "com.qlvl.pojo.User[ id=" + id + " ]";
     }
 
-    @XmlTransient
-    public Set<Application> getApplicationSet() {
-        return applicationSet;
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
     }
 
-    public void setApplicationSet(Set<Application> applicationSet) {
-        this.applicationSet = applicationSet;
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
-    @XmlTransient
-    public Set<Employer> getEmployerSet() {
-        return employerSet;
-    }
-
-    public void setEmployerSet(Set<Employer> employerSet) {
-        this.employerSet = employerSet;
-    }
-    
 }

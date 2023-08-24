@@ -39,6 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "Employer.findByAddressComapny", query = "SELECT e FROM Employer e WHERE e.addressComapny = :addressComapny"),
     @NamedQuery(name = "Employer.findBySoDienThoai", query = "SELECT e FROM Employer e WHERE e.soDienThoai = :soDienThoai"),
     @NamedQuery(name = "Employer.findByAvatar", query = "SELECT e FROM Employer e WHERE e.avatar = :avatar"),
+    @NamedQuery(name = "Employer.findByNganhNghe", query = "SELECT e FROM Employer e WHERE e.nganhNghe = :nganhNghe"),
     @NamedQuery(name = "Employer.findByIsApproved", query = "SELECT e FROM Employer e WHERE e.isApproved = :isApproved")})
 public class Employer implements Serializable {
 
@@ -63,6 +64,9 @@ public class Employer implements Serializable {
     @Size(max = 200)
     @Column(name = "avatar")
     private String avatar;
+    @Size(max = 50)
+    @Column(name = "NganhNghe")
+    private String nganhNghe;
     @Column(name = "isApproved")
     private Boolean isApproved;
     @JoinColumn(name = "userID", referencedColumnName = "id")
@@ -128,6 +132,14 @@ public class Employer implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getNganhNghe() {
+        return nganhNghe;
+    }
+
+    public void setNganhNghe(String nganhNghe) {
+        this.nganhNghe = nganhNghe;
     }
 
     public Boolean getIsApproved() {

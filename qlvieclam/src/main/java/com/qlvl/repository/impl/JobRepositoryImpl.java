@@ -114,7 +114,6 @@ public class JobRepositoryImpl implements JobRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addJob(Job j) {
         Session s = this.factory.getObject().getCurrentSession();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

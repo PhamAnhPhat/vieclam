@@ -6,6 +6,7 @@ package com.qlvl.controllers;
 
 import com.qlvl.pojo.Employer;
 import com.qlvl.service.EmployerService;
+import com.qlvl.service.MajorService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +27,13 @@ public class CheckEmployerController {
 
     @Autowired
     private EmployerService EmpSer;
-    
+       @Autowired
+    private MajorService MajorService;
   
 
     @GetMapping("/CheckEmployer")
     public String CheckEmp(Model model) {
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
         model.addAttribute("EMPLOYER", new Employer());
         return "CheckEmployer";
     }

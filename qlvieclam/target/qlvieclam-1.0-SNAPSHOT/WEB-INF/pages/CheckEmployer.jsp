@@ -44,6 +44,11 @@
             <form:input type="text" path="soDienThoai" class="form-control" 
                         id="soDienThoai"  />
         </div>
+        <div class="mb-3 mt-3">
+            <label for="nganhNghe" class="form-label">Chuyên ngành công ty</label>
+            <form:input type="text" path="nganhNghe" class="form-control" 
+                        id="nganhNghe"  />
+        </div>
           <div class="mb-3">
         <label for="file" class="form-label">Ảnh minh hoạ</label>
         <form:input type="file" path="file" class="form-control" 

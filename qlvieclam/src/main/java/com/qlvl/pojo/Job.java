@@ -6,6 +6,7 @@ package com.qlvl.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,15 +14,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -36,7 +40,6 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "Job.findById", query = "SELECT j FROM Job j WHERE j.id = :id"),
     @NamedQuery(name = "Job.findByAvatarJob", query = "SELECT j FROM Job j WHERE j.avatarJob = :avatarJob"),
     @NamedQuery(name = "Job.findByNameJob", query = "SELECT j FROM Job j WHERE j.nameJob = :nameJob"),
-    @NamedQuery(name = "Job.findBySalary", query = "SELECT j FROM Job j WHERE j.salary = :salary"),
     @NamedQuery(name = "Job.findBySoLuongTuyenDung", query = "SELECT j FROM Job j WHERE j.soLuongTuyenDung = :soLuongTuyenDung"),
     @NamedQuery(name = "Job.findByKinhNghiem", query = "SELECT j FROM Job j WHERE j.kinhNghiem = :kinhNghiem"),
     @NamedQuery(name = "Job.findByAge", query = "SELECT j FROM Job j WHERE j.age = :age"),
@@ -55,8 +58,10 @@ public class Job implements Serializable {
     @Size(max = 50)
     @Column(name = "nameJob")
     private String nameJob;
+    @Lob
+    @Size(max = 16777215)
     @Column(name = "salary")
-    private Integer salary;
+    private String salary;
     @Column(name = "SoLuongTuyenDung")
     private Integer soLuongTuyenDung;
     @Column(name = "KinhNghiem")
@@ -66,6 +71,8 @@ public class Job implements Serializable {
     @Column(name = "createdDate")
     @Temporal(TemporalType.DATE)
     private Date createdDate;
+    @OneToMany(mappedBy = "jobID")
+    private Set<Application> applicationSet;
     @JoinColumn(name = "cityID", referencedColumnName = "id")
     @ManyToOne
     private City cityID;
@@ -87,7 +94,6 @@ public class Job implements Serializable {
 
     @Transient
     private MultipartFile file;
-
     public Job() {
     }
 
@@ -119,11 +125,11 @@ public class Job implements Serializable {
         this.nameJob = nameJob;
     }
 
-    public Integer getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Integer salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
@@ -157,6 +163,15 @@ public class Job implements Serializable {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @XmlTransient
+    public Set<Application> getApplicationSet() {
+        return applicationSet;
+    }
+
+    public void setApplicationSet(Set<Application> applicationSet) {
+        this.applicationSet = applicationSet;
     }
 
     public City getCityID() {
@@ -245,5 +260,5 @@ public class Job implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-
+    
 }

@@ -8,6 +8,7 @@ import com.qlvl.pojo.Employer;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
 import com.qlvl.service.EmployerService;
+import com.qlvl.service.MajorService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -32,10 +33,13 @@ public class EmployerController {
     private EmployerService EmplSer;
     @Autowired
     private UserRepository UserRepo;
+    @Autowired
+    private MajorService MajorService;
 
     @GetMapping("/Employer")
     @Transactional
     public String Employer(Model model) {
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
         model.addAttribute("emp", new Employer());
         return "Employer";
     }

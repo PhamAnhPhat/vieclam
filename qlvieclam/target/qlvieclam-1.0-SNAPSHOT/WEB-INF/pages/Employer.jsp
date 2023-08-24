@@ -38,11 +38,20 @@
             <form:input type="text" path="soDienThoai" class="form-control" 
                         id="soDienThoai" placeholder="Nhập số điện thoại công ty"/>
         </div>
+          <div  class="mb-3 mt-3">
+            <label for="nganhNghe" class="form-label">Chuyên ngành công ty</label>      
+            <form:select class="form-select" id="nganhNghe" name="nganhNghe" path="nganhNghe">
+                <c:forEach items="${MAJOR}" var="m">
+                    <option value="${m.nameMajor}" >${m.nameMajor}</option>
+                </c:forEach>
+            </form:select>
+        </div>
         <div class="mb-3 mt-3">
             <label for="file" class="form-label">Ảnh công ty</label>      
             <form:input type="file" path="file" class="form-control" 
                         id="file"/>
         </div>
+        
         <c:if test="${not empty message}">
             <div class="alert alert-danger">
                 ${message}

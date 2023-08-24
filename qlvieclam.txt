@@ -1,3 +1,8 @@
+$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO
+application
+employer
+job
+user
 
 CREATE SCHEMA `qlvieclam` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
 use qlvieclam;
@@ -28,8 +33,11 @@ nameType nvarchar(50)
 create table User (
 id int auto_increment primary key,
 username nvarchar(50),
+ho varchar(50),
+ten varchar(50),
 password nvarchar(300),
 avatar varchar(200),
+NganhNghe varchar(50),
 roleID int,
 user_role nvarchar(20),
 Foreign key (roleID) references Role(id)
@@ -42,6 +50,7 @@ nameCompany nvarchar(50),
 AddressComapny nvarchar(50),
 soDienThoai nvarchar(13),
 avatar varchar(200),
+NganhNghe varchar(50),
 userID int,
 isApproved boolean,
 foreign key (userID) references User(id)
