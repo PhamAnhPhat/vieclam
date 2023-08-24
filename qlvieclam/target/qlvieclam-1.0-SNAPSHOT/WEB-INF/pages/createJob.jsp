@@ -15,7 +15,7 @@
     <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
     <form:hidden path="avatarJob"/>
-    
+
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Tên công việc</label>
         <form:input type="text" path="nameJob" class="form-control" 
@@ -134,7 +134,11 @@
         <form:input type="file" path="file" class="form-control" 
                     id="file" />
     </div>
-
+    <c:if test="${not empty message}">
+        <div class="alert alert-danger">
+            ${message}
+        </div>
+    </c:if>
 
 
 

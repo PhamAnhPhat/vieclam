@@ -12,8 +12,10 @@
     <c:url value="/CheckEmployer" var="action" />
     <form:form action="${action}" modelAttribute="EMPLOYER" method="post" enctype="multipart/form-data"> 
         <form:hidden path="id" />
-        <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+       
         <form:hidden path="avatar"/>
+        <form:hidden path="userID.id" />
+        <div>${EMPLOYER.userID.id}</div>
         <div class="mb-3 mt-3">
             <label for="id" class="form-label">ID nhà tuyển dụng</label>
             <form:input type="text" path="id" class="form-control" 

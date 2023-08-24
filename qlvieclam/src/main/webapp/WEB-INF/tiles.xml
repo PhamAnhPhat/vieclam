@@ -62,9 +62,19 @@
         <put-attribute name="content"
                        value="/WEB-INF/pages/CheckEmployer.jsp" />
     </definition>
-     <definition name="ThongKe" extends="baseLayout">
+    <definition name="ThongKe" extends="baseLayout">
         <put-attribute name="title" value="Thống kê" />
         <put-attribute name="content"
                        value="/WEB-INF/pages/ThongKe.jsp" />
+    </definition>
+    <definition name="Review" extends="baseLayout">
+        <put-attribute name="title" value="Đánh giá" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/Review.jsp" />
+    </definition>
+    <definition name="ReviewDetail" extends="baseLayout">
+        <put-attribute name="title" value="Thông tin đánh giá" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/ReviewDetail.jsp" />
     </definition>
 </tiles-definitions>

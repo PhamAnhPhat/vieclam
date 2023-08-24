@@ -27,6 +27,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApplicationControll
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\UserRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\TypeJobRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\JobDetailController.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ReviewController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Employer.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\WebAppContextConfig.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ThongKeService.java

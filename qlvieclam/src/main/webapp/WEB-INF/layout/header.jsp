@@ -32,7 +32,7 @@
 
                     </li>
                 </se:authorize>
-                <se:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_EMP')">
+                <se:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMP')">
                      <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
                 </li> 
@@ -59,6 +59,9 @@
 
                     </c:otherwise>
                 </c:choose>
+                          <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/Review" />">Đánh giá</a>
+                    </li>
             </ul>
         </div>
     </div>

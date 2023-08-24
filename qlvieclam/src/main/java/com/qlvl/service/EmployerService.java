@@ -25,4 +25,5 @@ public interface EmployerService {
     Employer getEmployerByUserId(int id);
 
     Employer FindEmployerByUserID(int id);
+    List<Employer> getAllEmpl();
 }

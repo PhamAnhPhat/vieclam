@@ -67,7 +67,7 @@ public class JobRepositoryImpl implements JobRepository {
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("nameJob"), String.format("%%%s%%", kw)));
             }
-            
+
             String cityId = params.get("cityId");
             if (cityId != null && !cityId.isEmpty()) {
                 predicates.add(b.equal(root.get("cityID"), Integer.parseInt(cityId)));
@@ -88,7 +88,6 @@ public class JobRepositoryImpl implements JobRepository {
             if (EduId != null && !EduId.isEmpty()) {
                 predicates.add(b.equal(root.get("educationID"), Integer.parseInt(EduId)));
             }
-           
 
             q.where(predicates.toArray(Predicate[]::new));
         }
@@ -121,15 +120,19 @@ public class JobRepositoryImpl implements JobRepository {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
+        
         j.setEmployerID(e);
         Date date = new Date();
-                j.setCreatedDate(date);
+        j.setCreatedDate(date);
+        
         try {
-            if (j.getId() == null) {
+
+            if (j.getId() == null && e.getIsApproved()) {
                 s.save(j);
             } else {
                 s.update(j);
             }
+
             return true;
         } catch (HibernateException ex) {
             ex.printStackTrace();

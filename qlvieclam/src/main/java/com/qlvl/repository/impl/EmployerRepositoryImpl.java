@@ -84,9 +84,9 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        User u = this.UserRepo.getUserById(e.getUserID().getId());
         e.setUserID(u);
+       
         try {
             if (e.getId() == null) {
 
@@ -115,6 +115,13 @@ public class EmployerRepositoryImpl implements EmployerRepository {
         }
         throw new NonUniqueResultException();
 
+    }
+
+    @Override
+    public List<Employer> getAllEmpl() {
+     Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("FROM Employer");
+        return query.getResultList();
     }
 
    

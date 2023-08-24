@@ -47,11 +47,6 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
-         if (e.getUserID() == null) {
-            int userID = 1;
-            User u = new User(userID);
-            e.setUserID(u);
-        }
         if(e.getId()!=null){
             e.setIsApproved(Boolean.TRUE);
         }
@@ -79,6 +74,11 @@ public class EmployerServiceImpl implements EmployerService {
     @Override
     public Employer FindEmployerByUserID(int id) {
     return this.EmployRepo.FindEmployerByUserID(id);
+    }
+
+    @Override
+    public List<Employer> getAllEmpl() {
+     return this.EmployRepo.getAllEmpl();
     }
 
 }

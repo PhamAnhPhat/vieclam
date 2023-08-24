@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -66,7 +67,11 @@ public class createJobController {
     }
 
     @PostMapping("/createJob")
-    public String add(@ModelAttribute(value = "job") @Valid Job j, BindingResult rs) {
+    public String add(@ModelAttribute(value = "job") @Valid Job j, BindingResult rs, RedirectAttributes redirect) {
+          if (jobSer.addJob(j) == false){
+                 redirect.addFlashAttribute("message", "Admin đang duyệt. Vui lòng quay lại sau!!");
+                  return "redirect:/createJob";
+          }
         if (!rs.hasErrors()) {
             if (jobSer.addJob(j) == true) {
               

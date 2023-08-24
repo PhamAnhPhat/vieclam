@@ -132,14 +132,13 @@
         </form:select>
     </div>
 
-
+    <se:authorize access="hasRole('ROLE_USER')">
+         <a href="<c:url value="/Application/${JD.id}"/>"style="margin-left:500px; "  class="btn btn-primary">Ứng tuyển</a>
+    </se:authorize>
     <c:choose>
         <c:when test="${pageContext.request.userPrincipal.name ==null}">
             <a href="<c:url value="/login"/>" style="margin-left:300px;" class="btn btn-primary">Đăng nhập</a>
         </c:when>
-        <c:otherwise>
-              <a href="<c:url value="/Application/${JD.id}"/>"style="margin-left:500px; "  class="btn btn-primary">Ứng tuyển</a>
-        </c:otherwise>
     </c:choose>
               <a href="<c:url value="/"/>"  class="btn btn-primary">Trở về</a>
 
