@@ -59,6 +59,8 @@ public class UserRepositoryImpl implements UserRepository {
          return s.get(User.class, id);
     }
 
+ 
+
    
 
 }

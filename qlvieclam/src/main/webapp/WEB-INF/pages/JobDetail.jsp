@@ -62,8 +62,6 @@
 
             </c:forEach>
         </form:select>
-
-
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Quận/huyện</label>

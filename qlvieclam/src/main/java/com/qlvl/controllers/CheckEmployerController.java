@@ -26,6 +26,8 @@ public class CheckEmployerController {
 
     @Autowired
     private EmployerService EmpSer;
+    
+  
 
     @GetMapping("/CheckEmployer")
     public String CheckEmp(Model model) {
@@ -43,6 +45,7 @@ public class CheckEmployerController {
     public String add(@ModelAttribute(value = "EMPLOYER") @Valid Employer e, BindingResult rs) {
       if (!rs.hasErrors()) {
             if (EmpSer.addOrUpdateEmployer(e) == true) {
+            
                 return "redirect:/Admin";
             }
         }

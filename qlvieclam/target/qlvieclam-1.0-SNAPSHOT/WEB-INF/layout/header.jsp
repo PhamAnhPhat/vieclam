@@ -32,10 +32,12 @@
 
                     </li>
                 </se:authorize>
-
-                <li class="nav-item">
+                <se:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_EMP')">
+                     <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
                 </li> 
+                </se:authorize>
+               
 
 
                 <c:choose>

@@ -87,6 +87,7 @@ public class JobRepositoryImpl implements JobRepository {
             if (EduId != null && !EduId.isEmpty()) {
                 predicates.add(b.equal(root.get("educationID"), Integer.parseInt(EduId)));
             }
+           
 
             q.where(predicates.toArray(Predicate[]::new));
         }

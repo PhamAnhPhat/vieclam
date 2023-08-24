@@ -5,6 +5,7 @@
 package com.qlvl.repository;
 
 import com.qlvl.pojo.Employer;
+import com.qlvl.pojo.User;
 import java.util.List;
 import java.util.Map;
 
@@ -19,5 +20,6 @@ public interface EmployerRepository {
      boolean addOrUpdateEmployer(Employer e);
      Employer getEmployerByUserId(int id);
      Employer FindEmployerByUserID(int id);
+   
   
 }

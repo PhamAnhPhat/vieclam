@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
+import javax.persistence.metamodel.PluralAttribute;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -51,9 +52,13 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public boolean checkEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
+
         if (e.getId() != null) {
             Boolean x = true;
+            User u = this.UserRepo.getUserById(e.getUserID().getId());
+            u.setUserRole("ROLE_EMP");
             e.setIsApproved(x);
+
             s.update(e);
             return true;
         }
@@ -83,7 +88,7 @@ public class EmployerRepositoryImpl implements EmployerRepository {
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         e.setUserID(u);
         try {
-            if (e.getId() == null ) {
+            if (e.getId() == null) {
 
                 s.save(e);
             } else {
@@ -100,13 +105,17 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public Employer FindEmployerByUserID(int id) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("FROM Employer WHERE userID.id=:userId",Employer.class);
+        Query q = s.createQuery("FROM Employer WHERE userID.id=:userId", Employer.class);
         q.setParameter("userId", id);
         List results = q.getResultList();
-        if (results.isEmpty()) return null;
-        else if (results.size() == 1) return (Employer) results.get(0);
+        if (results.isEmpty()) {
+            return null;
+        } else if (results.size() == 1) {
+            return (Employer) results.get(0);
+        }
         throw new NonUniqueResultException();
-    
+
     }
 
+   
 }

@@ -64,9 +64,7 @@ public class ApplicationController {
 
     @GetMapping("/Application/{id}")
     public String UpdateView(Model model,@PathVariable(value = "id") int id) {
-        model.addAttribute("JOB", this.jobSer.getJobById(id));
-         model.addAttribute("MAJOR", this.MajorSer.getMajor());
-        model.addAttribute("EDUCATION", this.EduService.getEdu());
+
         model.addAttribute("app", new Application());
         return "Application";
     }

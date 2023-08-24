@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <ul class="nav nav-pills" style = "background-color : cornflowerblue " >
     <li class="nav-item">
@@ -115,8 +116,47 @@
 
     </li>
 </ul>
+<div class="container">
+    <h3 style="margin-left: 500px;">TÌM KIẾM THEO TIÊU CHÍ</h3>
+    <c:url value="/" var="action" />
+    <form  action="${action}">
+        <div class="col-md-5" style="margin-left: 400px;">
+            <label for="pwd" class="form-label">Thành phố</label>
+            <select class="form-select" name="cityId">
+                <c:forEach items="${CITY}" var="ct">
 
+                    <option value="${ct.id}" >${ct.nameCity}</option>
+                </c:forEach>
+            </select>
 
+            <label for="pwd" class="form-label">Quận</label>
+            <select class="form-select" name="districtId">
+                <c:forEach items="${DISTRICT}" var="d">
+
+                    <option value="${d.id}" >${d.nameDistrict}</option>
+                </c:forEach>
+            </select>
+
+            <label for="pwd" class="form-label">Nghề nghiệp</label>
+            <select class="form-select"   name="majorId">
+                <c:forEach items="${MAJOR}" var="m">
+
+                    <option value="${m.id}" >${m.nameMajor}</option>
+                </c:forEach>
+            </select>
+
+            <label for="pwd" class="form-label">Hình thức</label>
+            <select class="form-select"   name="typeJobId">
+                <c:forEach items="${TYPEJOB}" var="t">
+
+                    <option value="${t.id}" >${t.nameType}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <button class="btn btn-primary" style="margin-left: 400px;" type="submit">Tìm</button>
+    </form>
+
+</div>
 
 <h2 style="margin-left:400px;">DANH SÁCH VIỆC LÀM</h2>
 <se:authorize access="hasRole('ROLE_EMP')">
@@ -136,6 +176,8 @@
             </c:forEach>
     </ul> 
 </c:if>
+
+
 <div class="container" style="margin-top:30px;width:900px;" >
     <table class="table table-hover">
         <thead>
@@ -161,7 +203,12 @@
                     <td>
                         <c:url value="/api/createJob/${j.id}" var="deleteApi" />
                         <a href="<c:url value="/JobDetail/${j.id}"/>" class="btn btn-success">Xem công việc</a>
-                        <button class="btn btn-danger" onclick="delJob('${deleteApi}',${j.id})">Xoá</button>
+                        <se:authorize access="hasRole('ROLE_ADMIN')">
+                            <button class="btn btn-danger" onclick="delJob('${deleteApi}',${j.id})">Xoá</button>  
+                        </se:authorize>
+                        
+                       
+
                     </td>
 
                 </tr>
