@@ -40,7 +40,8 @@ public class ReviewDetailController {
 
     @GetMapping("/ReviewDetail/{id}")
     @Transactional
-    public String UpdateView(Model model, @PathVariable(value = "id") int id) {
+    public String UpdateView(Model model, @PathVariable(value = "id") int id,Employer e) {
+        model.addAttribute("ALLREVIEW", this.ReviewSer.getReviewByEmployer(e));
         model.addAttribute("EMPLOYER",this.EmpSer.getEmployerByID(id));
         model.addAttribute("REVIEW", new Employerreview());
         return "ReviewDetail";

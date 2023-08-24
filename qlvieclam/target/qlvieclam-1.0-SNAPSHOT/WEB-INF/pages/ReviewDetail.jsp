@@ -31,3 +31,25 @@
     </c:choose>
    
 </form:form>
+<form:form action="${action}"  modelAttribute="ALLREVIEW" method="post"> 
+     <table class="table table-hover">
+        <thead>
+            <tr>
+                
+                <th>Bình luận</th>
+                  <th>Đánh giá</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${ALLREVIEW}" var="e">
+                <tr>
+                    <td>${e.cmt}</td>
+                    <td>${e.rating}</td>
+                   
+                  
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</form:form>

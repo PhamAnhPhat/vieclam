@@ -37,8 +37,8 @@ public class ReviewRepositoryImpl implements ReviewRepository {
     @Override
     public List<Employerreview> getReviewByEmployer(Employer e) {
         Session session = this.factory.getObject().getCurrentSession();
-        Query query = session.createQuery("FROM Employerreview WHERE employerID=:eid");
-        query.setParameter("eid", e);
+        Query query = session.createQuery("FROM Employerreview WHERE employerID.id=:eid");
+        query.setParameter("eid", e.getId());
         return query.getResultList();
     }
 
