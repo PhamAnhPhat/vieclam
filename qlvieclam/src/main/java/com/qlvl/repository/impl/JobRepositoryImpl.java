@@ -67,6 +67,7 @@ public class JobRepositoryImpl implements JobRepository {
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("nameJob"), String.format("%%%s%%", kw)));
             }
+            
             String cityId = params.get("cityId");
             if (cityId != null && !cityId.isEmpty()) {
                 predicates.add(b.equal(root.get("cityID"), Integer.parseInt(cityId)));

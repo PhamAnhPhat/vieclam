@@ -53,6 +53,7 @@ public class ApplicationController {
 
     @PostMapping("/Application")
     public String addApplication(@ModelAttribute(value = "app") @Valid Application a, BindingResult rs) {
+       
         if (!rs.hasErrors()) {
             if (AppliSer.addApp(a) == true) {
                 return "redirect:/";
@@ -64,7 +65,9 @@ public class ApplicationController {
 
     @GetMapping("/Application/{id}")
     public String UpdateView(Model model,@PathVariable(value = "id") int id) {
-
+        model.addAttribute("JOB", this.jobSer.getJobById(id));
+         model.addAttribute("MAJOR", this.MajorSer.getMajor());
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
         model.addAttribute("app", new Application());
         return "Application";
     }

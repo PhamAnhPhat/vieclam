@@ -16,7 +16,8 @@
    <form:errors path="*" element="div"  cssClass="alert alert-danger" />
     <form:hidden path="id" />
     <form:hidden path="avatarJob"/>
-    <div>${JD.id}</div>
+    <label for="file" class="form-label" >Mã số công việc: <div style="float: right;" >${JD.id}</div> </label>
+      <br>
     <label for="email" class="form-label">Hình ảnh minh hoạ</label>
     <div><img  src="${JD.avatarJob}" width="120"/></div>
     <div class="mb-3 mt-3">
