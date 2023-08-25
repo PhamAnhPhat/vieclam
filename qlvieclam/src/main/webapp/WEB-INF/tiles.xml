@@ -77,4 +77,9 @@
         <put-attribute name="content"
                        value="/WEB-INF/pages/ReviewDetail.jsp" />
     </definition>
+     <definition name="InfoUser" extends="baseLayout">
+        <put-attribute name="title" value="Thông tin cá nhân" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/InfoUser.jsp" />
+    </definition>
 </tiles-definitions>

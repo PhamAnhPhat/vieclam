@@ -32,7 +32,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public boolean addApp(Application app) {
-    
         if (!app.getFile().isEmpty()) {
             try {
                 Map ress= this.cloudinary.uploader().upload(app.getFile().getBytes(),

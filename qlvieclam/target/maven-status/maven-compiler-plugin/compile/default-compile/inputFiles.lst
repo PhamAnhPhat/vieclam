@@ -35,6 +35,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\WebAppContextConfig.jav
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ThongKeService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Education.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\IndexController.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\InfoUserController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\JobService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiJobController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\EducationRepository.java

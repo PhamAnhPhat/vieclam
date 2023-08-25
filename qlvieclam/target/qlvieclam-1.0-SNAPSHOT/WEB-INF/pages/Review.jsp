@@ -9,13 +9,16 @@
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <h2 style="margin-left:400px;">DANH SÁCH NHÀ TUYỂN DỤNG</h2>
+
 <div class="container" style="margin-top:30px;width:900px;" >
+    
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Tên nhà tuyển dụng</th>
                   <th>Tên công ty</th>
+                  <th>Chuyên ngành</th>
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
                 <th></th>
@@ -27,6 +30,7 @@
                     <td>${e.id}</td>
                     <td>${e.nameEmployer}</td>
                     <td>${e.nameCompany}</td>
+                     <td>${e.nganhNghe}</td>
                     <td>${e.addressComapny}</td>
                     <td>${e.soDienThoai}</td>
                     <td>   

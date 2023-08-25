@@ -4,12 +4,15 @@
  */
 package com.qlvl.service;
 
+
+import com.qlvl.pojo.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 
 /**
  *
  * @author Admin
  */
 public interface UserService  extends  UserDetailsService{
-    
+   boolean addUser(User u);
 }

@@ -5,6 +5,7 @@ com\qlvl\repository\impl\EducationRepositoryImpl.class
 com\qlvl\repository\EmployerRepository.class
 com\qlvl\pojo\Education_.class
 com\qlvl\repository\TypeJobRepository.class
+com\qlvl\controllers\InfoUserController.class
 com\qlvl\pojo\Education.class
 com\qlvl\service\ApplicationService.class
 com\qlvl\formatters\EducationFormatter.class
@@ -20,6 +21,7 @@ com\qlvl\service\TypeJobService.class
 com\qlvl\configs\SecurityWebApplicationInitializer.class
 com\qlvl\pojo\Employer.class
 com\qlvl\pojo\District.class
+com\qlvl\repository\impl\ReviewRepositoryImpl.class
 com\qlvl\repository\ThongKeRepository.class
 com\qlvl\configs\WebAppContextConfig.class
 com\qlvl\pojo\Application.class
@@ -41,8 +43,11 @@ com\qlvl\pojo\Role.class
 com\qlvl\service\impl\EmployerServiceImpl.class
 com\qlvl\service\UserService.class
 com\qlvl\repository\MajorRepository.class
+com\qlvl\repository\ReviewRepository.class
+com\qlvl\service\impl\ReviewServiceImpl.class
 com\qlvl\repository\EducationRepository.class
 com\qlvl\controllers\CheckEmployerController.class
+com\qlvl\controllers\ReviewController.class
 com\qlvl\repository\DistrictRepository.class
 com\qlvl\controllers\ApplicationController.class
 com\qlvl\service\impl\TypeJobServiceImpl.class
@@ -68,9 +73,11 @@ com\qlvl\repository\impl\TypeJobRepositoryImpl.class
 com\qlvl\service\impl\EducationServiceImpl.class
 com\qlvl\pojo\City.class
 com\qlvl\service\JobService.class
+com\qlvl\controllers\ReviewDetailController.class
 com\qlvl\pojo\City_.class
 com\qlvl\pojo\Major_.class
 com\qlvl\service\impl\UserServiceImpl.class
+com\qlvl\service\ReviewService.class
 com\qlvl\service\impl\JobServiceImpl.class
 com\qlvl\repository\impl\ApplicationRepositoryImpl.class
 com\qlvl\controllers\UserController.class

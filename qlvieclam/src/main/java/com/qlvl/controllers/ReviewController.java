@@ -5,11 +5,13 @@
 package com.qlvl.controllers;
 
 import com.qlvl.service.EmployerService;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -22,8 +24,9 @@ public class ReviewController {
      
     @GetMapping("/Review")
     @Transactional
-    public String Review(Model model){
+    public String Review(Model model,@RequestParam Map<String, String> params){
         model.addAttribute("EMP", this.EmpSer.getAllEmpl());
+        model.addAttribute("Search",this.EmpSer.getEmp(params));
         return"Review";
     }
 }

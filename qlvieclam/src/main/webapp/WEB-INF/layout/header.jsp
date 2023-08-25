@@ -18,9 +18,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/"/>">Trang chủ</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Hồ sơ</a>
-                </li>
+                <se:authorize access="hasRole('ROLE_ADMIN')or hasRole('ROLE_USER') or hasRole('ROLE_EMP')">
+                   <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/InfoUser" />">Hồ sơ</a>
+                </li>  
+                </se:authorize>
+               
 
 
                 <se:authorize access="hasRole('ROLE_ADMIN')">
@@ -34,7 +37,7 @@
                 </se:authorize>
                 <se:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMP')">
                      <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
+                    <a class="nav-link" href="<c:url value="/Employer/${id}" />">Đăng ký nhà tuyển dụng</a>
                 </li> 
                 </se:authorize>
                

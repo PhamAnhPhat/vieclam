@@ -49,7 +49,7 @@
             </form:select>
         </div>
         <div  class="mb-3 mt-3">
-            <label for="trinhDoHocVan" class="form-label">Chuyên ngành hiện tại</label>      
+            <label for="trinhDoHocVan" class="form-label">Trình độ học vấn</label>      
             <form:select class="form-select" id="trinhDoHocVan" name="trinhDoHocVan" path="trinhDoHocVan">
                 <c:forEach items="${EDUCATION}" var="m">
                     <option value="${m.typeEducation}" >${m.typeEducation}</option>
@@ -65,13 +65,13 @@
 
         <div  class="mb-3 mt-3">
             <label for="namKinhNghiem" class="form-label">Số năm kinh nghiệm</label>      
-            <form:input type="text" path="namKinhNghiem" class="form-control" 
+            <form:input type="number" path="namKinhNghiem" class="form-control" 
                         id="namKinhNghiem" placeholder="Nhập năm kinh nghiệm "/>
         </div>
 
         <div  class="mb-3 mt-3">
             <label for="tuoi" class="form-label">Tuổi</label>      
-            <form:input type="text" path="tuoi" class="form-control" 
+            <form:input type="number" path="tuoi" class="form-control" 
                         id="tuoi" placeholder="Nhập tuổi"/>
         </div>
 

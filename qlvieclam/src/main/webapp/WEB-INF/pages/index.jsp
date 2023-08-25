@@ -110,7 +110,7 @@
     <li style="margin:auto ; width: 500px">
         <c:url value="/" var="action" />
         <form class="d-flex" action="${action}">
-            <input class="form-control me-auto" type="text" name="kw" placeholder="Nhập tên công ty cần tìm .....">
+            <input class="form-control me-auto" type="text" name="kw" placeholder="Nhập tên công việc cần tìm .....">
             <button class="btn btn-primary" type="submit">Tìm</button>
         </form>
 
@@ -178,7 +178,7 @@
 </c:if>
 
 
-<div class="container" style="margin-top:30px;width:900px;" >
+<div class="container" style="margin-top:30px;width:1000px;" >
     <table class="table table-hover">
         <thead>
             <tr>
@@ -187,6 +187,7 @@
                 <th>Mức lương</th>
                 <th>Số lượng</th>
                 <th>Tuổi</th>
+                <th>Nhà tuyển dụng</th>
                 <td>Ngày đăng</td>
                 <th></th>
             </tr>
@@ -199,6 +200,7 @@
                     <td>${j.salary}</td>
                     <td>${j.soLuongTuyenDung}</td>
                     <td>${j.age}</td>
+                    <td>${j.employerID.nameEmployer}</td>
                     <td>${j.createdDate}</td>
                     <td>
                         <c:url value="/api/createJob/${j.id}" var="deleteApi" />
