@@ -10,6 +10,7 @@ import com.qlvl.formatters.CityFormatter;
 import com.qlvl.formatters.DistrictFormatter;
 import com.qlvl.formatters.EducationFormatter;
 import com.qlvl.formatters.MajorFormatter;
+import com.qlvl.formatters.RoleFormatter;
 import com.qlvl.formatters.TypeJobFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -44,6 +46,7 @@ import org.springframework.web.servlet.view.JstlView;
     ,"com.qlvl.service"
 })
 @PropertySource("classpath:configs.properties")
+@Order(1)
 public class WebAppContextConfig implements WebMvcConfigurer{
 
     @Autowired
@@ -70,6 +73,7 @@ public class WebAppContextConfig implements WebMvcConfigurer{
       registry.addFormatter(new EducationFormatter());
       registry.addFormatter(new MajorFormatter());
       registry.addFormatter(new TypeJobFormatter());
+      registry.addFormatter(new RoleFormatter());
     }
      @Bean
     public Cloudinary cloudinary() {

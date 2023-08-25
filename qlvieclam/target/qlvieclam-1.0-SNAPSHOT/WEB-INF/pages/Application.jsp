@@ -21,6 +21,11 @@
             <form:input type="file" path="file" class="form-control" 
                         id="file" />
         </div>
+         <div class="mb-3 mt-3">
+            <label for="ho" class="form-label">Họ</label>      
+            <form:input type="text" path="ho" class="form-control" 
+                        id="ho" placeholder="Nhập họ"/>
+        </div>
         <div class="mb-3 mt-3">
             <label for="ho" class="form-label">Tên</label>      
             <form:input type="text" path="ten" class="form-control" 

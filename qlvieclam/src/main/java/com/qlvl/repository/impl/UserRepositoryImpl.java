@@ -4,7 +4,6 @@
  */
 package com.qlvl.repository.impl;
 
-
 import com.qlvl.pojo.Role;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
@@ -15,6 +14,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
+@PropertySource("classpath:configs.properties")
 public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
@@ -33,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private BCryptPasswordEncoder passEncoder;
-    
+
     @Override
     public User getUserByUserName(String username) {
         Session s = this.factory.getObject().getCurrentSession();
@@ -44,45 +45,47 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUserByUserName(String username) {
-      Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("FROM User WHERE username=:un");
         q.setParameter("un", username);
         List results = q.getResultList();
-        if (results.isEmpty()) return null;
-        else if (results.size() == 1) return (User) results.get(0);
-        throw new NonUniqueResultException();    
+        if (results.isEmpty()) {
+            return null;
+        } else if (results.size() == 1) {
+            return (User) results.get(0);
+        }
+        throw new NonUniqueResultException();
     }
 
     @Override
     public User getUserById(int id) {
-       Session s = this.factory.getObject().getCurrentSession();
-         return s.get(User.class, id);
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(User.class, id);
     }
 
     @Override
     public boolean addUser(User u) {
-       Session s = this.factory.getObject().getCurrentSession();
-       u.setPassword(this.passEncoder.encode(u.getPassword()));
-            if (u.getId() == null) {
-                int x = 1;
-                Role r = new Role(x);
-                u.setRoleID(r);
+        Session s = this.factory.getObject().getCurrentSession();
+        u.setPassword(this.passEncoder.encode(u.getPassword()));
+        if (u.getId() == null) {
+            if (u.getRoleID().getId()== 1) {
                 u.setUserRole("ROLE_USER");
                 s.save(u);
             } else {
-                int x = 1;
-                Role r = new Role(x);
-                u.setRoleID(r);
+                u.setUserRole("ROLE_EMP");
+                s.save(u);
+            }
+        } else {
+
+            if (u.getRoleID().getId() == 1) {
                 u.setUserRole("ROLE_USER");
                 s.update(u);
+            } else {
+                u.setUserRole("ROLE_EMP");
+                s.update(u);
             }
-            return true;
+        }
+        return true;
     }
-
-   
-
- 
-
-   
 
 }

@@ -6,6 +6,7 @@ package com.qlvl.controllers;
 
 import com.qlvl.pojo.User;
 import com.qlvl.service.MajorService;
+import com.qlvl.service.MyUserService;
 import com.qlvl.service.RoleService;
 import com.qlvl.service.UserService;
 import java.util.Map;
@@ -36,6 +37,8 @@ public class SignUpController {
     private MajorService MajorSer;
     @Autowired
     private RoleService RoleService;
+    @Autowired
+    private MyUserService MyUserService;
 
     @GetMapping("/SignUp")
     public String SignUp(Model model, @RequestParam Map<String, String> params) {

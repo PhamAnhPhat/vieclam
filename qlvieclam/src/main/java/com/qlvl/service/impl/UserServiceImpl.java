@@ -4,6 +4,7 @@
  */
 package com.qlvl.service.impl;
 
+
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
@@ -53,14 +54,16 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public boolean addUser(User u) {
+       
 //        if (!u.getFile().isEmpty()) {
 //            try {
 //                Map res = this.cloudinary.uploader().upload(u.getFile().getBytes(),
 //                        ObjectUtils.asMap("resource_type", "auto"));
+//                  u.setAvatar(res.get("secure_url").toString());
 //            } catch (IOException ex) {
 //                Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-//               u.setAvatar("test");
+//             
 //        }
 
         return this.UserRepo.addUser(u);
