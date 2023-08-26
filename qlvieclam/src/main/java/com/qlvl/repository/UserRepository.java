@@ -18,4 +18,5 @@ public interface UserRepository {
     User getUserById(int id);
     User findUserByUserName(String username);
     List<User> getUsername(Map<String,String> params);
+    List<User> getUsernameCriteria(Map<String,String> params);
    }

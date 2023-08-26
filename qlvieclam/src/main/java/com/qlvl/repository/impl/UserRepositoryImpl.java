@@ -4,12 +4,18 @@
  */
 package com.qlvl.repository.impl;
 
+
 import com.qlvl.pojo.Role;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.persistence.NonUniqueResultException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 
 import org.hibernate.Session;
@@ -102,6 +108,34 @@ public class UserRepositoryImpl implements UserRepository {
         Query query = session.createQuery("FROM User where username=:id");
         query.setParameter("id", id);
         return query.getResultList();
+    }
+
+    @Override
+    public List<User> getUsernameCriteria(Map<String, String> params) {
+         Session session = this.factory.getObject().getCurrentSession();
+          CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<User> q = b.createQuery(User.class);
+         Root root = q.from(User.class);
+        q.select(root);
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+            String name = params.get("name");
+            if (name != null && !name.isEmpty()) {
+                predicates.add(b.like(root.get("ten"), String.format("%%%s%%", name)));
+               
+            }
+             String major = params.get("major");
+            if (major != null && !major.isEmpty()) {
+                predicates.add(b.like(root.get("nganhNghe"), String.format("%%%s%%", major)));  
+            }
+            predicates.add(b.like(root.get("userRole"),"ROLE_USER"));
+            
+
+           
+              q.where(predicates.toArray(Predicate[]::new));
+        }
+        Query query = session.createQuery(q);
+          return query.getResultList();
     }
 
 }

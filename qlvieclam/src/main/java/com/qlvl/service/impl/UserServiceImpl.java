@@ -79,4 +79,9 @@ public class UserServiceImpl implements UserService {
         return this.UserRepo.getUserById(id);
     }
 
+    @Override
+    public List<User> getUsernameCriteria(Map<String, String> params) {
+     return this.UserRepo.getUsernameCriteria(params);
+    }
+
 }

@@ -19,4 +19,5 @@ public interface UserService  extends  UserDetailsService{
    boolean addUser(User u);
    User getUserById(int id);
     List<User> getUsername(Map<String,String> params);
+    List<User> getUsernameCriteria(Map<String, String> params);
 }

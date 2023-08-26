@@ -39,6 +39,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
                     </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/SearchUser" />">Tìm kiếm ứng viên</a>
+                    </li> 
                 </se:authorize>
 
 
