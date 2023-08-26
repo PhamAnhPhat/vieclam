@@ -10,6 +10,7 @@ import com.qlvl.pojo.User;
  *
  * @author Admin
  */
-public interface MyUserRepository {
+public interface SignUpRepository {
      boolean addUser(User u);
+     User findUserByUsername(String username);
 }

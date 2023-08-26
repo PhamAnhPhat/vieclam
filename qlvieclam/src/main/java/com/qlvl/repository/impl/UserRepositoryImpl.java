@@ -8,6 +8,7 @@ import com.qlvl.pojo.Role;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.NonUniqueResultException;
 import org.hibernate.HibernateException;
 
@@ -16,6 +17,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,9 +69,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public boolean addUser(User u) {
         Session s = this.factory.getObject().getCurrentSession();
-        u.setPassword(this.passEncoder.encode(u.getPassword()));
+
         if (u.getId() == null) {
-            if (u.getRoleID().getId()== 1) {
+            u.setPassword(this.passEncoder.encode(u.getPassword()));
+            if (u.getRoleID().getId() == 1) {
                 u.setUserRole("ROLE_USER");
                 s.save(u);
             } else {
@@ -86,6 +90,18 @@ public class UserRepositoryImpl implements UserRepository {
             }
         }
         return true;
+    }
+
+    @Override
+    public List<User> getUsername(Map<String, String> params) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.getUserByUserName(authentication.getName());
+        String id = u.getUsername();
+
+        Query query = session.createQuery("FROM User where username=:id");
+        query.setParameter("id", id);
+        return query.getResultList();
     }
 
 }

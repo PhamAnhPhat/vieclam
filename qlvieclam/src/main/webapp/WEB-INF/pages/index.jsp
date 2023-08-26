@@ -116,7 +116,13 @@
 
     </li>
 </ul>
+           
 <div class="container">
+    <c:if test="${not empty message}">
+            <div class="alert alert-danger">
+                ${message}
+            </div>
+        </c:if> 
     <h3 style="margin-left: 500px;">TÌM KIẾM THEO TIÊU CHÍ</h3>
     <c:url value="/" var="action" />
     <form  action="${action}">
@@ -178,7 +184,7 @@
 </c:if>
 
 
-<div class="container" style="margin-top:30px;width:1000px;" >
+<div class="container" style="margin-top:30px;width:1100px;" >
     <table class="table table-hover">
         <thead>
             <tr>
@@ -186,7 +192,7 @@
                 <th>Công việc</th>
                 <th>Mức lương</th>
                 <th>Số lượng</th>
-                <th>Tuổi</th>
+                <th>Ngành tuyển dụng</th>
                 <th>Nhà tuyển dụng</th>
                 <td>Ngày đăng</td>
                 <th></th>
@@ -199,7 +205,7 @@
                     <td>${j.nameJob}</td>
                     <td>${j.salary}</td>
                     <td>${j.soLuongTuyenDung}</td>
-                    <td>${j.age}</td>
+                    <td>${j.employerID.nganhNghe}</td>
                     <td>${j.employerID.nameEmployer}</td>
                     <td>${j.createdDate}</td>
                     <td>

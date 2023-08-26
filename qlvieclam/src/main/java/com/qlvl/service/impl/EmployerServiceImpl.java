@@ -77,8 +77,8 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
     @Override
-    public List<Employer> getAllEmpl() {
-     return this.EmployRepo.getAllEmpl();
+    public List<Employer> getAllEmpl(Map<String, String> params) {
+     return this.EmployRepo.getAllEmpl(params);
     }
 
 }

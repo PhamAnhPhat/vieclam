@@ -10,6 +10,7 @@ import com.qlvl.pojo.User;
  *
  * @author Admin
  */
-public interface MyUserService {
+public interface SignUpService {
     boolean addUser(User u);
+      User findUserByUsername(String username);
 }

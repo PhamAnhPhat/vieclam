@@ -8,8 +8,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<h2 style="margin-left:400px;">DANH SÁCH NHÀ TUYỂN DỤNG</h2>
+<div class="container">
+    <h2 style="margin-left: 400px;">DANH SÁCH NHÀ TUYỂN DỤNG</h2>
+</div>
+ <li style="margin:auto ; width: 500px;list-style-type: none" >
+        <c:url value="/Review" var="action" />
+        <form class="d-flex" action="${action}">
+            <input class="form-control me-auto" type="text" name="kw" placeholder="Nhập tên công việc cần tìm .....">
+            <button class="btn btn-primary" type="submit">Tìm</button>
+        </form>
 
+    </li>
 <div class="container" style="margin-top:30px;width:900px;" >
     
     <table class="table table-hover">

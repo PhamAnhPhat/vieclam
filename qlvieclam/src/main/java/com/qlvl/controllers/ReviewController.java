@@ -25,8 +25,7 @@ public class ReviewController {
     @GetMapping("/Review")
     @Transactional
     public String Review(Model model,@RequestParam Map<String, String> params){
-        model.addAttribute("EMP", this.EmpSer.getAllEmpl());
-        model.addAttribute("Search",this.EmpSer.getEmp(params));
+        model.addAttribute("EMP", this.EmpSer.getAllEmpl(params));
         return"Review";
     }
 }

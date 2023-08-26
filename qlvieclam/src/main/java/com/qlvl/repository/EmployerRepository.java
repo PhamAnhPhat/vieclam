@@ -20,6 +20,6 @@ public interface EmployerRepository {
      boolean addOrUpdateEmployer(Employer e);
      Employer getEmployerByUserId(int id);
      Employer FindEmployerByUserID(int id);
-     List<Employer> getAllEmpl();
+     List<Employer> getAllEmpl(Map<String,String> params);
   
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ApplicationController {
     private EducationService EduService;
     @Autowired
     private JobService jobSer;
-    
+
     @Autowired
     private ApplicationService AppSer;
 
@@ -52,21 +53,30 @@ public class ApplicationController {
     }
 
     @PostMapping("/Application")
-    public String addApplication(@ModelAttribute(value = "app") @Valid Application a, BindingResult rs) {
-       
+    public String addApplication(@ModelAttribute(value = "app") @Valid Application a, BindingResult rs,
+            RedirectAttributes redirect, Model model) {
+        model.addAttribute("MAJOR", this.MajorSer.getMajor());
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
+        if (a.getFile().isEmpty() || a.getHo().isEmpty() || a.getTen().isEmpty()
+                || a.getEmail().isEmpty() || a.getNamKinhNghiem() == null || a.getTuoi() == null) {
+            redirect.addFlashAttribute("message", "Vui lòng không để trống thông tin khi ứng tuyển!!");
+            return "redirect:/";
+        }
+
         if (!rs.hasErrors()) {
             if (AppliSer.addApp(a) == true) {
                 return "redirect:/";
             }
 
         }
+
         return "Application";
     }
 
     @GetMapping("/Application/{id}")
-    public String UpdateView(Model model,@PathVariable(value = "id") int id) {
+    public String UpdateView(Model model, @PathVariable(value = "id") int id) {
         model.addAttribute("JOB", this.jobSer.getJobById(id));
-         model.addAttribute("MAJOR", this.MajorSer.getMajor());
+        model.addAttribute("MAJOR", this.MajorSer.getMajor());
         model.addAttribute("EDUCATION", this.EduService.getEdu());
         model.addAttribute("app", new Application());
         return "Application";

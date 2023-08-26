@@ -13,18 +13,21 @@
 <div class="container col-md-8">
     <c:url value="/createJob" var="action" />
 <form:form action="${action}"  method="post" modelAttribute="job" enctype="multipart/form-data">
-    <form:errors path="*" element="div"  cssClass="alert alert-danger" />
+   
     <form:hidden path="id" />
     <form:hidden path="avatarJob"/>
 
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Tên công việc</label>
+         <form:errors path="nameJob" element="div" cssClass="text-danger" />
         <form:input type="text" path="nameJob" class="form-control" 
                     id="nameJob" placeholder="Tên công việc"/>
+        
     </div>  
-    <form:errors path="nameJob" element="div"  cssClass="text-danger" />
+    
     <div class="mb-3">
         <label for="pwd" class="form-label">Mức lương</label>
+          <form:errors path="salary" element="div" cssClass="text-danger" />
         <form:input type="number" path="salary" class="form-control" 
                     id="salary" placeholder="Nhập mức lương"/>
 

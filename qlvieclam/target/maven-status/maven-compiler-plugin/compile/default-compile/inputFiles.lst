@@ -2,7 +2,6 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\ApplicationRepositor
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\EmployerRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\RoleRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\TypeJobService.java
-D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\MyUserService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\EmployerController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\EducationRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\UserRepository.java
@@ -17,8 +16,8 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\DistrictServiceImp
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\MajorService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\MajorRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\DistrictRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\SigUpRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ThongKeController.java
-D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MyUserServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\EmployerService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Job.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\EducationServiceImpl.java
@@ -43,6 +42,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiJobController.ja
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\EducationRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\DispatcherServletInit.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\JobRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\SignUpRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\HibernateConfig.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\ApplicationRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\EducationFormatter.java
@@ -50,8 +50,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\CityService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ReviewService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\ReviewRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\RoleRepositoryImpl.java
-D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\MyUserRepository.java
-D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\MyUserRepositoryImpl.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\SignUpService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\ApplicationServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\CityServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\SignUpController.java
@@ -77,6 +76,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\UserService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\MajorFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\CityRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\EmployerRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\SignUpServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\AdminController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Role.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Employerreview.java

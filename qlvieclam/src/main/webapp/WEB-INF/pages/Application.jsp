@@ -14,14 +14,14 @@
 
         <label for="file" class="form-label" >Mã số công việc: <div >${JOB.id}</div> </label>
         <form:hidden path="jobID.id" 
-            value="${JOB.id}"  />
+                     value="${JOB.id}"  />
 
         <div class="mb-3">
             <label for="file" class="form-label">Nộp File CV</label>
             <form:input type="file" path="file" class="form-control" 
                         id="file" />
         </div>
-         <div class="mb-3 mt-3">
+        <div class="mb-3 mt-3">
             <label for="ho" class="form-label">Họ</label>      
             <form:input type="text" path="ho" class="form-control" 
                         id="ho" placeholder="Nhập họ"/>
@@ -79,7 +79,11 @@
             <form:input type="number" path="tuoi" class="form-control" 
                         id="tuoi" placeholder="Nhập tuổi"/>
         </div>
-
+        <c:if test="${not empty message}">
+            <div class="alert alert-danger">
+                ${message}
+            </div>
+        </c:if>
         <button type="submit" class="btn btn-primary">Nộp</button>
     </form:form>  
 </div>

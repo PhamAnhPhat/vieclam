@@ -51,7 +51,7 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public List<Employer> getEmp(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
-   
+
         Query query = session.createQuery("FROM Employer where isApproved=FALSE");
         return query.getResultList();
     }
@@ -124,11 +124,22 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     }
 
     @Override
-    public List<Employer> getAllEmpl() {
+    public List<Employer> getAllEmpl(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
-        
-        Query query = session.createQuery("FROM Employer");
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Employer> q = b.createQuery(Employer.class);
+        Root root = q.from(Employer.class);
+        q.select(root);
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+            String kw = params.get("kw");
+            if (kw != null && !kw.isEmpty()) {
+                predicates.add(b.like(root.get("nameEmployer"), String.format("%%%s%%", kw)));
+            }
+            q.where(predicates.toArray(Predicate[]::new));
+
+        }
+        Query query = session.createQuery(q);
         return query.getResultList();
     }
-
 }

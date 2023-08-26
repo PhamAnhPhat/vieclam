@@ -67,11 +67,15 @@ public class createJobController {
     }
 
     @PostMapping("/createJob")
-    public String add(@ModelAttribute(value = "job") @Valid Job j, BindingResult rs, RedirectAttributes redirect) {
-          if (jobSer.addJob(j) == false){
-                 redirect.addFlashAttribute("message", "Admin đang duyệt. Vui lòng quay lại sau!!");
-                  return "redirect:/createJob";
-          }
+    public String add(@ModelAttribute(value = "job") @Valid Job j, BindingResult rs, RedirectAttributes redirect,Model model) {
+          model.addAttribute("CITY", this.CityService.getCity());
+
+        model.addAttribute("DISTRICT", this.DistrictService.getDistrict());
+
+        model.addAttribute("MAJOR", this.MajorService.getMajor());
+
+        model.addAttribute("EDUCATION", this.EduService.getEdu());
+        model.addAttribute("TYPEJOB", this.TypeService.getTypeJob());
         if (!rs.hasErrors()) {
             if (jobSer.addJob(j) == true) {
               

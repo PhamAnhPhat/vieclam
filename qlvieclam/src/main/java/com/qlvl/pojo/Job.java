@@ -23,6 +23,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -52,16 +54,18 @@ public class Job implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 200)
+    @Size( max = 200, message = "{job.nameJob.notNull}")
     @Column(name = "avatarJob")
     private String avatarJob;
-    @Size(max = 50)
+    @NotNull(message = "{job.nameJob.notNull}")
+    @Size(min = 1, max = 50, message = "{job.nameJob.lenErr}")
     @Column(name = "nameJob")
     private String nameJob;
     @Lob
-    @Size(max = 16777215)
+    @Size(min = 1, max = 16777215, message = "{job.nameJob.notNull}")
     @Column(name = "salary")
     private String salary;
+
     @Column(name = "SoLuongTuyenDung")
     private Integer soLuongTuyenDung;
     @Column(name = "KinhNghiem")
@@ -94,6 +98,7 @@ public class Job implements Serializable {
 
     @Transient
     private MultipartFile file;
+
     public Job() {
     }
 
@@ -260,5 +265,5 @@ public class Job implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-    
+
 }

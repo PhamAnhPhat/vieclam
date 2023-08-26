@@ -4,7 +4,6 @@
  */
 package com.qlvl.service.impl;
 
-
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
@@ -14,6 +13,7 @@ import com.qlvl.service.UserService;
 import java.io.IOException;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import java.util.Set;
@@ -52,9 +52,10 @@ public class UserServiceImpl implements UserService {
         return new org.springframework.security.core.userdetails.User(
                 u.getUsername(), u.getPassword(), authorities);
     }
+
     @Override
     public boolean addUser(User u) {
-       
+
 //        if (!u.getFile().isEmpty()) {
 //            try {
 //                Map res = this.cloudinary.uploader().upload(u.getFile().getBytes(),
@@ -65,8 +66,17 @@ public class UserServiceImpl implements UserService {
 //            }
 //             
 //        }
-
         return this.UserRepo.addUser(u);
+    }
+
+    @Override
+    public List<User> getUsername(Map<String, String> params) {
+        return this.UserRepo.getUsername(params);
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return this.UserRepo.getUserById(id);
     }
 
 }

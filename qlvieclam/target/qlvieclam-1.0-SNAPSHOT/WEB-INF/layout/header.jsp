@@ -19,16 +19,16 @@
                     <a class="nav-link" href="<c:url value="/"/>">Trang chủ</a>
                 </li>
                 <se:authorize access="hasRole('ROLE_ADMIN')or hasRole('ROLE_USER') or hasRole('ROLE_EMP')">
-                   <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/InfoUser" />">Hồ sơ</a>
-                </li>  
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/InfoUser" />">Hồ sơ</a>
+                    </li>  
                 </se:authorize>
-               
+
 
 
                 <se:authorize access="hasRole('ROLE_ADMIN')">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Admin" />">Admin</a>
+                        <a class="nav-link" href="<c:url value="/Admin" />">Quản trị</a>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/ThongKe" />">Thống kê</a>
                     </li>
@@ -36,35 +36,43 @@
                     </li>
                 </se:authorize>
                 <se:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_EMP')">
-                     <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/Employer/${id}" />">Đăng ký nhà tuyển dụng</a>
-                </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value="/Employer" />">Đăng ký nhà tuyển dụng</a>
+                    </li> 
                 </se:authorize>
-               
 
 
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/Review" />">Đánh giá</a>
+                </li>
                 <c:choose>
                     <c:when test="${pageContext.request.userPrincipal.name !=null}">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/" />">${pageContext.request.userPrincipal.name}</a>
-                        </li>
-                        <li class="nav-item">
+                        <div class="navbar-nav me-auto" >
+                            <li class="nav-item me-2">
+                                <a class="nav-link" href="<c:url value="/" />">${pageContext.request.userPrincipal.name}</a>
+                            </li> 
+                        </div>
+
+                        <li class="nav-item me-auto">
                             <a class="nav-link" href="<c:url value="/logout" />">Đăng xuất</a>
                         </li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item">
+                        <div class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<c:url value="/login" />">Đăng nhập</a>
+                            </li>  
+
+                        </div>
+                        <li class="nav-item" >
                             <a class="nav-link" href="<c:url value="/SignUp" />">Đăng ký</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/login" />">Đăng nhập</a>
-                        </li>
+
+
 
                     </c:otherwise>
                 </c:choose>
-                          <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/Review" />">Đánh giá</a>
-                    </li>
+
             </ul>
         </div>
     </div>

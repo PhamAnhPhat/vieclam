@@ -6,8 +6,8 @@ package com.qlvl.controllers;
 
 import com.qlvl.pojo.User;
 import com.qlvl.service.MajorService;
-import com.qlvl.service.MyUserService;
 import com.qlvl.service.RoleService;
+import com.qlvl.service.SignUpService;
 import com.qlvl.service.UserService;
 import java.util.Map;
 import javax.validation.Valid;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -32,13 +33,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SignUpController {
 
     @Autowired
-    private UserService userService;
+    private SignUpService SignUp;
     @Autowired
     private MajorService MajorSer;
     @Autowired
     private RoleService RoleService;
-    @Autowired
-    private MyUserService MyUserService;
 
     @GetMapping("/SignUp")
     public String SignUp(Model model, @RequestParam Map<String, String> params) {
@@ -49,12 +48,15 @@ public class SignUpController {
     }
 
     @PostMapping("/SignUp")
-    public String add(@ModelAttribute(value = "signup") @Valid User u, BindingResult rs) {
-      
-            if (userService.addUser(u) == true) {
-                return "redirect:/login";
-            }
-      
+    public String add(@ModelAttribute(value = "signup") User u, BindingResult rs, RedirectAttributes redirect) {
+        if (SignUp.findUserByUsername(u.getUsername()) != null) {
+            redirect.addFlashAttribute("message", "Tài khoản đã tồn tại");
+            return "redirect:/SignUp";
+        }
+          if (SignUp.findUserByUsername(u.getUsername()) == null) {
+            this.SignUp.addUser(u);
+            return "login";
+        }
 
         return "redirect:/SignUp";
     }

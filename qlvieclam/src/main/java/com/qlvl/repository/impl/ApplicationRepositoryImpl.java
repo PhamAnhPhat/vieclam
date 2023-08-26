@@ -44,6 +44,9 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
         app.setUserID(u);
         Date date = new Date();
         app.setCreateDate(date);
+//        if(app.getHo().isEmpty() || app.getTen().isEmpty()||app.getEmail().isEmpty()||
+//                app.getSdt().isEmpty()||app.getNamKinhNghiem()==null|| app.getFile().isEmpty())
+//            return false;
         try {
             if (app.getId() == null) {
 
