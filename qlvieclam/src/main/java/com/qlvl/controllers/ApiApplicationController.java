@@ -12,6 +12,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,21 @@ public class ApiApplicationController {
     @CrossOrigin
     public ResponseEntity<List<Application>>getNameMajor(@RequestParam Map<String, String> params){
         List applyJob = this.ThongKeSer.getNameMajor(params);
+        return ResponseEntity.ok(applyJob);
+    }
+    
+     @RequestMapping("/GetNameByYear/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>>getNameByYear(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year){
+        List applyJob = this.ThongKeSer.getNameByYear(year);
+        return ResponseEntity.ok(applyJob);
+    }
+     @RequestMapping("/GetNumber/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>>getNumberByYear(@RequestParam Map<String, String> params,
+              @PathVariable(value = "id") int year){
+        List applyJob = this.ThongKeSer.getNumberByYear(year);
         return ResponseEntity.ok(applyJob);
     }
 }

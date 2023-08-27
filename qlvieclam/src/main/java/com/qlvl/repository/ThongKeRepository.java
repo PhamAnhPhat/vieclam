@@ -15,4 +15,6 @@ import java.util.Map;
 public interface ThongKeRepository {
    List<String> getNameMajor(Map<String,String> params);
      List<Integer> getNumberMajor(Map<String,String> params);
+     List<Integer> getNumberByYear(int year);
+      List<String> getNameByYear(int year);
 }

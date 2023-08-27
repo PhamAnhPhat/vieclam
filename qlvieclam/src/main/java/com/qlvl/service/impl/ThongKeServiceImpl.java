@@ -30,5 +30,15 @@ public class ThongKeServiceImpl implements ThongKeService{
     public List<String> getNameMajor(Map<String, String> params) {
        return this.ThongKeRepo.getNameMajor(params);
     }
+
+    @Override
+    public List<Integer> getNumberByYear(int year) {
+       return this.ThongKeRepo.getNumberByYear(year);
+    }
+
+    @Override
+    public List<String> getNameByYear(int year) {
+      return this.ThongKeRepo.getNameByYear(year);
+    }
     
 }

@@ -10,19 +10,5 @@ function delJob(path,id){
     });
 }
 
- let name = [];
-    let number = [];
-    function GetName() {
-        $.ajax({
-            url: "http://localhost:8080/QLViecLam/api/GetThongKeByNameMajor/",
-            method: "GET",
-            success: function (n) {
-                name = n;
-                        console.log(name);
-            }
-        });
-    }
-    $(document).ready(function () {
-    GetName();
-    });
+
 

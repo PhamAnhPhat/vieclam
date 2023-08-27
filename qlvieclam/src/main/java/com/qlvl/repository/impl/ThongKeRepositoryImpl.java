@@ -26,20 +26,35 @@ public class ThongKeRepositoryImpl implements ThongKeRepository {
     @Autowired
     private LocalSessionFactoryBean factory;
 
-
     @Override
     public List<Integer> getNumberMajor(Map<String, String> params) {
-     Session session = this.factory.getObject().getCurrentSession();
+        Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("SELECT COUNT(*) FROM  Application GROUP BY ngheNghiep");
-        
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Integer> getNumberByYear(int year) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("SELECT COUNT(*) FROM  Application WHERE YEAR(createDate)=:cd GROUP BY ngheNghiep");
+        query.setParameter("cd", year);
         return query.getResultList();
     }
 
     @Override
     public List<String> getNameMajor(Map<String, String> params) {
-     Session session = this.factory.getObject().getCurrentSession();
+        Session session = this.factory.getObject().getCurrentSession();
         Query query = session.createQuery("SELECT ngheNghiep FROM  Application GROUP BY ngheNghiep");
-        
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<String> getNameByYear(int year) {
+        Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("SELECT ngheNghiep FROM  Application WHERE YEAR(createDate)=:cd GROUP BY ngheNghiep");
+         query.setParameter("cd", year);
         return query.getResultList();
     }
 
