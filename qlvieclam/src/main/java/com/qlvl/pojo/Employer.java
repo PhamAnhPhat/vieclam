@@ -4,6 +4,7 @@
  */
 package com.qlvl.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -73,8 +74,10 @@ public class Employer implements Serializable {
     @ManyToOne
     private User userID;
     @OneToMany(mappedBy = "employerID")
+    @JsonIgnore
     private Set<Employerreview> employerreviewSet;
     @OneToMany(mappedBy = "employerID")
+    @JsonIgnore
     private Set<Job> jobSet;
 
     @Transient

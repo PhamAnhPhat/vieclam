@@ -13,6 +13,6 @@ import java.util.Map;
  * @author Admin
  */
 public interface ThongKeRepository {
-    Map<String,Integer> countNgheNghiepByYear(int year);
-     List<Integer> getRole(Map<String,String> params);
+   List<String> getNameMajor(Map<String,String> params);
+     List<Integer> getNumberMajor(Map<String,String> params);
 }

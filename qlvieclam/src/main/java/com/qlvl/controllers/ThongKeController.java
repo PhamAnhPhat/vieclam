@@ -25,7 +25,7 @@ public class ThongKeController {
     @GetMapping("/ThongKe")
     @Transactional
     public String ThongKe(Model model,Map<String, Integer> params){
-        model.addAttribute("THONGKE",this.ThongKeSer.getRole(null));
+        model.addAttribute("THONGKE",this.ThongKeSer.getNumberMajor(null));
         return "ThongKe";
     }
     

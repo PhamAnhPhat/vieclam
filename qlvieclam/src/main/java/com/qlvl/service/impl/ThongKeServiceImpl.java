@@ -20,14 +20,15 @@ public class ThongKeServiceImpl implements ThongKeService{
 
     @Autowired
     private ThongKeRepository ThongKeRepo;
+    
     @Override
-    public Map<String, Integer> countNgheNghiepByYear(int year) {
-     return  this.ThongKeRepo.countNgheNghiepByYear(year);
+    public List<Integer> getNumberMajor(Map<String, String> params) {
+     return this.ThongKeRepo.getNumberMajor(params);
     }
 
     @Override
-    public List<Integer> getRole(Map<String, String> params) {
-     return this.ThongKeRepo.getRole(params);
+    public List<String> getNameMajor(Map<String, String> params) {
+       return this.ThongKeRepo.getNameMajor(params);
     }
     
 }

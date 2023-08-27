@@ -8,10 +8,12 @@ import com.cloudinary.http44.api.Response;
 import com.qlvl.pojo.Application;
 import com.qlvl.service.ThongKeService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,10 +25,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiApplicationController {
     @Autowired
     private ThongKeService ThongKeSer;
-    @RequestMapping("/thongke/")
+    @RequestMapping("/GetThongKeByNumberMajor/")
     @CrossOrigin
-    public ResponseEntity<List<Application>>getApplication(){
-        List applyJob = this.ThongKeSer.getRole(null);
+    public ResponseEntity<List<Application>>getApplication(@RequestParam Map<String, String> params){
+        List applyJob = this.ThongKeSer.getNumberMajor(params);
+        return ResponseEntity.ok(applyJob);
+    }
+    @RequestMapping("/GetThongKeByNameMajor/")
+    @CrossOrigin
+    public ResponseEntity<List<Application>>getNameMajor(@RequestParam Map<String, String> params){
+        List applyJob = this.ThongKeSer.getNameMajor(params);
         return ResponseEntity.ok(applyJob);
     }
 }

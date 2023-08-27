@@ -2,6 +2,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\ApplicationRepositor
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\EmployerRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\RoleRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\TypeJobService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiRoleController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\EmployerController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\EducationRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\UserRepository.java
@@ -14,6 +15,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Major.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\createJobController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\DistrictServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\MajorService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiTypeJobController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\MajorRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\DistrictRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\SigUpRepositoryImpl.java
@@ -32,6 +34,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\TypeJobRepository.ja
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\JobDetailController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiMajorController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ReviewController.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiEducationController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Employer.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\WebAppContextConfig.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\ThongKeService.java

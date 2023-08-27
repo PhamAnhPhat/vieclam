@@ -20,11 +20,13 @@ com\qlvl\service\SignUpService.class
 com\qlvl\service\DistrictService.class
 com\qlvl\service\TypeJobService.class
 com\qlvl\configs\SecurityWebApplicationInitializer.class
+com\qlvl\controllers\ApiCityController.class
 com\qlvl\pojo\Employer.class
 com\qlvl\pojo\District.class
 com\qlvl\repository\impl\ReviewRepositoryImpl.class
 com\qlvl\repository\ThongKeRepository.class
 com\qlvl\configs\WebAppContextConfig.class
+com\qlvl\controllers\ApiApplicationController.class
 com\qlvl\formatters\RoleFormatter.class
 com\qlvl\pojo\Application.class
 com\qlvl\pojo\Typejob_.class
@@ -37,6 +39,7 @@ com\qlvl\repository\ApplicationRepository.class
 com\qlvl\service\impl\ApplicationServiceImpl.class
 com\qlvl\controllers\SignUpController.class
 com\qlvl\configs\TilesConfigs.class
+com\qlvl\controllers\ApiMajorController.class
 com\qlvl\service\impl\CityServiceImpl.class
 com\qlvl\pojo\Job.class
 com\qlvl\repository\impl\RoleRepositoryImpl.class
@@ -55,9 +58,11 @@ com\qlvl\controllers\ReviewController.class
 com\qlvl\repository\DistrictRepository.class
 com\qlvl\controllers\ApplicationController.class
 com\qlvl\service\impl\TypeJobServiceImpl.class
+com\qlvl\controllers\SearchUserController.class
 com\qlvl\service\MajorService.class
 com\qlvl\pojo\User_.class
 com\qlvl\controllers\createJobController.class
+com\qlvl\controllers\ApiRoleController.class
 com\qlvl\formatters\DistrictFormatter.class
 com\qlvl\service\impl\ThongKeServiceImpl.class
 com\qlvl\pojo\Role_.class
@@ -72,9 +77,11 @@ com\qlvl\pojo\District_.class
 com\qlvl\repository\CityRepository.class
 com\qlvl\service\impl\DistrictServiceImpl.class
 com\qlvl\service\ThongKeService.class
+com\qlvl\controllers\ApiEducationController.class
 com\qlvl\controllers\JobDetailController.class
 com\qlvl\repository\impl\TypeJobRepositoryImpl.class
 com\qlvl\service\impl\EducationServiceImpl.class
+com\qlvl\controllers\ApiTypeJobController.class
 com\qlvl\pojo\City.class
 com\qlvl\service\JobService.class
 com\qlvl\controllers\ReviewDetailController.class

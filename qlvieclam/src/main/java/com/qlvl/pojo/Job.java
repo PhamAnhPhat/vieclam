@@ -4,6 +4,7 @@
  */
 package com.qlvl.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -76,6 +77,7 @@ public class Job implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createdDate;
     @OneToMany(mappedBy = "jobID")
+    @JsonIgnore
     private Set<Application> applicationSet;
     @JoinColumn(name = "cityID", referencedColumnName = "id")
     @ManyToOne

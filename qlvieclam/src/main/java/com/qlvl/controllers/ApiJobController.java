@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,18 +28,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ApiJobController {
+
     @Autowired
     private JobService JobSer;
+
     @DeleteMapping("/createJob/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void DeleteJob(@PathVariable(value = "id")int id){
+    public void DeleteJob(@PathVariable(value = "id") int id) {
         this.JobSer.deleteJob(id);
     }
-    
+
     @RequestMapping("/createJob/")
     @CrossOrigin
-    public ResponseEntity<List<Job>> list(@RequestParam Map<String,String>params){
-        return new ResponseEntity<>(this.JobSer.getJob(params),HttpStatus.OK);
+    public ResponseEntity<List<Job>> list(@RequestParam Map<String, String> params) {
+        return new ResponseEntity<>(this.JobSer.getJob(null), HttpStatus.OK);
     }
-    
+
+    @PostMapping(path = "/Job", consumes = {
+        MediaType.MULTIPART_FORM_DATA_VALUE,
+        MediaType.APPLICATION_JSON_VALUE
+    })
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addJob() {
+
+    }
+
 }

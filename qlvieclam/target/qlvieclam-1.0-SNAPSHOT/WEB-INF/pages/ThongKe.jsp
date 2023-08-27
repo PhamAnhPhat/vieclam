@@ -9,38 +9,58 @@
 <div class="container">
     <h2 style="margin-left: 500px;">THỐNG KÊ</h2>
 
-    <canvas id="myChart">
+    <canvas id="myChart" style="width: auto;">
 
     </canvas>
 </div>
 <script>
-    let x = [];
     const ctx = document.getElementById('myChart');
-    $.ajax({
-        url: "/api/major",
-        method: "GET",
-        success: function (data) {
-            x = data
-        }
-    });
-
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: x,
-            datasets: [{
-                    label: 'Nghề nghiệp theo năm',
-                    data: x,
-                    borderWidth: 1
-                }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    let name = [];
+    let number = [];
+    function GetName() {
+        $.ajax({
+            url: "http://localhost:8080/QLViecLam/api/GetThongKeByNameMajor/",
+            method: "GET",
+            success: function (n) {
+                name = n;
+                console.log(name);
+                $.ajax({
+                    url: "http://localhost:8080/QLViecLam/api/GetThongKeByNumberMajor/",
+                    method: "GET",
+                    success: function (res) {
+                        number = res;
+                        console.log(number);
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: name,
+                                datasets: [{
+                                        label: 'Số lượng đơn ứng tuyển của các ngành nghề',
+                                        data: res,
+                                        borderWidth: 1
+                                    }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
             }
-        }
+        });
+    }
+    $(document).ready(function () {
+        GetName();
     });
+</script>
+
+<script>
+
+
+
+
 </script>
