@@ -30,6 +30,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApplicationControll
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\UserRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\TypeJobRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\JobDetailController.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiMajorController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ReviewController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\Employer.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\WebAppContextConfig.java
@@ -40,6 +41,7 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\InfoUserController.
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\JobService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiJobController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\EducationRepository.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiApplicationController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\DispatcherServletInit.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\JobRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\SignUpRepository.java
@@ -58,11 +60,13 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\CityRepositoryI
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\TypeJobRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\RoleServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\configs\TilesConfigs.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\SearchUserController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\District.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\UserServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\RoleService.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\CheckEmployerController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\DistrictFormatter.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiCityController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\DistrictRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\ReviewServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MajorServiceImpl.java

@@ -25,11 +25,11 @@
             <form:input type="text" path="password" class="form-control" 
                         id="password" placeholder="Mật khẩu"/>
         </div> 
-        <div class="mb-3 mt-3">
+<!--        <div class="mb-3 mt-3">
             <label for="email" class="form-label">Nhập lại mật khẩu</label>
-            <input type="text"  class="form-control" 
-                   id="pwwd" placeholder="Nhập lại mật khẩu"/>
-        </div> 
+            <form:input type="text" path="confirmPwd" class="form-control" 
+                        id="confirmPwd" placeholder="Nhập lại mật khẩu"/>
+        </div>-->
         <div class="mb-3 mt-3">
             <label for="email" class="form-label">Họ</label>
             <form:input type="text" path="ho" class="form-control" 

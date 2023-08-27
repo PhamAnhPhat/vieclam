@@ -6,6 +6,7 @@ package com.qlvl.service.impl;
 
 import com.qlvl.repository.ThongKeRepository;
 import com.qlvl.service.ThongKeService;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class ThongKeServiceImpl implements ThongKeService{
     @Override
     public Map<String, Integer> countNgheNghiepByYear(int year) {
      return  this.ThongKeRepo.countNgheNghiepByYear(year);
+    }
+
+    @Override
+    public List<Integer> getRole(Map<String, String> params) {
+     return this.ThongKeRepo.getRole(params);
     }
     
 }

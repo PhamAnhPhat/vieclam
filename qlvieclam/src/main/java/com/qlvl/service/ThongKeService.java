@@ -4,6 +4,7 @@
  */
 package com.qlvl.service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,4 +13,5 @@ import java.util.Map;
  */
 public interface ThongKeService {
     Map<String,Integer> countNgheNghiepByYear(int year);
+    List<Integer> getRole(Map<String,String> params);
 }

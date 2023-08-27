@@ -23,7 +23,9 @@ public class ThongKeController {
     @Autowired
     private ThongKeService ThongKeSer;
     @GetMapping("/ThongKe")
+    @Transactional
     public String ThongKe(Model model,Map<String, Integer> params){
+        model.addAttribute("THONGKE",this.ThongKeSer.getRole(null));
         return "ThongKe";
     }
     

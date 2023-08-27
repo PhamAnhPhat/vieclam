@@ -20,7 +20,7 @@
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Tên công việc</label>
          <form:errors path="nameJob" element="div" cssClass="text-danger" />
-        <form:input type="text" path="nameJob" class="form-control" 
+        <form:input type="text" path="nameJob" class="form-control"
                     id="nameJob" placeholder="Tên công việc"/>
         
     </div>  

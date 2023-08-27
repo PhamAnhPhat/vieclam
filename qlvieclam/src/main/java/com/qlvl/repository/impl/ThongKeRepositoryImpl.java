@@ -13,12 +13,14 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Admin
  */
 @Repository
+@Transactional
 public class ThongKeRepositoryImpl implements ThongKeRepository {
 
     @Autowired
@@ -27,9 +29,17 @@ public class ThongKeRepositoryImpl implements ThongKeRepository {
     @Override
     public Map<String, Integer> countNgheNghiepByYear(int year) {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("SELECT NgheNghiep, COUNT(*) FROM Application WHERE YEAR(createDate)=:year GROUP BY NgheNghiep");
+        Query q = s.createQuery("SELECT NgheNghiep, COUNT(*) FROM Application WHERE YEAR(createDate)=:year GROUP BY ngheNghiep");
          q.setParameter("year", year);
          return (Map<String, Integer>) q.getResultList(); 
+    }
+
+    @Override
+    public List<Integer> getRole(Map<String, String> params) {
+     Session session = this.factory.getObject().getCurrentSession();
+        Query query = session.createQuery("SELECT COUNT(*) FROM  Application  WHERE createDate=2023");
+        
+        return query.getResultList();
     }
 
 }

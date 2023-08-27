@@ -82,6 +82,9 @@ public class User implements Serializable {
 
     @Transient
     private MultipartFile file;
+    
+    @Transient
+    private String confirmPwd;
 
     public User() {
     }
@@ -226,6 +229,20 @@ public class User implements Serializable {
      */
     public void setFile(MultipartFile file) {
         this.file = file;
+    }
+
+    /**
+     * @return the confirmPwd
+     */
+    public String getConfirmPwd() {
+        return confirmPwd;
+    }
+
+    /**
+     * @param confirmPwd the confirmPwd to set
+     */
+    public void setConfirmPwd(String confirmPwd) {
+        this.confirmPwd = confirmPwd;
     }
 
 }
