@@ -40,5 +40,45 @@ public class ThongKeServiceImpl implements ThongKeService{
     public List<String> getNameByYear(int year) {
       return this.ThongKeRepo.getNameByYear(year);
     }
+
+    @Override
+    public List<Integer> GetNumberQuy1(int year) {
+     return this.ThongKeRepo.GetNumberQuy1(year);
+    }
+
+    @Override
+    public List<String> GetNameQuy1(int year) {
+     return this.ThongKeRepo.GetNameQuy1(year);
+    }
+
+    @Override
+    public List<Integer> GetNumberQuy2(int year) {
+      return this.ThongKeRepo.GetNumberQuy2(year);
+    }
+
+    @Override
+    public List<String> GetNameQuy2(int year) {
+     return this.ThongKeRepo.GetNameQuy2(year);
+    }
+
+    @Override
+    public List<Integer> GetNumberQuy3(int year) {
+     return this.ThongKeRepo.GetNumberQuy3(year);
+    }
+
+    @Override
+    public List<String> GetNameQuy3(int year) {
+       return this.ThongKeRepo.GetNameQuy3(year);
+    }
+
+    @Override
+    public List<Integer> GetNumberQuy4(int year) {
+      return this.ThongKeRepo.GetNumberQuy4(year);
+    }
+
+    @Override
+    public List<String> GetNameQuy4(int year) {
+     return this.ThongKeRepo.GetNameQuy4(year);
+    }
     
 }

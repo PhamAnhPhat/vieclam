@@ -16,4 +16,15 @@ public interface ThongKeService {
     List<Integer> getNumberMajor(Map<String,String> params);
      List<Integer> getNumberByYear(int year);
       List<String> getNameByYear(int year);
+      List<Integer> GetNumberQuy1(int year);
+    List<String> GetNameQuy1(int year);
+
+    List<Integer> GetNumberQuy2(int year);
+    List<String> GetNameQuy2(int year);
+
+    List<Integer> GetNumberQuy3(int year);
+    List<String> GetNameQuy3(int year);
+
+    List<Integer> GetNumberQuy4(int year);
+    List<String> GetNameQuy4(int year);
 }

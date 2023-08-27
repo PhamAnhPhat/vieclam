@@ -24,33 +24,102 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ApiApplicationController {
+
     @Autowired
     private ThongKeService ThongKeSer;
+
     @RequestMapping("/GetThongKeByNumberMajor/")
     @CrossOrigin
-    public ResponseEntity<List<Application>>getApplication(@RequestParam Map<String, String> params){
+    public ResponseEntity<List<Application>> getApplication(@RequestParam Map<String, String> params) {
         List applyJob = this.ThongKeSer.getNumberMajor(params);
         return ResponseEntity.ok(applyJob);
     }
+
     @RequestMapping("/GetThongKeByNameMajor/")
     @CrossOrigin
-    public ResponseEntity<List<Application>>getNameMajor(@RequestParam Map<String, String> params){
+    public ResponseEntity<List<Application>> getNameMajor(@RequestParam Map<String, String> params) {
         List applyJob = this.ThongKeSer.getNameMajor(params);
         return ResponseEntity.ok(applyJob);
     }
-    
-     @RequestMapping("/GetNameByYear/{id}")
+
+    @RequestMapping("/GetNameByYear/{id}")
     @CrossOrigin
-    public ResponseEntity<List<Application>>getNameByYear(@RequestParam Map<String, String> params,
-            @PathVariable(value = "id") int year){
+    public ResponseEntity<List<Application>> getNameByYear(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
         List applyJob = this.ThongKeSer.getNameByYear(year);
         return ResponseEntity.ok(applyJob);
     }
-     @RequestMapping("/GetNumber/{id}")
+
+    @RequestMapping("/GetNumber/{id}")
     @CrossOrigin
-    public ResponseEntity<List<Application>>getNumberByYear(@RequestParam Map<String, String> params,
-              @PathVariable(value = "id") int year){
+    public ResponseEntity<List<Application>> getNumberByYear(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
         List applyJob = this.ThongKeSer.getNumberByYear(year);
         return ResponseEntity.ok(applyJob);
     }
+
+    @RequestMapping("/GetNameQuy1/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNameQuy1(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNameQuy1(year);
+        return ResponseEntity.ok(applyJob);
+    }
+
+    @RequestMapping("/GetNumberQuy1/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNumberQuy1(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNumberQuy1(year);
+        return ResponseEntity.ok(applyJob);
+    }
+ @RequestMapping("/GetNameQuy2/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNameQuy2(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNameQuy2(year);
+        return ResponseEntity.ok(applyJob);
+    }
+
+    @RequestMapping("/GetNumberQuy2/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNumberQuy2(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNumberQuy2(year);
+        return ResponseEntity.ok(applyJob);
+    }
+    
+    
+    @RequestMapping("/GetNameQuy3/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNameQuy3(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNameQuy3(year);
+        return ResponseEntity.ok(applyJob);
+    }
+
+    @RequestMapping("/GetNumberQuy3/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNumberQuy3(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNumberQuy3(year);
+        return ResponseEntity.ok(applyJob);
+    }
+    
+    @RequestMapping("/GetNameQuy4/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNameQuy4(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNameQuy4(year);
+        return ResponseEntity.ok(applyJob);
+    }
+
+    @RequestMapping("/GetNumberQuy4/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetNumberQuy4(@RequestParam Map<String, String> params,
+            @PathVariable(value = "id") int year) {
+        List applyJob = this.ThongKeSer.GetNumberQuy4(year);
+        return ResponseEntity.ok(applyJob);
+    }
+
 }
