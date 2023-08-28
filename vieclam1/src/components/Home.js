@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { Badge, Button, Col, Container, Form, Nav,Card, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { Badge, Button, Col, Container, Form, Nav, Card, Navbar, NavDropdown, Row } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import MySpinner from "../layout/MySpinner";
+import format from "date-fns/format";
 import Apis, { endpoints } from "../configs/Apis";
 const Home = () => {
+  
+    //data
     const [city, setCity] = useState(null);
     const loadCity = async () => {
         let res = await Apis.get(endpoints['city'])
@@ -26,23 +29,30 @@ const Home = () => {
         let res = await Apis.get(endpoints['education'])
         setEdu(res.data);
     }
-    const [job, setJob] = useState(null);
-    const loadJob = async () => {
-        try {
-            let res = await Apis.get(endpoints['job'])
-            setJob(res.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
+    // const [q] = useSearchParams();
+    // // search
+    // const [kw, setKw] = useState("");
+    // const nav = useNavigate();
+    // const search = (evt) => {
+    //     evt.preventDefault();
+    //     nav(`/?kw=${kw}`)
+    // }
+    const [job, setJob] = useState(null);
+    useEffect(() => {
+     const loadJob= async()=>{
+        let res = await Apis.get(endpoints['job'])
+        setJob(res.data);
+     }
+
+        loadJob();
+    }, []); 
 
     useEffect(() => {
         loadCity();
         loadMajor();
         loadTypeJob();
         loadEdu();
-        loadJob();
     }, [])
 
     if (city === null || major === null || edu === null || typeJob === null || job === null)
@@ -85,6 +95,16 @@ const Home = () => {
                                 })}
 
                             </NavDropdown>
+
+                            {/* <Form onSubmit={search} inline>
+                                <Form.Control
+                                    type="text"
+                                    value={kw}
+                                    onChange={e => setKw(e.target.value)}
+                                    placeholder="Nhập từ khóa..." name="kw"
+                                    className=" mr-sm-2"
+                                />
+                            </Form> */}
                         </Nav>
                     </Navbar.Collapse>
 
@@ -93,7 +113,11 @@ const Home = () => {
             </Navbar>
 
 
+
+
             <Container className="mt-5">
+
+                <h1 className="text-center">DANH SÁCH VIỆC LÀM</h1>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -110,19 +134,21 @@ const Home = () => {
                     <tbody>
                         {Object.values(job).map(c => {
                             return <tr>
-                                 <td>
-                                 <Card style={{ width: '10rem' }}>
-                                 <Card.Img variant="top" src={c.avatarJob} fluid rounded  />
-                                 </Card>
-                                 </td>
-                               
+                                <td>
+                                    <Card style={{ width: '10rem' }}>
+                                        <Card.Img variant="top" src={c.avatarJob} fluid rounded />
+                                    </Card>
+                                </td>
+
                                 <td>{c.nameJob}</td>
                                 <td>{c.salary} VNĐ</td>
                                 <td>{c.soLuongTuyenDung}</td>
                                 <td>{c.employerID.nganhNghe}</td>
                                 <td>{c.employerID.nameEmployer}</td>
-                                <td>{c.createdDate}</td>
-                               
+                                <td>
+                                    {format(new Date(c.createdDate), 'dd-MM-yyyy')}
+                                </td>
+
 
                                 <td>
                                     <Button variant="danger">Xoá</Button>

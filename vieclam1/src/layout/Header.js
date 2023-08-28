@@ -22,6 +22,7 @@ const Header = () => {
                         <Link className="nav-link" to="/"> Đăng nhập</Link>
                         <Link className="nav-link" to="/"> Đăng ký</Link>
                         <Link className="nav-link" to="/"> Đăng xuất</Link>
+                        
                     </Nav>
                 </Navbar.Collapse>
                 

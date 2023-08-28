@@ -8,7 +8,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 /**
  *
- * @author ACER
+ * @author Admin
  */
 
 public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherServletInitializer{
