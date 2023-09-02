@@ -41,7 +41,7 @@ public class ApiJobController {
     @RequestMapping("/createJob/")
     @CrossOrigin
     public ResponseEntity<List<Job>> list(@RequestParam Map<String, String> params) {
-        return new ResponseEntity<>(this.JobSer.getJob(null), HttpStatus.OK);
+        return new ResponseEntity<>(this.JobSer.getJob(params), HttpStatus.OK);
     }
 
     @PostMapping(path = "/Job", consumes = {

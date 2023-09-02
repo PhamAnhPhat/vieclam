@@ -30,23 +30,28 @@ const Home = () => {
         setEdu(res.data);
     }
 
-    // const [q] = useSearchParams();
-    // // search
-    // const [kw, setKw] = useState("");
-    // const nav = useNavigate();
-    // const search = (evt) => {
-    //     evt.preventDefault();
-    //     nav(`/?kw=${kw}`)
-    // }
+    const [q] = useSearchParams();
+    // search
+    const [kw, setKw] = useState("");
+    const nav = useNavigate();
+    const search = (evt) => {
+        evt.preventDefault();
+        nav(`/?kw=${kw}`)
+    }
     const [job, setJob] = useState(null);
     useEffect(() => {
      const loadJob= async()=>{
-        let res = await Apis.get(endpoints['job'])
+        let e = endpoints['job'];
+        let kw = q.get("kw");
+        if (kw !== null)
+            e = `${e}?kw=${kw}`;
+            let res = await Apis.get(e);
+
         setJob(res.data);
      }
 
         loadJob();
-    }, []); 
+    }, [q]); 
 
     useEffect(() => {
         loadCity();
@@ -96,7 +101,7 @@ const Home = () => {
 
                             </NavDropdown>
 
-                            {/* <Form onSubmit={search} inline>
+                            <Form onSubmit={search} inline>
                                 <Form.Control
                                     type="text"
                                     value={kw}
@@ -104,7 +109,7 @@ const Home = () => {
                                     placeholder="Nhập từ khóa..." name="kw"
                                     className=" mr-sm-2"
                                 />
-                            </Form> */}
+                            </Form>
                         </Nav>
                     </Navbar.Collapse>
 
@@ -118,6 +123,7 @@ const Home = () => {
             <Container className="mt-5">
 
                 <h1 className="text-center">DANH SÁCH VIỆC LÀM</h1>
+         
                 <Table striped bordered hover>
                     <thead>
                         <tr>

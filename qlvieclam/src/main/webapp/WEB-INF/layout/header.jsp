@@ -54,11 +54,20 @@
                             <li class="nav-item me-2">
                                 <a class="nav-link" href="<c:url value="/" />">${pageContext.request.userPrincipal.name}</a>
                             </li> 
+                          
                         </div>
 
                         <li class="nav-item me-auto">
                             <a class="nav-link" href="<c:url value="/logout" />">Đăng xuất</a>
                         </li>
+                          <li style="margin:auto ; width: 500px">
+                                <c:url value="/" var="action" />
+                                <form class="d-flex" action="${action}">
+                                    <input class="form-control me-auto" type="text" name="kw" placeholder="Nhập tên công việc cần tìm .....">
+                                    <button class="btn btn-primary" type="submit">Tìm</button>
+                                </form>
+
+                            </li>
                     </c:when>
                     <c:otherwise>
                         <div class="navbar-nav me-auto">
