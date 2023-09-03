@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { Badge, Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Apis, { endpoints } from "../configs/Apis";
+import { MyUserContext } from "../App";
 const Header = () => {
+    const [user,dispatch] = useContext(MyUserContext);
+   
+    const logout = () => {
+        dispatch({
+            "type": "logout"
+        })
+    }
+
     return (<>
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>
@@ -13,23 +22,24 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Link className="nav-link" to="/"> Trang chủ</Link>
                         <Link className="nav-link" to="/"> Hồ sơ</Link>
-                        <Link className="nav-link" to="/"> Quản trị</Link>
-                        <Link className="nav-link" to="/"> Thống kê</Link>
                         <Link className="nav-link" to="/"> Đăng ký nhà tuyển dụng</Link>
                         <Link className="nav-link" to="/"> Tìm kiếm ứng viên</Link>
                         <Link className="nav-link" to="/"> Đánh giá</Link>
 
-                        <Link className="nav-link" to="/"> Đăng nhập</Link>
+                        {user === null ? <Link className="nav-link" to="/login"> Đăng nhập</Link>: <>
+                        <Link className="nav-link" to="/"> {user.username}</Link>
+                        <Button variant="secondary" onClick={logout}> Đăng xuất</Button>
+                        </>}
                         <Link className="nav-link" to="/"> Đăng ký</Link>
-                        <Link className="nav-link" to="/"> Đăng xuất</Link>
-                        
+
+                       
                     </Nav>
                 </Navbar.Collapse>
-                
+
             </Container>
-            
+
         </Navbar>
-        
+
     </>)
 }
 export default Header; 
