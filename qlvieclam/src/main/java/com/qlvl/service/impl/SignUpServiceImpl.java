@@ -31,15 +31,15 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public boolean addUser(User u) {
-//        if (!u.getFile().isEmpty()) {
-//            try {
-//                Map ress = this.cloudinary.uploader().upload(u.getFile().getBytes(),
-//                        ObjectUtils.asMap("resource_type", "auto"));
-//                u.setAvatar(ress.get("secure_url").toString());
-//            } catch (IOException ex) {
-//                Logger.getLogger(SignUpServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+        if (!u.getFile().isEmpty()) {
+            try {
+                Map ress = this.cloudinary.uploader().upload(u.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                u.setAvatar(ress.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(SignUpServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return this.Repo.addUser(u);
     }
 

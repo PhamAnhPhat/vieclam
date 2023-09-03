@@ -44,17 +44,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private Environment env;
 
-    @Bean
+   @Bean
     public Cloudinary cloudinary() {
         Cloudinary cloudinary
                 = new Cloudinary(ObjectUtils.asMap(
-                        "cloud_name", this.env.getProperty("cloudinary.cloud_name"),
-                        "api_key", this.env.getProperty("cloudinary.api_id"),
-                        "api_secret", this.env.getProperty("cloudinary.api_secret"),
+                        "cloud_name","dajbt7dew",
+                        "api_key", "994941553523981",
+                        "api_secret", "tupyLCTsEYrDeDmpXp0WFP8ST34",
                         "secure", true));
         return cloudinary;
     }
-    
         @Bean
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver

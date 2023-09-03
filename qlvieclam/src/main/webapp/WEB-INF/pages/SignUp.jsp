@@ -10,7 +10,7 @@
 
 <div class="container">
     <c:url value="/SignUp" var="action" />
-    <form:form action="${action}"  method="post" modelAttribute="signup">
+    <form:form action="${action}"  method="post" modelAttribute="signup" enctype="multipart/form-data">
         <form:errors path="*" element="div"  cssClass="alert alert-danger" />
         <form:hidden path="id" />
         <form:hidden path="avatar"/>
@@ -65,6 +65,11 @@
                 ${message}
             </div>
         </c:if>
+        <div class="mb-3">
+        <label for="file" class="form-label">Ảnh minh hoạ</label>
+        <form:input type="file" path="file" class="form-control" 
+                    id="file" />
+    </div>
         <button type="submit"  class="btn btn-primary"> Đăng ký</button>
     </form:form>
 

@@ -7,7 +7,7 @@ import MySpinner from "../layout/MySpinner";
 import format from "date-fns/format";
 import Apis, { endpoints } from "../configs/Apis";
 const Home = () => {
-  
+
     //data
     const [city, setCity] = useState(null);
     const loadCity = async () => {
@@ -38,20 +38,38 @@ const Home = () => {
         evt.preventDefault();
         nav(`/?kw=${kw}`)
     }
+
     const [job, setJob] = useState(null);
     useEffect(() => {
-     const loadJob= async()=>{
-        let e = endpoints['job'];
-        let kw = q.get("kw");
-        if (kw !== null)
-            e = `${e}?kw=${kw}`;
-            let res = await Apis.get(e);
+        const loadJob = async () => {
+            let e = endpoints['job'];
+            let cityId = q.get("cityId");
+            let majorId = q.get("majorId");
+            let typeId = q.get("typeJobId");
+            let edusId = q.get("educationId");
+            if (cityId !== null)
+                e = `${e}?cityId=${cityId}`;
 
-        setJob(res.data);
-     }
+            else if (majorId !== null) {
+                e = `${e}?majorId=${majorId}`;
+            }
+            else if (typeId!==null){
+                e = `${e}?typeJobId=${typeId}`;
+            }
+            else if (edusId!==null){
+                e = `${e}?educationId=${edusId}`;
+            }
+            else if (kw !== null) {
+                let kw = q.get("kw");
+                if (kw !== null)
+                    e = `${e}?kw=${kw}`;
+            }
+            let res = await Apis.get(e);
+            setJob(res.data);
+        }
 
         loadJob();
-    }, [q]); 
+    }, [q]);
 
     useEffect(() => {
         loadCity();
@@ -88,14 +106,14 @@ const Home = () => {
                             </NavDropdown>
                             <NavDropdown title="Hình thức" id="basic-nav-dropdown">
                                 {typeJob.map(m => {
-                                    let mj = `/?typeJob=${m.id}`;
+                                    let mj = `/?typeJobId=${m.id}`;
                                     return <Link className="dropdown-item" to={mj} key={m.id}>{m.nameType}</Link>
                                 })}
 
                             </NavDropdown>
                             <NavDropdown title="Học vấn" id="basic-nav-dropdown">
                                 {edu.map(m => {
-                                    let mj = `/?edu=${m.id}`;
+                                    let mj = `/?educationId=${m.id}`;
                                     return <Link className="dropdown-item" to={mj} key={m.id}>{m.typeEducation}</Link>
                                 })}
 
@@ -123,7 +141,7 @@ const Home = () => {
             <Container className="mt-5">
 
                 <h1 className="text-center">DANH SÁCH VIỆC LÀM</h1>
-         
+
                 <Table striped bordered hover>
                     <thead>
                         <tr>

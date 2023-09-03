@@ -4,6 +4,7 @@
  */
 package com.qlvl.controllers;
 
+import com.qlvl.service.ApplicationService;
 import com.qlvl.service.CityService;
 import com.qlvl.service.DistrictService;
 import com.qlvl.service.EducationService;
@@ -35,8 +36,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     @Autowired
-    private LocalSessionFactoryBean factory;
-    @Autowired
     private JobService jobService;
     @Autowired
     private DistrictService DistrictService;
@@ -50,13 +49,16 @@ public class IndexController {
 
     @Autowired
     private EducationService EduService;
-
+    @Autowired
+    private ApplicationService AppService;
+    @Autowired
+    private LocalSessionFactoryBean factory;
     @Autowired
     private Environment env;
 
     @RequestMapping("/")
     public String Index(Model model, @RequestParam Map<String, String> params) {
-
+        model.addAttribute("JOB", this.jobService.getJob(params));
         model.addAttribute("CITY", this.CityService.getCity());
 
         model.addAttribute("DISTRICT", this.DistrictService.getDistrict());
@@ -68,8 +70,7 @@ public class IndexController {
         model.addAttribute("jobs", this.jobService.getJob(null));
 
         model.addAttribute("TYPEJOB", this.TypeService.getTypeJob());
-        model.addAttribute("JOB", this.jobService.getJob(params));
-        
+
         int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));
         long count = this.jobService.countJob();
         model.addAttribute("COUNT", Math.ceil(count * 1.0 / pageSize));
