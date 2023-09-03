@@ -38,11 +38,12 @@ public class ApiJobController {
         this.JobSer.deleteJob(id);
     }
 
-    @RequestMapping("/createJob/")
+    @RequestMapping("/GetJob/")
     @CrossOrigin
     public ResponseEntity<List<Job>> list(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.JobSer.getJob(params), HttpStatus.OK);
     }
+    @RequestMapping(path = "")
 
     @PostMapping(path = "/Job", consumes = {
         MediaType.MULTIPART_FORM_DATA_VALUE,

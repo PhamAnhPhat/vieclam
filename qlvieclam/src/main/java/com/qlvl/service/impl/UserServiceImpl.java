@@ -25,8 +25,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -34,12 +36,16 @@ import org.springframework.stereotype.Service;
  */
 @Service("userDetailsService")
 public class UserServiceImpl implements UserService {
-
+    
+        @Autowired
+    private BCryptPasswordEncoder passEncoder;
+        
     @Autowired
     private UserRepository UserRepo;
 
-//    @Autowired
-//    private Cloudinary cloudinary;
+    @Autowired
+    private Cloudinary cloudinary;
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u = this.UserRepo.getUserByUserName(username);
@@ -82,6 +88,37 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsernameCriteria(Map<String, String> params) {
      return this.UserRepo.getUsernameCriteria(params);
+    }
+
+    @Override
+    public boolean authUser(String username, String password) {
+         return this.UserRepo.authUser(username, password);
+    }
+        @Override
+    public User getUserByUn(String username) {
+        return this.UserRepo.getUserByUserName(username);
+    }
+
+    @Override
+    public User addUserJwt(Map<String, String> params, MultipartFile avatar) {
+        User u = new User();
+        u.setUsername(params.get("username"));
+        u.setHo(params.get("Ho"));
+        u.setTen(params.get("ten"));
+        u.setPassword(this.passEncoder.encode(params.get("password")));
+        u.setUserRole("ROLE_USER");
+                if (!avatar.isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(avatar.getBytes(), 
+                        ObjectUtils.asMap("resource_type", "auto"));
+                u.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        this.UserRepo.addUser(u);
+        return u;
     }
 
 }

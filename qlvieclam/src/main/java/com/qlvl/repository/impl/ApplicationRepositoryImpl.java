@@ -5,7 +5,6 @@
 package com.qlvl.repository.impl;
 
 import com.qlvl.pojo.Application;
-import com.qlvl.pojo.Employer;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.ApplicationRepository;
 import com.qlvl.repository.UserRepository;
@@ -69,6 +68,5 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
        Session s = this.factory.getObject().getCurrentSession();
        return s.get(Application.class, id);
     }
-
 
 }

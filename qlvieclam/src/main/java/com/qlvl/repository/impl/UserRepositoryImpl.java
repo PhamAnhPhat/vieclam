@@ -138,4 +138,11 @@ public class UserRepositoryImpl implements UserRepository {
           return query.getResultList();
     }
 
+    @Override
+    public boolean authUser(String username, String password) {
+        User  u = this.getUserByUserName(username);
+        
+        return this.passEncoder.matches(password, u.getPassword());
+    }    
+
 }

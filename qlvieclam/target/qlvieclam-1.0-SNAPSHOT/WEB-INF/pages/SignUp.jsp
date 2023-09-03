@@ -60,20 +60,18 @@
                 </c:forEach>
             </form:select>
         </div>
+            <div class="mb-3">
+        <label for="file" class="form-label">Ảnh minh hoạ</label>
+        <form:input type="file" path="file" class="form-control" 
+                    id="file" />
+    </div>
         <c:if test="${not empty message}">
             <div class="alert alert-danger">
                 ${message}
             </div>
         </c:if>
-        <div class="mb-3">
-        <label for="file" class="form-label">Ảnh minh hoạ</label>
-        <form:input type="file" path="file" class="form-control" 
-                    id="file" />
-    </div>
         <button type="submit"  class="btn btn-primary"> Đăng ký</button>
     </form:form>
 
 </div>
-<script>
-  
-</script>
+

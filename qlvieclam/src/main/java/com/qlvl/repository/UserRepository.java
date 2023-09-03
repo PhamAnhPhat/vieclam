@@ -19,4 +19,5 @@ public interface UserRepository {
     User findUserByUserName(String username);
     List<User> getUsername(Map<String,String> params);
     List<User> getUsernameCriteria(Map<String,String> params);
+    boolean authUser(String username, String password);
    }

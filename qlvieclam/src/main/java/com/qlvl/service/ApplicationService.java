@@ -13,5 +13,4 @@ import com.qlvl.pojo.Application;
 public interface ApplicationService {
     Application getAppById(int id);
     boolean addApp(Application app);
-
 }

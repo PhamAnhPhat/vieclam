@@ -4,9 +4,11 @@ com\qlvl\pojo\Job_.class
 com\qlvl\repository\impl\EducationRepositoryImpl.class
 com\qlvl\repository\EmployerRepository.class
 com\qlvl\pojo\Education_.class
+com\qlvl\filters\CustomAccessDeniedHandler.class
 com\qlvl\repository\TypeJobRepository.class
 com\qlvl\controllers\InfoUserController.class
 com\qlvl\pojo\Education.class
+com\qlvl\filters\RestAuthenticationEntryPoint.class
 com\qlvl\service\ApplicationService.class
 com\qlvl\formatters\EducationFormatter.class
 com\qlvl\repository\UserRepository.class
@@ -51,6 +53,7 @@ com\qlvl\service\UserService.class
 com\qlvl\repository\MajorRepository.class
 com\qlvl\service\impl\SignUpServiceImpl.class
 com\qlvl\repository\ReviewRepository.class
+com\qlvl\configs\JwtSecurityConfig.class
 com\qlvl\service\impl\ReviewServiceImpl.class
 com\qlvl\repository\EducationRepository.class
 com\qlvl\controllers\CheckEmployerController.class
@@ -75,11 +78,14 @@ com\qlvl\configs\HibernateConfig.class
 com\qlvl\controllers\EmployerController.class
 com\qlvl\pojo\District_.class
 com\qlvl\repository\CityRepository.class
+com\qlvl\components\JwtService.class
 com\qlvl\service\impl\DistrictServiceImpl.class
+com\qlvl\filters\JwtAuthenticationTokenFilter.class
 com\qlvl\service\ThongKeService.class
 com\qlvl\controllers\ApiEducationController.class
 com\qlvl\controllers\JobDetailController.class
 com\qlvl\repository\impl\TypeJobRepositoryImpl.class
+com\qlvl\controllers\ApiDistrictController.class
 com\qlvl\service\impl\EducationServiceImpl.class
 com\qlvl\controllers\ApiTypeJobController.class
 com\qlvl\pojo\City.class
@@ -94,6 +100,7 @@ com\qlvl\repository\impl\ApplicationRepositoryImpl.class
 com\qlvl\controllers\UserController.class
 com\qlvl\repository\impl\UserRepositoryImpl.class
 com\qlvl\controllers\ApiJobController.class
+com\qlvl\controllers\ApiUserController.class
 com\qlvl\formatters\CityFormatter.class
 com\qlvl\repository\impl\MajorRepositoryImpl.class
 com\qlvl\repository\impl\SigUpRepositoryImpl.class
