@@ -53,10 +53,10 @@ const Home = () => {
             else if (majorId !== null) {
                 e = `${e}?majorId=${majorId}`;
             }
-            else if (typeId!==null){
+            else if (typeId !== null) {
                 e = `${e}?typeJobId=${typeId}`;
             }
-            else if (edusId!==null){
+            else if (edusId !== null) {
                 e = `${e}?educationId=${edusId}`;
             }
             else if (kw !== null) {
@@ -106,19 +106,18 @@ const Home = () => {
                             </NavDropdown>
                             <NavDropdown title="Hình thức" id="basic-nav-dropdown">
                                 {typeJob.map(m => {
-                                    let mj = `/?typeJobId=${m.id}`;
+                                    let mj = `/?typeJob=${m.id}`;
                                     return <Link className="dropdown-item" to={mj} key={m.id}>{m.nameType}</Link>
                                 })}
 
                             </NavDropdown>
                             <NavDropdown title="Học vấn" id="basic-nav-dropdown">
                                 {edu.map(m => {
-                                    let mj = `/?educationId=${m.id}`;
+                                    let mj = `/?edu=${m.id}`;
                                     return <Link className="dropdown-item" to={mj} key={m.id}>{m.typeEducation}</Link>
                                 })}
 
                             </NavDropdown>
-
                             <Form onSubmit={search} inline>
                                 <Form.Control
                                     type="text"
@@ -157,6 +156,7 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {Object.values(job).map(c => {
+                            let url = `/job/${c.id}`;
                             return <tr>
                                 <td>
                                     <Card style={{ width: '10rem' }}>
@@ -175,7 +175,7 @@ const Home = () => {
 
 
                                 <td>
-                                    <Button variant="danger">Xoá</Button>
+                                    <Button variant="danger" href={url}>Ứng tuyển</Button>
                                 </td>
                             </tr>
                         })}

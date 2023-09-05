@@ -4,7 +4,9 @@
  */
 package com.qlvl.controllers;
 
+import com.qlvl.pojo.Application;
 import com.qlvl.pojo.Job;
+import com.qlvl.service.ApplicationService;
 import com.qlvl.service.JobService;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +20,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -31,6 +35,8 @@ public class ApiJobController {
 
     @Autowired
     private JobService JobSer;
+    @Autowired
+    private ApplicationService AppRepo;
 
     @DeleteMapping("/createJob/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -43,8 +49,21 @@ public class ApiJobController {
     public ResponseEntity<List<Job>> list(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.JobSer.getJob(params), HttpStatus.OK);
     }
-    @RequestMapping(path = "")
 
+    @RequestMapping("/GetJob/{id}")
+    @CrossOrigin
+    public ResponseEntity<Job> details(@PathVariable(value = "id") int id) {
+        return new ResponseEntity<>(this.JobSer.getJobById(id), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/getApplication/")
+    @CrossOrigin
+    public ResponseEntity<Application> addAppJwt(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatar) {
+        Application app = this.AppRepo.addAppJwt(params, avatar);
+        return new ResponseEntity<>(app, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(path = "")
     @PostMapping(path = "/Job", consumes = {
         MediaType.MULTIPART_FORM_DATA_VALUE,
         MediaType.APPLICATION_JSON_VALUE

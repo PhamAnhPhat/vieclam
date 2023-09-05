@@ -7,6 +7,8 @@ import Register from "./components/Register";
 import { createContext, useReducer } from "react";
 import MyUserReducer from "./reducers/MyUserReducer";
 import cookie from "react-cookies";
+import Application from "./components/Application";
+import JobDetail from "./components/JobDetail";
 
 export const MyUserContext = createContext();
 
@@ -16,12 +18,14 @@ const App = () => {
 
   return (
     < MyUserContext.Provider value={[user,dispatch]}>
-      <BrowserRouter>
+       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/application" element={<Application/>} />
+          <Route path="/job/:id" element={<JobDetail/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
