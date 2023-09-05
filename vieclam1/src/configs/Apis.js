@@ -1,6 +1,5 @@
 import axios from "axios";
 import cookie from "react-cookies";
-
 export const endpoints = {
     "city":"/QLViecLam/api/GetCity/",
     "job":"/QLViecLam/api/GetJob/",
@@ -10,9 +9,9 @@ export const endpoints = {
     "district":"/QLViecLam/api/GetDistrict/",
     "login":"/QLViecLam/api/login/",
     "current-user":"/QLViecLam/api/current-user/",
-    "register":"/QLViecLam/api/users/"
+    "register":"/QLViecLam/api/users/",
+    "role":"/QLViecLam/api/GetRole/"
 }
-
 export const authApi = () => {
     return axios.create({
         baseURL:"http://localhost:8080",
@@ -21,7 +20,6 @@ export const authApi = () => {
         }
     })
 }
-
 export default axios.create({
     baseURL:"http://localhost:8080"
 });

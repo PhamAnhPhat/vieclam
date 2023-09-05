@@ -6,6 +6,7 @@ package com.qlvl.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.qlvl.pojo.Role;
 
 import com.qlvl.pojo.User;
 import com.qlvl.repository.UserRepository;
@@ -102,10 +103,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUserJwt(Map<String, String> params, MultipartFile avatar) {
         User u = new User();
+        int x= Integer.parseInt( params.get("roleID"));
+        Role id = new Role(x);
+       
         u.setUsername(params.get("username"));
-        u.setHo(params.get("Ho"));
+        u.setHo(params.get("ho"));
         u.setTen(params.get("ten"));
         u.setPassword(this.passEncoder.encode(params.get("password")));
+        u.setNganhNghe(params.get("NganhNghe"));
+        u.setRoleID(id);
         u.setUserRole("ROLE_USER");
                 if (!avatar.isEmpty()) {
             try {

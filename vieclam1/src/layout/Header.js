@@ -6,7 +6,14 @@ import Apis, { endpoints } from "../configs/Apis";
 import { MyUserContext } from "../App";
 const Header = () => {
     const [user,dispatch] = useContext(MyUserContext);
-   
+    const [kw, setKw] = useState("");
+    const nav = useNavigate();
+
+    const search = (evt) => {
+        evt.preventDefault();
+        nav(`/?kw=${kw}`)
+    }
+
     const logout = () => {
         dispatch({
             "type": "logout"
@@ -22,17 +29,22 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Link className="nav-link" to="/"> Trang chủ</Link>
                         <Link className="nav-link" to="/"> Hồ sơ</Link>
+                        <Link className="nav-link" to="/"> Quản trị</Link>
+                        <Link className="nav-link" to="/"> Thống kê</Link>
                         <Link className="nav-link" to="/"> Đăng ký nhà tuyển dụng</Link>
                         <Link className="nav-link" to="/"> Tìm kiếm ứng viên</Link>
                         <Link className="nav-link" to="/"> Đánh giá</Link>
 
-                        {user === null ? <Link className="nav-link" to="/login"> Đăng nhập</Link>: <>
-                        <Link className="nav-link" to="/"> {user.username}</Link>
+                        {user === null ? <>
+                        <Link className="nav-link" to="/login"> Đăng nhập</Link>
+                        <Link className="nav-link" to="/register"> Đăng ký</Link>
+                        </>: <>
+                        <Link className="nav-link" to="/">{user.username}</Link>
                         <Button variant="secondary" onClick={logout}> Đăng xuất</Button>
                         </>}
-                        <Link className="nav-link" to="/"> Đăng ký</Link>
 
                        
+
                     </Nav>
                 </Navbar.Collapse>
 
