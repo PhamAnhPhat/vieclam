@@ -61,14 +61,21 @@ public class ApplicationController {
                 || a.getEmail().isEmpty() || a.getNamKinhNghiem() == null || a.getTuoi() == null) {
             redirect.addFlashAttribute("message", "Vui lòng không để trống thông tin khi ứng tuyển!!");
             return "redirect:/";
-        }
+        } else if (AppSer.CheckUserAndJobApplication(a) == true){
+             redirect.addFlashAttribute("message", "Nộp đơn thành công!!");
+            AppliSer.addApp(a);
+             return "redirect:/";
+        }else if (AppSer.CheckUserAndJobApplication(a) == false) {
+            redirect.addFlashAttribute("message", "Đã nộp đơn công việc này rồi!!");
+            return "redirect:/";
+        } 
 
-        if (!rs.hasErrors()) {
-            if (AppliSer.addApp(a) == true) {
-                return "redirect:/";
-            }
-
-        }
+//        if (!rs.hasErrors()) {
+//            if (AppliSer.addApp(a) == true) {
+//                return "redirect:/";
+//            }
+//
+//        }
 
         return "Application";
     }

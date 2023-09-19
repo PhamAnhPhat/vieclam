@@ -32,12 +32,12 @@ const JobDetail = () => {
                 </Card>
             </Col>
             <Col md={5} xs={6}>
-                <h2 className="text-danger">Tên công ty :     {Job.nameJob}</h2>
+                <h2 className="text-danger">Tên công việc :     {Job.nameJob}</h2>
                 <h3> Số lượng tuyển dụng :  {Job.soLuongTuyenDung} Người</h3>
                 <h3> Kinh nghiệm tối thiểu :  {Job.kinhNghiem} năm</h3>
                 <h3> Tuổi tối thiểu :  {Job.age} tuổi</h3>
                 <h3> Mức lương :  {Job.salary} VNĐ</h3>
-                <h3> Ngành nghề :  {Job.age} </h3>
+                <h3> Ngành nghề :  {Job.majorID.nameMajor} </h3>
                 <h3> Khu vực làm việc :  Quận {Job.districID.nameDistrict} </h3>
             </Col>
         </Row>

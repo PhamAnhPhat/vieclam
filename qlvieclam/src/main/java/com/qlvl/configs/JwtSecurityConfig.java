@@ -30,11 +30,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = {
     "com.qlvl.controllers",
     "com.qlvl.repository",
-    "com.qlvl.service", 
+    "com.qlvl.service",
     "com.qlvl.components"})
 @Order(1)
-public class JwtSecurityConfig extends WebSecurityConfigurerAdapter{
-     @Bean
+public class JwtSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
     public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() throws Exception {
         JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter = new JwtAuthenticationTokenFilter();
         jwtAuthenticationTokenFilter.setAuthenticationManager(authenticationManager());
@@ -68,17 +69,18 @@ public class JwtSecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests().antMatchers("/api/GetEducation/").permitAll();
         http.authorizeRequests().antMatchers("/api/GetDistrict/").permitAll();
         http.authorizeRequests().antMatchers("/api/users/").permitAll();
-         http.authorizeRequests().antMatchers("/api/getApplication/").permitAll();
+        http.authorizeRequests().antMatchers("/api/getApplication/").permitAll();
+        http.authorizeRequests().antMatchers("/api/GetRole/").permitAll();
         http.authorizeRequests().antMatchers("/api/GetThongKeByNumberMajor/").permitAll();
         http.authorizeRequests().antMatchers("/api/GetNameByYear/{id}").permitAll();
-           http.authorizeRequests().antMatchers("/api/**").permitAll();
-          
+        http.authorizeRequests().antMatchers("/api/**").permitAll();
+
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**/comments/").permitAll();
         http.antMatcher("/api/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers(HttpMethod.POST, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers(HttpMethod.DELETE, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')").and()
+                .antMatchers(HttpMethod.GET, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')or hasRole('ROLE_EMP')")
+                .antMatchers(HttpMethod.POST, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')  or hasRole('ROLE_EMP')")
+                .antMatchers(HttpMethod.DELETE, "/api/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')or hasRole('ROLE_EMP')").and()
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
     }

@@ -98,7 +98,7 @@
                     <td>${j.nameJob}</td>
                     <td>${j.salary}</td>
                     <td>${j.soLuongTuyenDung}</td>
-                    <td>${j.employerID.nganhNghe}</td>
+                    <td>${j.majorID.nameMajor}</td>
                     <td>${j.employerID.nameEmployer}</td>
                     <td>${j.createdDate}</td>
                     <td>

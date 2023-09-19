@@ -66,7 +66,7 @@ public class JobRepositoryImpl implements JobRepository {
             String kw = params.get("kw");
             if (kw != null && !kw.isEmpty()) {
                 predicates.add(b.like(root.get("nameJob"), String.format("%%%s%%", kw)));
-               
+
             }
 
             String cityId = params.get("cityId");
@@ -120,11 +120,11 @@ public class JobRepositoryImpl implements JobRepository {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
-        
+
         j.setEmployerID(e);
         Date date = new Date();
         j.setCreatedDate(date);
-        
+
         try {
 
             if (j.getId() == null && e.getIsApproved()) {
@@ -156,6 +156,25 @@ public class JobRepositoryImpl implements JobRepository {
         } catch (HibernateException ex) {
             ex.printStackTrace();
             return false;
+        }
+
+    }
+
+    @Override
+    public List<Job> getJobByEmpl(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null) {
+              Query q = s.createQuery("FROM Job");
+            return q.getResultList();
+            
+        } else {
+             User u = this.UserRepo.getUserByUserName(authentication.getName());
+            Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
+            id = e.getId();
+            Query q = s.createQuery("FROM Job WHERE employerID.id=:eid");
+            q.setParameter("eid", id);
+            return q.getResultList();
         }
 
     }

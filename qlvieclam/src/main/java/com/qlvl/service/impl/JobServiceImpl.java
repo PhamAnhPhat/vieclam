@@ -63,5 +63,10 @@ public class JobServiceImpl implements JobService{
     public boolean deleteJob(int id) {
      return this.JobRepo.deleteJob(id);
     }
+
+    @Override
+    public List<Job> getJobByEmpl(int id) {
+     return this.JobRepo.getJobByEmpl(id);
+    }
     
 }

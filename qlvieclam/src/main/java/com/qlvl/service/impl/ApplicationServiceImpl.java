@@ -87,4 +87,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         return app;  
     }
 
+    @Override
+    public boolean CheckUserAndJobApplication(Application app) {
+    return this.AppRepo.CheckUserAndJobApplication(app);
+    }
+
 }

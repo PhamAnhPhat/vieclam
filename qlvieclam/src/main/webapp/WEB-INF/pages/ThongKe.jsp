@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="container">
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+<se:authorize access="hasRole('ROLE_ADMIN')">
+    <div class="container">
     <h2 style="margin-left: 500px;">THỐNG KÊ</h2>
     <form>
 
@@ -33,4 +35,6 @@
 <script src="<c:url value="/js/myChart.js"/>">
 
 </script>
+
+</se:authorize>
 

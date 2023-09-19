@@ -1,9 +1,3 @@
-$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO
-application
-employer
-job
-user
-
 CREATE SCHEMA `qlvieclam` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
 use qlvieclam;
 create table Role (
@@ -35,6 +29,10 @@ id int auto_increment primary key,
 username nvarchar(50),
 ho varchar(50),
 ten varchar(50),
+NamKinhNghiem int,
+Tuoi int,
+email nvarchar(50),
+sdt nvarchar(50),
 password nvarchar(300),
 avatar varchar(200),
 NganhNghe varchar(50),
@@ -129,10 +127,3 @@ insert into TypeJob(nameType) value("Trực tiếp- Full time");
 insert into TypeJob(nameType) value("Trực tiếp- Part time");
 insert into TypeJob(nameType) value("Từ xa- Full time");
 insert into TypeJob(nameType) value("Từ xa- Part time");
-
-insert into User(username,password,avatar,roleID,user_role) value ("a","a","a",3,"ROLE_USER");
-insert into User(username,password,avatar,roleID,user_role) value ("admin","a","a",2,"ROLE_ADMIN");
-insert into User(username,password,avatar,roleID,user_role) value ("user","a","a",1,"ROLE_USER");
-
-insert into Employer(nameEmployer,nameCompany,AddressComapny,soDienThoai,avatar,userID
-,isApproved) value ("a","a","aaa11","0933","dsad",1,1);

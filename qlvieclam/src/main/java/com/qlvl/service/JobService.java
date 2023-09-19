@@ -18,4 +18,5 @@ public interface JobService {
     boolean addJob(Job j);
     Job getJobById(int id);
     boolean deleteJob(int id);
+    List<Job> getJobByEmpl(int id);
 }

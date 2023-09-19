@@ -21,7 +21,7 @@
 
     </se:authorize>
 
-    <form:form action="${action}"  method="post" modelAttribute="info">
+    <form:form action="${action}"  method="post" modelAttribute="info"  enctype="multipart/form-data">
 
         <c:if test="${info.id ==null}">
             <div>Vui lòng ấn nút để xem thông </div>
@@ -64,6 +64,11 @@
 
                     </c:forEach>
                 </form:select>
+            </div>
+             <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Avatar</label>
+                <form:input type="file" path="file" class="form-control" 
+                            id="file" placeholder="Tên đăng nhập"/>
             </div>
             <button type="submit" class="btn btn-primary"> Lưu thông tin </button>
         </c:if>

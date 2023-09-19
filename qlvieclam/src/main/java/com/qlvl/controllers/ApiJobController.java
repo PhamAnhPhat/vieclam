@@ -56,6 +56,12 @@ public class ApiJobController {
         return new ResponseEntity<>(this.JobSer.getJobById(id), HttpStatus.OK);
     }
 
+//    @RequestMapping("/GetJobEmployer/{id}")
+//    @CrossOrigin
+//    public ResponseEntity<List<Job>> detailJobs(@PathVariable(value = "id") int id) {
+//        return new ResponseEntity<>(this.JobSer.getJobByEmpl(null), HttpStatus.OK);
+//    }
+
     @PostMapping(path = "/getApplication/")
     @CrossOrigin
     public ResponseEntity<Application> addAppJwt(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatar) {
