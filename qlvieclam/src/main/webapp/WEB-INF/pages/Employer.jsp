@@ -59,7 +59,7 @@
         </c:if>
         <button type="submit" class="btn btn-primary">Đăng ký</button>
     </form:form>
-<div class="container" style="margin-top:30px;width:1100px;" >
+<div class="container" style="margin-top:30px;width:1300px;" >
     <table class="table table-hover">
         <thead>
             <tr>
@@ -71,9 +71,10 @@
                 <th>Nhà tuyển dụng</th>
                 <td>Ngày đăng</td>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             <c:forEach items="${jobEmploy}" var="j">
                 <tr>
                     <td><img src="${j.avatarJob}" width="120" height="90"/></td>
@@ -86,6 +87,10 @@
                     <td>
                         <c:url value="/api/createJob/${j.id}" var="deleteApi" />
                         <a href="<c:url value="/createJob/${j.id}"/>" class="btn btn-success">Chỉnh sửa công việc</a>
+                        
+                    </td>
+                     <td>  
+                      <a href="<c:url value="/ListApplication/${j.id}"/>" class="btn btn-success">Xem đơn ứng tuyển</a>   
                     </td>
 
                 </tr>

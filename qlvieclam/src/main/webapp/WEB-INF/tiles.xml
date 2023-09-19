@@ -87,4 +87,9 @@
         <put-attribute name="content"
                        value="/WEB-INF/pages/SearchUser.jsp" />
     </definition>
+      <definition name="ListApplication" extends="baseLayout">
+        <put-attribute name="title" value="Danh sách đơn ứng tuyển" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/ListApplication.jsp" />
+    </definition>
 </tiles-definitions>

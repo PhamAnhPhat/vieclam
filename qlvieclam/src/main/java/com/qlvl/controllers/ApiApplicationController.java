@@ -6,6 +6,7 @@ package com.qlvl.controllers;
 
 import com.cloudinary.http44.api.Response;
 import com.qlvl.pojo.Application;
+import com.qlvl.service.ApplicationService;
 import com.qlvl.service.ThongKeService;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,9 @@ public class ApiApplicationController {
 
     @Autowired
     private ThongKeService ThongKeSer;
+    
+    @Autowired
+    private ApplicationService AppSer;
 
     @RequestMapping("/GetThongKeByNumberMajor/")
     @CrossOrigin
@@ -119,6 +123,12 @@ public class ApiApplicationController {
     public ResponseEntity<List<Application>> GetNumberQuy4(@RequestParam Map<String, String> params,
             @PathVariable(value = "id") int year) {
         List applyJob = this.ThongKeSer.GetNumberQuy4(year);
+        return ResponseEntity.ok(applyJob);
+    }
+     @RequestMapping("/GetApplication/{id}")
+    @CrossOrigin
+    public ResponseEntity<List<Application>> GetApplication(@RequestParam Map<String, String> params,@PathVariable(value = "id") int id) {
+        List applyJob = this.AppSer.getApplicationByJobId(id);
         return ResponseEntity.ok(applyJob);
     }
 

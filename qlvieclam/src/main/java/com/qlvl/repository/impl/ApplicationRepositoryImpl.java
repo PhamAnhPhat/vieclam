@@ -89,4 +89,23 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
        throw new NonUniqueResultException();
     }
 
+    @Override
+    public List<Application> getApplicationByJobId(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+         Query q = s.createQuery("FROM Application WHERE jobID.id=:id");
+         q.setParameter("id", id);
+         return q.getResultList();
+    }
+
+    @Override
+    public List<Application> getApplicationByUserId(int userid) {
+         Session s = this.factory.getObject().getCurrentSession();
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        userid = u.getId();
+         Query q = s.createQuery("FROM Application WHERE userID.id=:id");
+         q.setParameter("id", userid);
+         return q.getResultList();
+    }
+
 }

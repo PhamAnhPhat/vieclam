@@ -12,6 +12,7 @@ import com.qlvl.pojo.User;
 import com.qlvl.repository.ApplicationRepository;
 import com.qlvl.service.ApplicationService;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,6 +91,16 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public boolean CheckUserAndJobApplication(Application app) {
     return this.AppRepo.CheckUserAndJobApplication(app);
+    }
+
+    @Override
+    public List<Application> getApplicationByJobId(int id) {
+     return this.AppRepo.getApplicationByJobId(id);
+    }
+
+    @Override
+    public List<Application> getApplicationByUserId(int userid) {
+      return this.AppRepo.getApplicationByUserId(userid);
     }
 
 }

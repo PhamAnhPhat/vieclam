@@ -34,6 +34,7 @@ com\qlvl\pojo\Application.class
 com\qlvl\pojo\Typejob_.class
 com\qlvl\pojo\Application_.class
 com\qlvl\repository\impl\CityRepositoryImpl.class
+com\qlvl\controllers\ListApplicationController.class
 com\qlvl\repository\JobRepository.class
 com\qlvl\repository\SignUpRepository.class
 com\qlvl\repository\RoleRepository.class

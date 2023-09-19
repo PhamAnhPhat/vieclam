@@ -6,8 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="container">
     <c:url value="/InfoUser" var="action" />
 
@@ -65,17 +65,46 @@
                     </c:forEach>
                 </form:select>
             </div>
-             <div class="mb-3 mt-3">
+            <div class="mb-3 mt-3">
                 <label for="email" class="form-label">Avatar</label>
                 <form:input type="file" path="file" class="form-control" 
                             id="file" placeholder="Tên đăng nhập"/>
             </div>
             <button type="submit" class="btn btn-primary"> Lưu thông tin </button>
+
+
+
+
+
+
         </c:if>
+
+
 
         <a  class="btn btn-success" href="<c:url value="/" />">Trở về</a>
     </form:form>
+        <h4 class="text-center text-danger "> Các công việc đã nộp ứng tuyển</h4>
+    <form:form action="${action}"  modelAttribute="app" method="get"> 
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Mã công việc</th>
+                    <th>Họ</th>
+                    <th>Tên</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${app}" var="e">
+                    <tr>
+                        <td>${e.jobID.id}</td>
+                        <td>${e.ho}</td>
+                        <td>${e.ten}</td>
 
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </form:form>
 </div>
 
 

@@ -7,6 +7,7 @@ package com.qlvl.repository;
 import com.qlvl.pojo.Application;
 import com.qlvl.pojo.Job;
 import com.qlvl.pojo.User;
+import java.util.List;
 
 
 
@@ -18,4 +19,6 @@ public interface ApplicationRepository {
     Application getAppById(int id);
      boolean addApp(Application app);
      boolean CheckUserAndJobApplication (Application app);
+      List<Application> getApplicationByJobId(int id);
+      List<Application> getApplicationByUserId(int userid);
 }
