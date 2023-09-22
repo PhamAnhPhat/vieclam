@@ -17,4 +17,9 @@ public class UserController {
     public String login(){
         return "login";
     }
+    @GetMapping("/TaoCV")
+    public String TaoCV(){
+        return "TaoCV";
+    }
+    
 }

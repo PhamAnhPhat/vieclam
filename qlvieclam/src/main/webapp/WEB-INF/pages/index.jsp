@@ -106,9 +106,7 @@
                         <a href="<c:url value="/JobDetail/${j.id}"/>" class="btn btn-success">Xem công việc</a>
                         <se:authorize access="hasRole('ROLE_ADMIN')">
                             <button class="btn btn-danger" onclick="delJob('${deleteApi}',${j.id})">Xoá</button>  
-                        </se:authorize>
-                        
-                       
+                        </se:authorize>       
 
                     </td>
 

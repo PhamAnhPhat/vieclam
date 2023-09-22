@@ -64,6 +64,7 @@ com\qlvl\controllers\ApplicationController.class
 com\qlvl\service\impl\TypeJobServiceImpl.class
 com\qlvl\controllers\SearchUserController.class
 com\qlvl\service\MajorService.class
+com\qlvl\components\PdfGenerator.class
 com\qlvl\pojo\User_.class
 com\qlvl\controllers\createJobController.class
 com\qlvl\controllers\ApiRoleController.class
@@ -102,6 +103,7 @@ com\qlvl\controllers\UserController.class
 com\qlvl\repository\impl\UserRepositoryImpl.class
 com\qlvl\controllers\ApiJobController.class
 com\qlvl\controllers\ApiUserController.class
+com\qlvl\controllers\PdfController.class
 com\qlvl\formatters\CityFormatter.class
 com\qlvl\repository\impl\MajorRepositoryImpl.class
 com\qlvl\repository\impl\SigUpRepositoryImpl.class

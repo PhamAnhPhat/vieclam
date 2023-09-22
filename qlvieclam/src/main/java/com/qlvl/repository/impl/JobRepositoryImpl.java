@@ -164,17 +164,17 @@ public class JobRepositoryImpl implements JobRepository {
     public List<Job> getJobByEmpl(int id) {
         Session s = this.factory.getObject().getCurrentSession();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null) {
-              Query q = s.createQuery("FROM Job");
-            return q.getResultList();
-            
-        } else {
-             User u = this.UserRepo.getUserByUserName(authentication.getName());
-            Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
+
+        User u = this.UserRepo.getUserByUserName(authentication.getName());
+        Employer e = this.EmplRepo.getEmployerByUserId(u.getId());
+        if (e != null) {
             id = e.getId();
+
             Query q = s.createQuery("FROM Job WHERE employerID.id=:eid");
             q.setParameter("eid", id);
             return q.getResultList();
+        } else {
+            return null;
         }
 
     }

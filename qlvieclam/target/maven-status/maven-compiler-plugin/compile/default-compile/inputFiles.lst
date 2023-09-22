@@ -35,11 +35,13 @@ D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\CityRepositoryI
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\RoleServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\pojo\District.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\RoleService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\PdfController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\DistrictFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\impl\DistrictRepositoryImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\impl\MajorServiceImpl.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\controllers\ApiDistrictController.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\service\DistrictService.java
+D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\components\PdfGenerator.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\TypeJobFormatter.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\repository\EmployerRepository.java
 D:\CSLT\vieclam\qlvieclam\src\main\java\com\qlvl\formatters\RoleFormatter.java

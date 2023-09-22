@@ -31,6 +31,7 @@ public class ListApplicationController {
         model.addAttribute("Application", new Application());
         return "ListApplication";
     }
+    
 
     @GetMapping("/ListApplication/{id}")
     @Transactional
