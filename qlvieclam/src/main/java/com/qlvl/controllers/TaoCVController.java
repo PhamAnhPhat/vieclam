@@ -4,20 +4,15 @@
  */
 package com.qlvl.controllers;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.qlvl.components.PdfGenerator;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,23 +20,23 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Admin
  */
 @Controller
-public class PdfController {
-
-    @Autowired
+public class TaoCVController {
+     @Autowired
     private PdfGenerator pdfGenerator;
-
-    @GetMapping("/generate")
-    public ModelAndView generatePdf( String data) throws FileNotFoundException {
+      @GetMapping("/TaoCV")
+    public String TaoCV(){
+        return "TaoCV";
+    }
+     @PostMapping("/TaoCV")
+    public ModelAndView generateCV(@RequestParam String name,@RequestParam String tuoi,@RequestParam String mota,
+            @RequestParam String school, @RequestParam String GPA,@RequestParam MultipartFile img)throws FileNotFoundException {
         try {
-            String filepath = "D:\\pdf.pdf";
-            pdfGenerator.generatPdf(filepath);
+            String filepath = "D:\\x.pdf";
+            pdfGenerator.generatPdfCV(filepath,name,tuoi,mota,school,GPA,img);
             return new ModelAndView("pdfGenerated");
         } catch (DocumentException e) {
             e.printStackTrace();
             return new ModelAndView("pdfGenerationError");
         }
     }
-   
-    
-  
 }

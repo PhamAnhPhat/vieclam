@@ -10,4 +10,4 @@
 <!DOCTYPE html>
 <html>
     <h1>Đã lưu File PDF thành công vui lòng kiểm tra ổ đĩa D</h1>
-    <a class="btn btn-success" href="<c:url value="/Admin"/>">Trở về</a>
+    <a class="btn btn-success" href="<c:url value="/"/>">Trở về</a>

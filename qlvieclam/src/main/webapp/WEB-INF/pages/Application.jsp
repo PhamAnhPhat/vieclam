@@ -84,6 +84,9 @@
                 ${message}
             </div>
         </c:if>
+        
+            <label for="tuoi" class="form-label">Bạn chưa có CV ? Hãy tạo CV <a href="<c:url value="/TaoCV"/>">tại đây</a> </label>
+            <br>
         <button type="submit" class="btn btn-primary">Nộp</button>
     </form:form>  
 </div>
