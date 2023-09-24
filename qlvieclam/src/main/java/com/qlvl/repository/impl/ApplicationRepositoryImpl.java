@@ -108,11 +108,10 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
         return q.getResultList();
     }
 
-
     @Override
     public boolean deleteApp(int id) {
         Session session = this.factory.getObject().getCurrentSession();
-       Application a =this.getAppById(id);
+        Application a = this.getAppById(id);
         try {
             session.delete(a);
             return true;
@@ -120,6 +119,18 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean deleteAppByJobID(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("DELETE FROM Application WHERE jobID.id=:xid");
+        q.setParameter("xid", id);
+        int result = q.executeUpdate();
+        if(result>0)
+            return true;
+        else
+        return false;
     }
 
 }

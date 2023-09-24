@@ -22,4 +22,5 @@ public interface ApplicationRepository {
       List<Application> getApplicationByJobId(int id);
       List<Application> getApplicationByUserId(int userid);
       boolean deleteApp(int id);
+      boolean deleteAppByJobID(int id);
 }

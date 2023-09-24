@@ -40,6 +40,11 @@ public class ApiApplicationController {
     public void DeleteApp(@PathVariable(value = "id") int id) {
         this.AppSer.deleteApp(id);
     }
+     @DeleteMapping("/x/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void DeleteAppbyJobID(@PathVariable(value = "id") int id) {
+        this.AppSer.deleteAppByJobID(id);
+    }
 
 
     @RequestMapping("/GetThongKeByNumberMajor/")

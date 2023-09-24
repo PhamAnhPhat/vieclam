@@ -108,4 +108,9 @@ public class ApplicationServiceImpl implements ApplicationService {
      return this.AppRepo.deleteApp(id);
     }
 
+    @Override
+    public boolean deleteAppByJobID(int id) {
+     return this.AppRepo.deleteAppByJobID(id);
+    }
+
 }
