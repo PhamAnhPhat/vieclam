@@ -88,6 +88,7 @@ com\qlvl\controllers\ApiEducationController.class
 com\qlvl\controllers\JobDetailController.class
 com\qlvl\repository\impl\TypeJobRepositoryImpl.class
 com\qlvl\controllers\ApiDistrictController.class
+com\qlvl\controllers\ExcelController.class
 com\qlvl\service\impl\EducationServiceImpl.class
 com\qlvl\controllers\ApiTypeJobController.class
 com\qlvl\pojo\City.class
@@ -99,6 +100,7 @@ com\qlvl\service\impl\UserServiceImpl.class
 com\qlvl\service\ReviewService.class
 com\qlvl\service\impl\JobServiceImpl.class
 com\qlvl\repository\impl\ApplicationRepositoryImpl.class
+com\qlvl\controllers\TaoCVController.class
 com\qlvl\controllers\UserController.class
 com\qlvl\repository\impl\UserRepositoryImpl.class
 com\qlvl\controllers\ApiJobController.class
@@ -113,5 +115,6 @@ com\qlvl\pojo\Employerreview_.class
 com\qlvl\service\CityService.class
 com\qlvl\repository\impl\JobRepositoryImpl.class
 com\qlvl\repository\impl\DistrictRepositoryImpl.class
+com\qlvl\components\ExcelWriter.class
 com\qlvl\pojo\Employer_.class
 com\qlvl\pojo\Major.class

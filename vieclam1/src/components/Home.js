@@ -135,7 +135,7 @@ const Home = () => {
             </Navbar>
 
 
-
+            <Button href="/newjob" > thêm job </Button>
 
             <Container className="mt-5">
 
@@ -175,7 +175,8 @@ const Home = () => {
 
 
                                 <td>
-                                    <Button variant="danger" href={url}>Ứng tuyển</Button>
+                                <Link to={url} className="btn btn-info" style={{textDecoration:"none"}}> Ứng tuyển</Link>
+
                                 </td>
                             </tr>
                         })}

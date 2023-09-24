@@ -20,4 +20,5 @@ public interface ApplicationService {
       boolean CheckUserAndJobApplication(Application app);
       List<Application> getApplicationByJobId(int id);
       List<Application> getApplicationByUserId(int userid);
+       boolean deleteApp(int id);
 }

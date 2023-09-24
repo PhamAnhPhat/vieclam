@@ -8,6 +8,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html>
-    <h1>Đã lưu File PDF thành công vui lòng kiểm tra ổ đĩa D</h1>
+    <h1>Đã lưu File thành công vui lòng kiểm tra ổ đĩa D</h1>
     <a class="btn btn-success" href="<c:url value="/"/>">Trở về</a>

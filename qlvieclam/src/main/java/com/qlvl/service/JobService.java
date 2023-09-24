@@ -7,6 +7,7 @@ package com.qlvl.service;
 import com.qlvl.pojo.Job;
 import java.util.List;
 import java.util.Map;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -19,4 +20,5 @@ public interface JobService {
     Job getJobById(int id);
     boolean deleteJob(int id);
     List<Job> getJobByEmpl(int id);
+    Job addJobJwt(Map<String, String> params, MultipartFile avatar);
 }

@@ -83,7 +83,7 @@
 
         <a  class="btn btn-success" href="<c:url value="/" />">Trở về</a>
     </form:form>
-        <h4 class="text-center text-danger "> Các công việc đã nộp ứng tuyển</h4>
+    <h4 class="text-center text-danger "> Các công việc đã nộp ứng tuyển</h4>
     <form:form action="${action}"  modelAttribute="app" method="get"> 
         <table class="table table-hover">
             <thead>
@@ -91,6 +91,7 @@
                     <th>Mã công việc</th>
                     <th>Họ</th>
                     <th>Tên</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -99,6 +100,7 @@
                         <td>${e.jobID.id}</td>
                         <td>${e.ho}</td>
                         <td>${e.ten}</td>
+                        <td><button class="btn btn-danger" onclick="deleteApp(${e.id})">Xoá đơn ứng tuyển</button></td>
 
                     </tr>
                 </c:forEach>
@@ -106,5 +108,21 @@
         </table>
     </form:form>
 </div>
-
+<script >
+    function deleteApp(id) {
+        $.ajax({
+            url: "http://localhost:8080/QLViecLam/api/DeleteApp/" + id,
+            method: "DELETE",
+            success: function () {
+                alert("Xoá thành công !!");
+                location.reload();
+                
+            },
+            error: function () {
+                alert("Xoá thất bại !!");
+            }
+        });
+    }
+    ;
+</script>
 

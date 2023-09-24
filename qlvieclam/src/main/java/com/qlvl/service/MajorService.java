@@ -13,5 +13,8 @@ import java.util.Map;
  * @author ACER
  */
 public interface MajorService {
+
     List<Major> getMajor();
+
+    Major getMajorById(int id);
 }

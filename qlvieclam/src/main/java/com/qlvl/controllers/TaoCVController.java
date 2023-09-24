@@ -7,6 +7,7 @@ package com.qlvl.controllers;
 import com.itextpdf.text.DocumentException;
 import com.qlvl.components.PdfGenerator;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +30,9 @@ public class TaoCVController {
     }
      @PostMapping("/TaoCV")
     public ModelAndView generateCV(@RequestParam String name,@RequestParam String tuoi,@RequestParam String mota,
-            @RequestParam String school, @RequestParam String GPA,@RequestParam MultipartFile img)throws FileNotFoundException {
+            @RequestParam String school, @RequestParam String GPA,@RequestParam MultipartFile img)throws FileNotFoundException, IOException {
         try {
-            String filepath = "D:\\x.pdf";
+            String filepath = "D:\\FileCV.pdf";
             pdfGenerator.generatPdfCV(filepath,name,tuoi,mota,school,GPA,img);
             return new ModelAndView("pdfGenerated");
         } catch (DocumentException e) {

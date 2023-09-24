@@ -25,5 +25,10 @@ public class TypeJobServiceImpl implements TypeJobService {
     public List<Typejob> getTypeJob() {
         return this.TypeJobRepo.getTypeJob();
     }
+     @Override
+    public Typejob getTypejobById(int id) {
+        return this.TypeJobRepo.getTypejobById(id);
+    }
+
 
 }

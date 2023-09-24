@@ -6,7 +6,7 @@ function delJob(path, id) {
         if (res.status == 204)
             location.reload();
         else
-            alert("ERROR");
+            alert("Đang có người ứng tuyển");
     });
 }
 

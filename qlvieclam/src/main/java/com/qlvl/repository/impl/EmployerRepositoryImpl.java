@@ -78,7 +78,6 @@ public class EmployerRepositoryImpl implements EmployerRepository {
                 .setParameter("userId", userId)
                 .uniqueResult();
         return e;
-
     }
 
     @Override

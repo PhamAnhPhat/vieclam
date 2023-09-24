@@ -11,7 +11,6 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
-
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -41,12 +40,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class PdfGenerator {
 
     @Autowired
-    private Cloudinary cloudinary;
-    @Autowired
     private JobService jobSer;
-
-    @Autowired
-    private Environment env;
 
     public void generatPdf(String filePath) throws DocumentException, FileNotFoundException {
         Document document = new Document();

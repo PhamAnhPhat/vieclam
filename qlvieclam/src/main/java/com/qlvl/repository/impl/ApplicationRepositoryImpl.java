@@ -83,29 +83,43 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
         List result = q.getResultList();
         if (result.isEmpty()) {
             return true;
-        } else if(result.size()==1){
+        } else if (result.size() == 1) {
             return false;
         }
-       throw new NonUniqueResultException();
+        throw new NonUniqueResultException();
     }
 
     @Override
     public List<Application> getApplicationByJobId(int id) {
         Session s = this.factory.getObject().getCurrentSession();
-         Query q = s.createQuery("FROM Application WHERE jobID.id=:id");
-         q.setParameter("id", id);
-         return q.getResultList();
+        Query q = s.createQuery("FROM Application WHERE jobID.id=:id");
+        q.setParameter("id", id);
+        return q.getResultList();
     }
 
     @Override
     public List<Application> getApplicationByUserId(int userid) {
-         Session s = this.factory.getObject().getCurrentSession();
-         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Session s = this.factory.getObject().getCurrentSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User u = this.UserRepo.getUserByUserName(authentication.getName());
         userid = u.getId();
-         Query q = s.createQuery("FROM Application WHERE userID.id=:id");
-         q.setParameter("id", userid);
-         return q.getResultList();
+        Query q = s.createQuery("FROM Application WHERE userID.id=:id");
+        q.setParameter("id", userid);
+        return q.getResultList();
+    }
+
+
+    @Override
+    public boolean deleteApp(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+       Application a =this.getAppById(id);
+        try {
+            session.delete(a);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 }

@@ -19,4 +19,5 @@ public interface JobRepository {
     Job getJobById(int id);
     boolean deleteJob(int userId);
     List<Job> getJobByEmpl(int id);
+    boolean addJobJwt(Job j);
 }

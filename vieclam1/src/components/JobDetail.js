@@ -46,7 +46,8 @@ const JobDetail = () => {
 
         {user === null ? <p>Vui lòng <Link to={url}>đăng nhập</Link> để nộp đơn ứng tuyển </p> : <>
 
-            <Button href="/application" className="mt-2" variant="info">Nộp đơn</Button>
+       
+            <Button className="mt-2" variant="info"> <Link to="/application" style={{textDecoration:"none"}}> Nộp đơn</Link></Button>
         </>}
         <hr />
 

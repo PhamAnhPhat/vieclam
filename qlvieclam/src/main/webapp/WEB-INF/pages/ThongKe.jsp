@@ -24,7 +24,8 @@
             <button class="btn btn-primary" onClick="Quy3()" type="button">Quý 3</button>
             <button class="btn btn-primary" onClick="Quy4()" type="button">Quý 4</button>
             <button class="btn btn-primary" onClick="destroy()" type="button">Xoá</button>
-            <a href="<c:url value="/generate"/>" class="btn btn-success">File thống kê công việc</a>
+            <a href="<c:url value="/generate"/>" class="btn btn-success">Xuát PDF công việc</a>
+              <a href="<c:url value="/generateExcel"/>" class="btn btn-success">Xuất Excel công việc</a>
         </form>
         <canvas id="myChart" style="width: auto;">
 

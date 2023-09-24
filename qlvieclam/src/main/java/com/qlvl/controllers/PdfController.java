@@ -33,7 +33,7 @@ public class PdfController {
     @GetMapping("/generate")
     public ModelAndView generatePdf( String data) throws FileNotFoundException {
         try {
-            String filepath = "D:\\pdf.pdf";
+            String filepath = "D:\\ListJob.pdf";
             pdfGenerator.generatPdf(filepath);
             return new ModelAndView("pdfGenerated");
         } catch (DocumentException e) {

@@ -12,7 +12,8 @@ export const endpoints = {
     "login":"/QLViecLam/api/login/",
     "current-user":"/QLViecLam/api/current-user/",
     "register":"/QLViecLam/api/users/",
-    "role":"/QLViecLam/api/GetRole/"
+    "role":"/QLViecLam/api/GetRole/",
+    "newjob":"/QLViecLam/api/NewJob/"
 }
 export const authApi = () => {
     return axios.create({

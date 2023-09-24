@@ -9,7 +9,7 @@ import MyUserReducer from "./reducers/MyUserReducer";
 import cookie from "react-cookies";
 import Application from "./components/Application";
 import JobDetail from "./components/JobDetail";
-
+import NewJob from "./components/NewJob";
 export const MyUserContext = createContext();
 
 
@@ -26,6 +26,7 @@ const App = () => {
           <Route path="/register" element={<Register/>} />
           <Route path="/application" element={<Application/>} />
           <Route path="/job/:id" element={<JobDetail/>} />
+          <Route path="/newjob" element={<NewJob/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
