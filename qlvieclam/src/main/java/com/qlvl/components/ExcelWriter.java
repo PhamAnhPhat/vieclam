@@ -33,19 +33,8 @@ public class ExcelWriter {
         Workbook workbook = WorkbookFactory.create(true);
         org.apache.poi.ss.usermodel.Sheet sheet = workbook.createSheet("Sheet 1");
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("ID");
-        headerRow.createCell(1).setCellValue("Name Job");
-        headerRow.createCell(2).setCellValue("Salary");
-        headerRow.createCell(3).setCellValue("Age");
-        headerRow.createCell(4).setCellValue("City");
-        headerRow.createCell(5).setCellValue("Distict");
-        headerRow.createCell(6).setCellValue("Type Job");
-        headerRow.createCell(7).setCellValue("Major");
-        headerRow.createCell(8).setCellValue("Education");
-        headerRow.createCell(9).setCellValue("Created Date");
         int rowNumber = 1;
         List<Job> listJob = this.jobSer.getJob(null);
-
         for (Job j : listJob) {
             Row row = sheet.createRow(rowNumber++);
             row.createCell(0).setCellValue(j.getId().toString());
@@ -62,5 +51,16 @@ public class ExcelWriter {
         try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
             workbook.write(outputStream);
         }
+        headerRow.createCell(0).setCellValue("ID");
+        headerRow.createCell(1).setCellValue("Name Job");
+        headerRow.createCell(2).setCellValue("Salary");
+        headerRow.createCell(3).setCellValue("Age");
+        headerRow.createCell(4).setCellValue("City");
+        headerRow.createCell(5).setCellValue("Distict");
+        headerRow.createCell(6).setCellValue("Type Job");
+        headerRow.createCell(7).setCellValue("Major");
+        headerRow.createCell(8).setCellValue("Education");
+        headerRow.createCell(9).setCellValue("Created Date");
+        
     }
 }

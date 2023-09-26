@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { MyUserContext } from "../App";
 import Apis, { authApi, endpoints } from "../configs/Apis";
 import MySpinner from "../layout/MySpinner";
+import cookie from "react-cookies";
 
 const JobDetail = () => {
     const [user,] = useContext(MyUserContext);
@@ -18,7 +19,19 @@ const JobDetail = () => {
 
         loadJob();
     }, []);
-
+    const app = (Job) =>{
+        let savecookie=cookie.load("savecookie")|| null;
+        if(savecookie == null)
+            savecookie = {};
+    
+            savecookie = {
+                "id": id
+            }
+    
+            
+        cookie.save("savecookie",savecookie);
+        console.info(savecookie);
+        }
     if (Job === null)
         return <MySpinner />;
 
@@ -46,8 +59,7 @@ const JobDetail = () => {
 
         {user === null ? <p>Vui lòng <Link to={url}>đăng nhập</Link> để nộp đơn ứng tuyển </p> : <>
 
-       
-            <Button className="mt-2" variant="info"> <Link to="/application" style={{textDecoration:"none"}}> Nộp đơn</Link></Button>
+       {user.userRole==="ROLE_USER"? <Button className="mt-2" variant="info" onClick={app}> <Link to="/application" style={{textDecoration:"none"}}> Nộp đơn</Link></Button>:<></>}
         </>}
         <hr />
 

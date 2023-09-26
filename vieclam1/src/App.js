@@ -10,14 +10,19 @@ import cookie from "react-cookies";
 import Application from "./components/Application";
 import JobDetail from "./components/JobDetail";
 import NewJob from "./components/NewJob";
-export const MyUserContext = createContext();
+import MyJobReducer from "./reducers/MyJobReducer";
+import EmpJob from "./components/EmpJob";
 
+export const MyUserContext = createContext();
+export const MyCookieContext = createContext();
 
 const App = () => {
   const [user,dispatch] = useReducer(MyUserReducer, cookie.load("user")||null);
+  const [savecookie,setSave] = useReducer(MyJobReducer,cookie.load("savecookie") || null);
 
   return (
     < MyUserContext.Provider value={[user,dispatch]}>
+        < MyCookieContext.Provider value={[savecookie,setSave]}>
        <BrowserRouter>
         <Header />
         <Routes>
@@ -27,9 +32,11 @@ const App = () => {
           <Route path="/application" element={<Application/>} />
           <Route path="/job/:id" element={<JobDetail/>} />
           <Route path="/newjob" element={<NewJob/>} />
+          <Route path="/empjob" element={<EmpJob/>} />
         </Routes>
-        <Footer />
+        <Footer />    
       </BrowserRouter>
+      </MyCookieContext.Provider>
     </MyUserContext.Provider>
   )
 }

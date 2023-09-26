@@ -127,10 +127,34 @@ public class ApplicationRepositoryImpl implements ApplicationRepository {
         Query q = s.createQuery("DELETE FROM Application WHERE jobID.id=:xid");
         q.setParameter("xid", id);
         int result = q.executeUpdate();
-        if(result>0)
+        if (result > 0) {
             return true;
-        else
-        return false;
+        } else {
+            return false;
+        }
     }
 
+    @Override
+    public boolean addAppJwt(Application A) {
+
+        Session s = this.factory.getObject().getCurrentSession();
+        Date date = new Date();
+        A.setCreateDate(date);
+//        if(app.getHo().isEmpty() || app.getTen().isEmpty()||app.getEmail().isEmpty()||
+//                app.getSdt().isEmpty()||app.getNamKinhNghiem()==null|| app.getFile().isEmpty())
+//            return false;
+        try {
+            if (A.getId() == null) {
+
+                s.save(A);
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }

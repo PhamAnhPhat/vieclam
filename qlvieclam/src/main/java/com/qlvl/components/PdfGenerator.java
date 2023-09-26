@@ -93,9 +93,7 @@ public class PdfGenerator {
         PdfWriter.getInstance(document, new FileOutputStream(filePath));
          byte[]imageData=img.getBytes();
         Image image = Image.getInstance(imageData);
-        document.open();
-       
-
+        document.open(); 
         document.add(new Paragraph("File CV"));
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100.0f);

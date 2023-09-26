@@ -10,6 +10,8 @@ import com.qlvl.pojo.Application;
 import com.qlvl.pojo.Job;
 import com.qlvl.pojo.User;
 import com.qlvl.repository.ApplicationRepository;
+import com.qlvl.repository.JobRepository;
+import com.qlvl.repository.UserRepository;
 import com.qlvl.service.ApplicationService;
 import java.io.IOException;
 import java.util.List;
@@ -35,7 +37,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     private ApplicationRepository AppRepo;
     @Autowired
     private LocalSessionFactoryBean factory;
-
+   @Autowired
+    private JobRepository jobrepo;
+    @Autowired
+    private UserRepository userRepo;
     @Override
     public boolean addApp(Application app) {
         if (!app.getFile().isEmpty()) {
@@ -56,36 +61,35 @@ public class ApplicationServiceImpl implements ApplicationService {
      return this.AppRepo.getAppById(id);
     }
 
-    @Override
+        @Override
     public Application addAppJwt(Map<String, String> params, MultipartFile avatar) {
-     Session s = this.factory.getObject().getCurrentSession();
+
         Application app = new Application();
-                int x= 1;
-        Job id = new Job(x);
-        User u = new User(x);
+        Job id = this.jobrepo.getJobById(Integer.parseInt(params.get("jobID")));
+        User u = this.userRepo.getUserById(Integer.parseInt(params.get("userID")));
         
         app.setHo(params.get("ho"));
         app.setTen(params.get("ten"));
         app.setEmail(params.get("email"));
         app.setSdt(params.get("sdt"));
-        app.setNgheNghiep(params.get("NgheNghiep"));
+        app.setNgheNghiep(params.get("ngheNghiep"));
         app.setTrinhDoHocVan(params.get("trinhDoHocVan"));
         app.setAddressUser(params.get("addressUser"));
         app.setJobID(id);
         app.setUserID(u);
-        app.setNamKinhNghiem(Integer.parseInt(params.get("NamKinhNghiem")));
-        app.setTuoi(Integer.parseInt(params.get("Tuoi")));
+        app.setNamKinhNghiem(Integer.valueOf(params.get("namKinhNghiem")));
+        app.setTuoi(Integer.valueOf(params.get("tuoi")));
         if (!avatar.isEmpty()) {
             try {
                 Map res = this.cloudinary.uploader().upload(avatar.getBytes(), 
                         ObjectUtils.asMap("resource_type", "auto"));
                 app.setFileCV(res.get("secure_url").toString());
             } catch (IOException ex) {
-                Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ApplicationServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.AppRepo.addApp(app);
-        return app;  
+        this.AppRepo.addAppJwt(app);
+        return app;
     }
 
     @Override

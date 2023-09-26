@@ -42,7 +42,7 @@ public class ApiJobController {
     private ApplicationService AppRepo;
 
     @Autowired
-    private EmployerService emSer;
+    private EmployerService emps;
 
     @DeleteMapping("/createJob/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -74,8 +74,8 @@ public class ApiJobController {
 //    }
     @PostMapping(path = "/getApplication/")
     @CrossOrigin
-    public ResponseEntity<Application> addAppJwt(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatar) {
-        Application app = this.AppRepo.addAppJwt(params, avatar);
+    public ResponseEntity<Application> addAppJwt(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatarapp) {
+        Application app = this.AppRepo.addAppJwt(params, avatarapp);
         return new ResponseEntity<>(app, HttpStatus.CREATED);
     }
 
@@ -88,6 +88,11 @@ public class ApiJobController {
 
         Job jb = this.JobSer.addJobJwt(params, avatarJob);
         return new ResponseEntity<>(jb, HttpStatus.CREATED);
+    }
+     @RequestMapping("/GetJobByEmp/")
+    @CrossOrigin
+    public ResponseEntity<List<Employer>> lists(@RequestParam Map<String, String> params) {
+        return new ResponseEntity<>(this.emps.getEmp(params), HttpStatus.OK);
     }
 
 }
