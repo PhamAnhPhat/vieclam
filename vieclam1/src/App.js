@@ -12,6 +12,8 @@ import JobDetail from "./components/JobDetail";
 import NewJob from "./components/NewJob";
 import MyJobReducer from "./reducers/MyJobReducer";
 import EmpJob from "./components/EmpJob";
+import UpdateJob from "./components/UpdateJob";
+import JobDetailBeforeUpdate from "./components/JobDetailBeforeUpdate";
 
 export const MyUserContext = createContext();
 export const MyCookieContext = createContext();
@@ -31,8 +33,10 @@ const App = () => {
           <Route path="/register" element={<Register/>} />
           <Route path="/application" element={<Application/>} />
           <Route path="/job/:id" element={<JobDetail/>} />
+          <Route path="/jobs/:id" element={<JobDetailBeforeUpdate/>} />
           <Route path="/newjob" element={<NewJob/>} />
           <Route path="/empjob" element={<EmpJob/>} />
+          <Route path="/updatejob" element={<UpdateJob/>} />
         </Routes>
         <Footer />    
       </BrowserRouter>

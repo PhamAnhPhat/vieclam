@@ -103,7 +103,6 @@ const Register = () => {
                     {major.map(m => {
                         return <option key={m.id} >{m.nameMajor}</option>
                     })}
-
                 </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">

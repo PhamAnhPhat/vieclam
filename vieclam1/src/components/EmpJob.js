@@ -47,7 +47,7 @@ const EmpJob = () => {
         evt.preventDefault();
         nav(`/?kw=${kw}`)
     }
-
+  
     setSave({
         "type": "dec",
         "payload" : 1
@@ -77,6 +77,9 @@ const EmpJob = () => {
     }, [q]); 
 
     useEffect(() => {
+        if(user===null || user === undefined){
+            nav("/Login");
+        }
         loadCity();
         loadMajor();
         loadTypeJob();
@@ -84,11 +87,15 @@ const EmpJob = () => {
         loadEmp();
     }, [])
 
-
+    const deletes = (deleteJob) =>{
+        const loadJob = async () => {
+        let { data } = await Apis.delete(endpoints['delete'](deleteJob));
+        nav("/")
+        }
+        loadJob();
+    }   
     if (city === null || major === null || edu === null || typeJob === null || job === null)
         return <MySpinner />
-
-
 
     return (
             <>  
@@ -123,11 +130,12 @@ const EmpJob = () => {
                             <th>Nhà tuyển dụng</th>
                             <th>Ngày đăng</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {Object.values(job).map(c => {
-                            let url = `/job/${c.id}`;
+                            let url = `/jobs/${c.id}`;
 
                             return <tr>
                             
@@ -152,7 +160,7 @@ const EmpJob = () => {
                                 </>}
 
                                 </td>
-                                
+                                <td><Button variant="danger" onClick={() => deletes(c.id)} >Xóa tin</Button></td>
                             </tr>
                             
                         })}

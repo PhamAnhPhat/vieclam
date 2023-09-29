@@ -94,7 +94,12 @@ const Application = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Nghề nghiệp</Form.Label>
-                <Form.Control type="text" onChange={(e) => change(e, "ngheNghiep")} placeholder="NgheNghiep" />
+                <Form.Select onChange={(e) => change(e, "ngheNghiep")}>
+                    {major.map(m => {
+                        return <option key={m.nameMajor} >{m.nameMajor}</option>
+                    })}
+                </Form.Select>
+                {/* <Form.Control type="text" onChange={(e) => change(e, "ngheNghiep")} placeholder="NgheNghiep" /> */}
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -103,7 +108,12 @@ const Application = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Trình độ học vấn </Form.Label>
-                <Form.Control type="text" onChange={(e) => change(e, "trinhDoHocVan")} placeholder="Trình độ học vấn" />
+                <Form.Select onChange={(e) => change(e, "trinhDoHocVan")}>
+                    {edu.map(m => {
+                        return <option key={m.typeEducation} >{m.typeEducation}</option>
+                    })}
+                </Form.Select>
+                {/* <Form.Control type="text" onChange={(e) => change(e, "trinhDoHocVan")} placeholder="Trình độ học vấn" /> */}
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Địa chỉ nhà </Form.Label>

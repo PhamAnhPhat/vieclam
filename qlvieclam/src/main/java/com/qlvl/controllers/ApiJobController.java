@@ -50,6 +50,14 @@ public class ApiJobController {
         this.JobSer.deleteJob(id);
     }
 
+    @DeleteMapping("/deleteJob/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @CrossOrigin
+    public void DeleteJobs(@PathVariable(value = "id") int id) {
+        this.AppRepo.deleteAppByJobID(id);
+        this.JobSer.deleteJob(id);
+    }
+
     @RequestMapping("/GetJob/")
     @CrossOrigin
     public ResponseEntity<List<Job>> list(@RequestParam Map<String, String> params) {
@@ -89,10 +97,22 @@ public class ApiJobController {
         Job jb = this.JobSer.addJobJwt(params, avatarJob);
         return new ResponseEntity<>(jb, HttpStatus.CREATED);
     }
-     @RequestMapping("/GetJobByEmp/")
+
+    @RequestMapping("/GetJobByEmp/")
     @CrossOrigin
     public ResponseEntity<List<Employer>> lists(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.emps.getEmp(params), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/UpdateJob/",
+            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @CrossOrigin
+    @ResponseStatus
+    public ResponseEntity<Job> UpdateJob(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatarJob) {
+
+        Job jsb = this.JobSer.updateJobJwt(params, avatarJob);
+        return new ResponseEntity<>(jsb, HttpStatus.OK);
     }
 
 }
