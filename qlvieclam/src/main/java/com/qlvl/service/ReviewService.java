@@ -17,4 +17,5 @@ public interface ReviewService {
     List<Employerreview> getReviewByEmployer(Employer e);
 
     boolean addReview(Employerreview er);
+    Employerreview addComment(Employerreview c);
 }

@@ -129,14 +129,8 @@ const Home = () => {
                             </Form>
                         </Nav>
                     </Navbar.Collapse>
-
                 </Container>
-
             </Navbar>
-
-
-            <Button href="/newjob" > thêm job </Button>
-
             <Container className="mt-5">
 
                 <h1 className="text-center">DANH SÁCH VIỆC LÀM</h1>

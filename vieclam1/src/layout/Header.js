@@ -30,11 +30,17 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Link className="nav-link" to="/"> Trang chủ</Link>
                         <Link className="nav-link" to="/"> Đánh giá</Link>
-                        <Link className="nav-link" to="/EmpJob"> Công việc đã đăng</Link>
+                        
                         {user === null ? <>
                         <Link className="nav-link" to="/login"> Đăng nhập</Link>
                         <Link className="nav-link" to="/register"> Đăng ký</Link>
                         </>: <>
+                        {user.userRole==="ROLE_USER"?"":<>
+                        <Link className="nav-link" to="/RegisterEmp"> Đăng ký nhà tuyển dụng</Link>
+                        <Link className="nav-link" to="/EmpJob"> Công việc đã đăng</Link>
+                        <Link className="nav-link" to="/NewJob">Đăng tin tuyển dụng</Link>
+                        </>}
+                       
                         <Link className="nav-link" to="/">{user.username}</Link>
                         <Button variant="secondary" onClick={logout}> Đăng xuất</Button>
                         </>}
