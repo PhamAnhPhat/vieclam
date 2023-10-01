@@ -29,7 +29,7 @@ const Header = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Link className="nav-link" to="/"> Trang chủ</Link>
-                        <Link className="nav-link" to="/"> Đánh giá</Link>
+                        <Link className="nav-link" to="/empreview"> Đánh giá</Link>
                         
                         {user === null ? <>
                         <Link className="nav-link" to="/login"> Đăng nhập</Link>

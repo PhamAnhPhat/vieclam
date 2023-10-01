@@ -1,21 +1,22 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import RegisterEmp from "./components/RegisterEmp";
 import { createContext, useReducer } from "react";
 import MyUserReducer from "./reducers/MyUserReducer";
+import MyJobReducer from "./reducers/MyJobReducer";
 import cookie from "react-cookies";
 import Application from "./components/Application";
 import JobDetail from "./components/JobDetail";
 import NewJob from "./components/NewJob";
-import MyJobReducer from "./reducers/MyJobReducer";
 import EmpJob from "./components/EmpJob";
+import ReviewEmp from "./components/ReviewEmp";
 import UpdateJob from "./components/UpdateJob";
 import JobDetailBeforeUpdate from "./components/JobDetailBeforeUpdate";
-import ReviewEmp from "./components/ReviewEmp";
-import RegisterEmp from "./components/RegisterEmp";
+import ReviewDetailEmp from "./components/ReviewDetailEmp";
 
 export const MyUserContext = createContext();
 export const MyCookieContext = createContext();
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/empjob" element={<EmpJob/>} />
           <Route path="/empreview" element={<ReviewEmp/>} />
           <Route path="/updatejob" element={<UpdateJob/>} />
+          <Route path="/empreview/:id" element={<ReviewDetailEmp/>} />
         </Routes>
         <Footer />    
       </BrowserRouter>

@@ -77,7 +77,7 @@ const Application = () => {
 
     }, [])
     return <>
-        <h1 className="text-center text-info mt-2"> ĐĂNG KÝ NGƯỜI DÙNG</h1>
+        <h1 className="text-center text-info mt-2"> NỘP ĐƠN ỨNG TUYỂN</h1>
         {err === null?"":<Alert variant="danger">{err}</Alert>}
         <Form onSubmit={applications}>
         <Form.Group className="mb-3">

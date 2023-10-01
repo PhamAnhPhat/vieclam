@@ -56,8 +56,6 @@ const EmpJob = () => {
 
     return (
         <>
-
-            <Button href="/newjob" > thêm job </Button>
             <Container className="mt-5">
                 <Form onSubmit={search} inline>
                     <Row>
@@ -91,7 +89,7 @@ const EmpJob = () => {
                     </thead>
                     <tbody>
                         {Object.values(emp).map(c => {
-
+                            let url = `/empreview/${c.id}`;
                             return <tr>
 
                                 <td>
@@ -107,7 +105,7 @@ const EmpJob = () => {
                                 <td>
                                     {user === null ? <p>Vui lòng <Link to="/login">đăng nhập</Link> để đánh giá nhà tuyển dụng </p> : <>
 
-                                        <Button className="mt-2" variant="info"> <Link to="/" style={{ textDecoration: "none", color: "white" }}> Đánh giá</Link></Button>
+                                        <Button className="mt-2" variant="info"> <Link to={url} style={{ textDecoration: "none", color: "white" }}> Đánh giá</Link></Button>
                                         <hr /></>}
                                 </td>
 
