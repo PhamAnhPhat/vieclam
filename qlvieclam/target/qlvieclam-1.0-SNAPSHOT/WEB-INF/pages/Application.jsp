@@ -16,11 +16,7 @@
         <form:hidden path="jobID.id" 
                      value="${JOB.id}"  />
 
-        <div class="mb-3">
-            <label for="file" class="form-label">Nộp File CV</label>
-            <form:input type="file" path="file" class="form-control" 
-                        id="file" />
-        </div>
+      
         <div class="mb-3 mt-3">
             <label for="ho" class="form-label">Họ</label>      
             <form:input type="text" path="ho" class="form-control" 
@@ -78,6 +74,11 @@
             <label for="tuoi" class="form-label">Tuổi</label>      
             <form:input type="number" path="tuoi" class="form-control" 
                         id="tuoi" placeholder="Nhập tuổi"/>
+        </div>
+          <div class="mb-3">
+            <label for="file" class="form-label">Nộp File CV</label>
+            <form:input type="file" path="file" class="form-control" 
+                        id="file" />
         </div>
         <c:if test="${not empty message}">
             <div class="alert alert-danger">

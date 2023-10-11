@@ -22,6 +22,7 @@ export const endpoints = {
     "comment": (id)=>`/QLViecLam/api/GetEmp/${id}/comments/`,
     "addcomment":"/QLViecLam/api/comments/",
     "empdetail":(id) => `/QLViecLam/api/GetEmp/${id}`,
+    "getUserByUsername":(username)=>`/QLViecLam/api/GetUserByUsername/${username}`
 }
 export const authApi = () => {
     return axios.create({

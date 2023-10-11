@@ -67,7 +67,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         Application app = new Application();
         Job id = this.jobrepo.getJobById(Integer.parseInt(params.get("jobID")));
         User u = this.userRepo.getUserById(Integer.parseInt(params.get("userID")));
-        
         app.setHo(params.get("ho"));
         app.setTen(params.get("ten"));
         app.setEmail(params.get("email"));

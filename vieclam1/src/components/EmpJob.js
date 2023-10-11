@@ -45,7 +45,7 @@ const EmpJob = () => {
     const nav = useNavigate();
     const search = (evt) => {
         evt.preventDefault();
-        nav(`/?kw=${kw}`)
+        nav(`/EmpJob/?kw=${kw}`)
     }
 
     setSave({
@@ -99,7 +99,6 @@ const EmpJob = () => {
 
     return (
         <>
-            <Button href="/newjob" > thêm job </Button>
             <Container className="mt-5">
                 <Form onSubmit={search} inline>
                     <Row>

@@ -6,6 +6,7 @@ package com.qlvl.controllers;
 
 import com.cloudinary.http44.api.Response;
 import com.qlvl.pojo.Application;
+import com.qlvl.pojo.User;
 import com.qlvl.service.ApplicationService;
 import com.qlvl.service.ThongKeService;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +42,7 @@ public class ApiApplicationController {
     public void DeleteApp(@PathVariable(value = "id") int id) {
         this.AppSer.deleteApp(id);
     }
+    
      @DeleteMapping("/x/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void DeleteAppbyJobID(@PathVariable(value = "id") int id) {
@@ -146,5 +149,4 @@ public class ApiApplicationController {
         List applyJob = this.AppSer.getApplicationByJobId(id);
         return ResponseEntity.ok(applyJob);
     }
-
 }

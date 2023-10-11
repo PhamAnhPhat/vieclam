@@ -9,7 +9,7 @@ import cookie from "react-cookies";
 
 const Application = () => {
     const [user,] = useContext(MyUserContext);
-    const avatar = useRef();
+  
     const [err, setErr] = useState(null);
     const [loading, setLoading] = useState(false);
     const nav = useNavigate();
@@ -24,6 +24,7 @@ const Application = () => {
         let res = await Apis.get(endpoints['major'])
         setMajor(res.data);
     }
+    const avatar = useRef();
     const [application, SetApplication] = useState({
         "ho": "",
         "ten": "",
@@ -37,18 +38,13 @@ const Application = () => {
         "namKinhNghiem": "",
         "tuoi": ""
     });
-
     const applications = (evt) => {
         evt.preventDefault();
-
         const process = async () => {
             let form = new FormData();
-
             for (let field in application)
             form.append(field, application[field]);
-
             form.append("avatarapp", avatar.current.files[0]);
-
             setLoading(true)
             let res = await Apis.post(endpoints['application'], form);
             if (res.status === 201) {
@@ -58,10 +54,7 @@ const Application = () => {
         }
             process();
     }
-    
-
     const change = (evt, field) => {
-        // setUser({...user, [field]: evt.target.value})
         SetApplication(current => {
             return {...current, [field]: evt.target.value}
         })

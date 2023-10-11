@@ -30,10 +30,10 @@ const Register = () => {
         "password": "",
         "ho": "",
         "ten": "",
-        "namKinhNghiem":"",
-        "tuoi":"",
-        "email":"",
-        "sdt":"",
+        "namKinhNghiem": "",
+        "tuoi": "",
+        "email": "",
+        "sdt": "",
         "NganhNghe": "IT",
         "roleID": "1",
         "confirmPass": ""
@@ -43,26 +43,38 @@ const Register = () => {
         evt.preventDefault();
 
         const process = async () => {
-            let form = new FormData();
+            try {
+                let form = new FormData();
 
-            for (let field in user)
-                if (field !== "confirmPass")
-                    form.append(field, user[field]);
+                for (let field in user)
+                    if (field !== "confirmPass")
+                        form.append(field, user[field]);
+                form.append("avatar", avatar.current.files[0]);
+                setLoading(true)
+                let check = await Apis.get(endpoints['getUserByUsername'](user.username))
+                if (check.status === 200) {
+                    let res = await Apis.post(endpoints['register'], form);
+                    if (res.status === 201) {
+                        nav("/login");
+                    } else
+                        setErr("Hệ thống bị lỗi!");
+                }
+                else {
+                    window.location.reload();
+                }
 
-            form.append("avatar", avatar.current.files[0]);
+            } catch (ex) {
+                setErr("Trùng tài khoản!");
+                window.scrollTo(0, 0);
+            }
 
-            setLoading(true)
-            let res = await Apis.post(endpoints['register'], form);
-            if (res.status === 201) {
-                nav("/login");
-            } else
-                setErr("Hệ thống bị lỗi!");
         }
 
         if (user.password === user.confirmPass)
             process();
         else {
             setErr("Mật khẩu KHÔNG khớp!");
+            window.scrollTo(0, 0);
         }
     }
 
@@ -79,7 +91,7 @@ const Register = () => {
         <h1 className="text-center text-info mt-2"> ĐĂNG KÝ NGƯỜI DÙNG</h1>
         {err === null ? "" : <Alert variant="danger">{err}</Alert>}
         <Form onSubmit={register}>
-           
+
             <Form.Group className="mb-3">
                 <Form.Label>Tên đăng nhập</Form.Label>
                 <Form.Control value={user.username} onChange={(e) => change(e, "username")} type="text" placeholder="Tên đăng nhập" required />
@@ -127,7 +139,7 @@ const Register = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Chọn vị trí</Form.Label>
-                <Form.Select  onChange={(e) => change(e, "roleID")}>
+                <Form.Select onChange={(e) => change(e, "roleID")}>
                     {role.map(m => {
                         return <option key={m.id} value={m.id} >{m.nameRole}</option>
                     })}

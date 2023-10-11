@@ -8,19 +8,16 @@ const Header = () => {
     const [user,dispatch] = useContext(MyUserContext);
     const [kw, setKw] = useState("");
     const nav = useNavigate();
-
     const search = (evt) => {
         evt.preventDefault();
         nav(`/?kw=${kw}`)
     }
-
     const logout = () => {
         dispatch({
             "type": "logout"
         })
         nav("/");
     }
-
     return (<>
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container>

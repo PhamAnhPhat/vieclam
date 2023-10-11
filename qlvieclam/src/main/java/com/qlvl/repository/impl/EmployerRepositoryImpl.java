@@ -89,7 +89,6 @@ public class EmployerRepositoryImpl implements EmployerRepository {
     @Override
     public boolean addOrUpdateEmployer(Employer e) {
         Session s = this.factory.getObject().getCurrentSession();
-
         try {
             if (e.getId() == null) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

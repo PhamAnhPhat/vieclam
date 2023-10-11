@@ -10,6 +10,7 @@ import com.qlvl.pojo.Employerreview;
 import com.qlvl.pojo.User;
 import com.qlvl.service.EmployerService;
 import com.qlvl.service.ReviewService;
+import com.qlvl.service.SignUpService;
 import com.qlvl.service.UserService;
 import java.security.Principal;
 import java.util.List;
@@ -45,6 +46,9 @@ public class ApiUserController {
     private EmployerService empService;
     @Autowired
     private ReviewService review;
+
+    @Autowired
+    private SignUpService SignUpSer;
 
     @PostMapping("/login/")
     @CrossOrigin
@@ -109,4 +113,17 @@ public class ApiUserController {
 
         return new ResponseEntity<>(c, HttpStatus.CREATED);
     }
+
+    @GetMapping("/GetUserByUsername/{username}")
+    @CrossOrigin
+    public ResponseEntity<List<User>> listuser(@PathVariable(value = "username") String username) {
+       
+        if (this.SignUpSer.findUserByUsername(username) != null) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity(HttpStatus.OK);
+        }
+
+    }
+
 }

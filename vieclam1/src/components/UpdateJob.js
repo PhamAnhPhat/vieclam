@@ -14,7 +14,7 @@ const UpdateJob = () => {
     const [loading, setLoading] = useState(false);
     const nav = useNavigate();
     const [newjob, SetNewJob] = useState({
-        "id":savecookie.id,
+        "id": savecookie.id,
         "nameJob": savecookie.nameJob,
         "salary": savecookie.salary,
         "soLuongTuyenDung": savecookie.soLuongTuyenDung,
@@ -23,7 +23,7 @@ const UpdateJob = () => {
         "cityID": savecookie.cityID.id,
         "majorID": savecookie.majorID.id,
         "typeJobID": savecookie.typeJobID.id,
-        "idEmp":user.id,
+        "idEmp": user.id,
         "educationID": savecookie.educationID.id,
         "districID": savecookie.districID.id
     });
@@ -32,34 +32,41 @@ const UpdateJob = () => {
         evt.preventDefault();
 
         const process = async () => {
-            let form = new FormData();
+            try {
+                let form = new FormData();
 
-            for (let field in newjob)
-                form.append(field, newjob[field]);
+                for (let field in newjob)
+                    form.append(field, newjob[field]);
 
 
-            form.append("avatarJob", avatar.current.files[0]);
+                form.append("avatarJob", avatar.current.files[0]);
 
-            setLoading(true)
-            let res = await Apis.post(endpoints['updatejob'], form);
-            if (res.status === 200) {
-                nav("/");
-            } else
-            setErr("Hệ thống bị lỗi!");
+                setLoading(true)
+                let res = await Apis.post(endpoints['updatejob'], form);
+                if (res.status === 200) {
+                    nav("/");
+                } else
+                    setErr("Hệ thống bị lỗi!");
+
+            } catch (ex) {
+                setErr("Thêm lại hình ảnh!");
+                window.scrollTo(0, 0);
+            }
+
         }
 
-        if (newjob.kinhNghiem <= newjob.age  )
-        process();
+        if (newjob.kinhNghiem <= newjob.age)
+            process();
         else {
-        setErr("Vui lòng nhập lại !!! Số năm kinh nghiệm và tuổi không hợp lệ !!! ");
-    }
+            setErr("Vui lòng nhập lại !!! Số năm kinh nghiệm và tuổi không hợp lệ !!! ");
+        }
 
     }
 
     const change = (evt, field) => {
         // setUser({...user, [field]: evt.target.value})
         SetNewJob(current => {
-            return {...current, [field]: evt.target.value}
+            return { ...current, [field]: evt.target.value }
         })
     }
     const [city, setCity] = useState([]);
@@ -100,7 +107,7 @@ const UpdateJob = () => {
     }, [])
     return <>
         <h1 className="text-center text-info mt-2"> SỬA THÔNG TIN NHÂN SỰ CỦA CÔNG TY {savecookie.nameJob}</h1>
-        {err === null?"":<Alert variant="danger">{err}</Alert>}
+        {err === null ? "" : <Alert variant="danger">{err}</Alert>}
         <Form onSubmit={Newjob}>
 
             <Form.Group className="mb-3">
@@ -173,13 +180,14 @@ const UpdateJob = () => {
 
             <Form.Group className="mb-3">
                 <Form.Label>Ảnh đại diện</Form.Label>
-                <Form.Control type="file" ref={avatar}  value={newjob.avatarJob}/>
+                <Form.Control type="file" ref={avatar} value={newjob.avatarJob} />
             </Form.Group>
 
             <Form.Group className="mb-3">
-                {loading === true?<MySpinner/>:<Button variant="info" type="submit">
-                    Sửa tin
-                </Button>}
+            <Button variant="info" type="submit">
+                    Sửa tin </Button>
+                {/* {loading === true ? <MySpinner /> : 
+               } */}
 
             </Form.Group>
         </Form>

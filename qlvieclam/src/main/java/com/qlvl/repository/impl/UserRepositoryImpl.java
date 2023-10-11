@@ -101,10 +101,11 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public List<User> getUsername(Map<String, String> params) {
         Session session = this.factory.getObject().getCurrentSession();
+        
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        
         User u = this.getUserByUserName(authentication.getName());
         String id = u.getUsername();
-
         Query query = session.createQuery("FROM User where username=:id");
         query.setParameter("id", id);
         return query.getResultList();
